@@ -26,18 +26,18 @@
     </nav>
   </header>
 
-  <!-- 登录模块占位（后续将使用表单与 JS 完善） -->
+  <!-- 登录模块 -->
   <section id="login">
     <h2>登录</h2>
-    <!-- 暂时使用表单占位，表单提交与验证将在 JavaScript 章节实现 -->
-    <form action="#" method="post">
+    <!-- 登录表单，用于用户身份验证 -->
+    <form id="login-form" action="#" method="post">
       <label>
         用户名：
-        <input type="text" name="username" placeholder="请输入用户名" />
+        <input type="text" id="username" name="username" placeholder="请输入用户名" required />
       </label>
       <label>
         密码：
-        <input type="password" name="password" placeholder="请输入密码" />
+        <input type="password" id="password" name="password" placeholder="请输入密码" required />
       </label>
       <button type="submit">登录</button>
     </form>
@@ -291,8 +291,11 @@
   </main>
 
   <footer>
-    <p>练习项目：家庭管理系统 — HTML 第一步（基础结构）</p>
-    <p>提示：下一步将会把样式拆分到 `styles/`，行为写到 `scripts/`，并使用 JSON 存储数据。</p>
+    <p>练习项目：家庭管理系统 — HTML + CSS + JavaScript</p>
+    <p>当前功能：登录验证、数据展示、导航交互、本地存储</p>
   </footer>
+  
+  <!-- 引入 JavaScript 文件 -->
+  <script src="scripts/main.js"></script>
 </body>
 </html>
