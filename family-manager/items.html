@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>家庭管理系统 - 物品管理</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <!-- 页面头部：包含标题和导航 -->
+  <header>
+    <h1>我的家庭管理系统</h1>
+    <nav>
+      <ul>
+        <li><a href="time.html">时间管理</a></li>
+        <li><a href="events.html">重要事件</a></li>
+        <li><a href="items.html" class="active">物品管理</a></li>
+        <li><a href="finance.html">资金管理</a></li>
+        <li><a href="friends.html">朋友管理</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 登录模块 -->
+  <section id="login">
+    <h2>登录</h2>
+    <!-- 登录表单，用于用户身份验证 -->
+    <form id="login-form" action="#" method="post">
+      <label>
+        用户名：
+        <input type="text" id="username" name="username" placeholder="请输入用户名" required />
+      </label>
+      <label>
+        密码：
+        <input type="password" id="password" name="password" placeholder="请输入密码" required />
+      </label>
+      <button type="submit">登录</button>
+    </form>
+  </section>
+
+  <main>
+    <!-- 物品管理模块 -->
+    <section id="items">
+      <h2>物品管理</h2>
+      
+      <!-- 添加物品表单 -->
+      <div class="item-form-container">
+        <h3>添加/编辑物品</h3>
+        <form id="item-form">
+          <input type="hidden" id="item-id" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="item-name">物品名称：</label>
+              <input type="text" id="item-name" name="name" placeholder="请输入物品名称" required />
+            </div>
+            <div class="form-group">
+              <label for="item-owner">所属人：</label>
+              <input type="text" id="item-owner" name="owner" placeholder="请输入所属人" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="item-quantity">数量：</label>
+              <input type="number" id="item-quantity" name="quantity" min="1" value="1" required />
+            </div>
+            <div class="form-group">
+              <label for="item-location">存放位置：</label>
+              <input type="text" id="item-location" name="location" placeholder="请输入存放位置" required />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="add-item-btn">添加物品</button>
+            <button type="button" id="cancel-item-btn" style="display: none;">取消</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- 物品列表 -->
+      <div class="items-list">
+        <h3>物品清单</h3>
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th>物品名称</th>
+              <th>所属人</th>
+              <th>数量</th>
+              <th>存放位置</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="items-table-body">
+            <!-- 物品数据将通过JavaScript动态生成 -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>练习项目：家庭管理系统 — HTML + CSS + JavaScript</p>
+    <p>当前功能：登录验证、物品管理</p>
+  </footer>
+  
+  <!-- 引入 JavaScript 文件 -->
+  <script src="scripts/main.js"></script>
+</body>
+</html>
