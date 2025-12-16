@@ -184,7 +184,12 @@ nav ul li a:hover {
 .transaction-form-container,
 .friend-form-container,
 .calendar-placeholder,
-.reminders-placeholder {
+.reminders-placeholder,
+.items-list,
+.events-list-container,
+.transactions,
+.finance-overview,
+.friends-list {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
