@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>家庭管理系统 - 起步 (HTML)</title>
+  <!--
+    说明：这是面向前端初学者的第一课，演示纯 HTML 文件的结构和语义化标签。
+    知识点：<!DOCTYPE>、<html>、<head>、<meta>、<title>、<body>、语义化标签（header/nav/main/section/footer）
+    本仓库练习要求：每次小提交都记录学习要点，并将代码提交到相应的分支（此文件提交到 feature/html）。
+  -->
+</head>
+<body>
+  <!-- 页面头部：包含标题和导航（语义化 header 与 nav） -->
+  <header>
+    <h1>我的家庭管理系统</h1>
+    <nav>
+      <ul>
+        <li><a href="#time">时间管理</a></li>
+        <li><a href="#events">重要事件</a></li>
+        <li><a href="#items">物品管理</a></li>
+        <li><a href="#finance">资金管理</a></li>
+        <li><a href="#friends">朋友管理</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 登录模块占位（后续将使用表单与 JS 完善） -->
+  <section id="login">
+    <h2>登录</h2>
+    <!-- 暂时使用表单占位，表单提交与验证将在 JavaScript 章节实现 -->
+    <form action="#" method="post">
+      <label>
+        用户名：
+        <input type="text" name="username" placeholder="请输入用户名" />
+      </label>
+      <label>
+        密码：
+        <input type="password" name="password" placeholder="请输入密码" />
+      </label>
+      <button type="submit">登录</button>
+    </form>
+  </section>
+
+  <main>
+    <!-- 各个模块占位，后续会逐步添加更复杂的内容和交互 -->
+    <section id="time">
+      <h2>时间管理</h2>
+      <p>这里将展示日历、提醒等功能的占位内容。</p>
+    </section>
+
+    <section id="events">
+      <h2>重要事件</h2>
+      <p>这里将列出重要事件（可以增加/编辑/删除），示例列表稍后补上。</p>
+    </section>
+
+    <section id="items">
+      <h2>物品管理</h2>
+      <p>管理家中物品清单、所属人、数量等（将来用 JSON 存储进行 CRUD）。</p>
+    </section>
+
+    <section id="finance">
+      <h2>资金管理</h2>
+      <p>记录收支、预算等信息（后续会做数据展示与图表）。</p>
+    </section>
+
+    <section id="friends">
+      <h2>朋友管理</h2>
+      <p>记录联系人信息，支持分组和快速查找。</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>练习项目：家庭管理系统 — HTML 第一步（基础结构）</p>
+    <p>提示：下一步将会把样式拆分到 `styles/`，行为写到 `scripts/`，并使用 JSON 存储数据。</p>
+  </footer>
+</body>
+</html>
