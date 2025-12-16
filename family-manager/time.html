@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>家庭管理系统 - 时间管理</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <!-- 页面头部：包含标题和导航 -->
+  <header>
+    <h1>我的家庭管理系统</h1>
+    <nav>
+      <ul>
+        <li><a href="time.html" class="active">时间管理</a></li>
+        <li><a href="events.html">重要事件</a></li>
+        <li><a href="items.html">物品管理</a></li>
+        <li><a href="finance.html">资金管理</a></li>
+        <li><a href="friends.html">朋友管理</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 登录模块 -->
+  <section id="login">
+    <h2>登录</h2>
+    <!-- 登录表单，用于用户身份验证 -->
+    <form id="login-form" action="#" method="post">
+      <label>
+        用户名：
+        <input type="text" id="username" name="username" placeholder="请输入用户名" required />
+      </label>
+      <label>
+        密码：
+        <input type="password" id="password" name="password" placeholder="请输入密码" required />
+      </label>
+      <button type="submit">登录</button>
+    </form>
+  </section>
+
+  <main>
+    <!-- 时间管理模块 -->
+    <section id="time">
+      <h2>时间管理</h2>
+      <div class="calendar-placeholder">
+        <h3>日历</h3>
+        <table class="calendar">
+          <thead>
+            <tr>
+              <th>日</th>
+              <th>一</th>
+              <th>二</th>
+              <th>三</th>
+              <th>四</th>
+              <th>五</th>
+              <th>六</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+              <td>13</td>
+              <td>14</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>16</td>
+              <td>17</td>
+              <td>18</td>
+              <td>19</td>
+              <td>20</td>
+              <td>21</td>
+            </tr>
+            <tr>
+              <td>22</td>
+              <td>23</td>
+              <td>24</td>
+              <td>25</td>
+              <td>26</td>
+              <td>27</td>
+              <td>28</td>
+            </tr>
+            <tr>
+              <td>29</td>
+              <td>30</td>
+              <td>31</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="reminders-placeholder">
+        <h3>提醒事项</h3>
+        <ul class="reminders-list">
+          <li>早上8点：上班</li>
+          <li>下午3点：开会</li>
+          <li>晚上7点：家庭聚餐</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>练习项目：家庭管理系统 — HTML + CSS + JavaScript</p>
+    <p>当前功能：登录验证、时间管理</p>
+  </footer>
+  
+  <!-- 引入 JavaScript 文件 -->
+  <script src="scripts/main.js"></script>
+</body>
+</html>
