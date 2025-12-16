@@ -123,6 +123,39 @@
     <!-- 重要事件模块 -->
     <section id="events">
       <h2>重要事件</h2>
+      
+      <!-- 添加事件表单 -->
+      <div class="event-form-container">
+        <h3>添加新事件</h3>
+        <form id="event-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="event-name">事件名称：</label>
+              <input type="text" id="event-name" name="name" placeholder="请输入事件名称" required />
+            </div>
+            <div class="form-group">
+              <label for="event-date">日期：</label>
+              <input type="date" id="event-date" name="date" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="event-time">时间：</label>
+              <input type="time" id="event-time" name="time" required />
+            </div>
+            <div class="form-group">
+              <label for="event-description">描述：</label>
+              <textarea id="event-description" name="description" placeholder="请输入事件描述" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="add-event-btn">添加事件</button>
+            <button type="button" id="cancel-event-btn" style="display: none;">取消</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- 事件列表 -->
       <div class="events-list">
         <h3>事件列表</h3>
         <table class="events-table">
@@ -132,27 +165,11 @@
               <th>日期</th>
               <th>时间</th>
               <th>描述</th>
+              <th>操作</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>生日聚会</td>
-              <td>2023-05-20</td>
-              <td>18:00</td>
-              <td>为妈妈庆祝生日</td>
-            </tr>
-            <tr>
-              <td>结婚纪念日</td>
-              <td>2023-06-15</td>
-              <td>19:00</td>
-              <td>结婚5周年纪念日</td>
-            </tr>
-            <tr>
-              <td>孩子毕业典礼</td>
-              <td>2023-07-01</td>
-              <td>10:00</td>
-              <td>孩子小学毕业典礼</td>
-            </tr>
+          <tbody id="events-table-body">
+            <!-- 事件数据将通过JavaScript动态生成 -->
           </tbody>
         </table>
       </div>

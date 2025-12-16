@@ -94,6 +94,9 @@ const Utils = {
 
 // 页面交互功能
 const App = {
+  // 当前编辑的事件ID
+  currentEditingEventId: null,
+  
   // 初始化应用
   init: function() {
     // 加载本地存储数据
@@ -107,6 +110,9 @@ const App = {
     
     // 更新资金统计
     this.updateFinanceStats();
+    
+    // 渲染事件列表
+    this.renderEvents();
   },
   
   // 绑定事件监听器
@@ -128,6 +134,18 @@ const App = {
     calendarCells.forEach(cell => {
       cell.addEventListener('click', this.handleCalendarClick.bind(this));
     });
+    
+    // 事件表单提交
+    const eventForm = document.getElementById('event-form');
+    if (eventForm) {
+      eventForm.addEventListener('submit', this.handleEventSubmit.bind(this));
+    }
+    
+    // 取消事件编辑
+    const cancelEventBtn = document.getElementById('cancel-event-btn');
+    if (cancelEventBtn) {
+      cancelEventBtn.addEventListener('click', this.handleCancelEvent.bind(this));
+    }
   },
   
   // 处理登录表单提交
@@ -269,6 +287,154 @@ const App = {
     setTimeout(() => {
       messageDiv.remove();
     }, 3000);
+  },
+  
+  // 处理事件表单提交
+  handleEventSubmit: function(event) {
+    event.preventDefault();
+    
+    // 获取表单数据
+    const name = document.getElementById('event-name').value;
+    const date = document.getElementById('event-date').value;
+    const time = document.getElementById('event-time').value;
+    const description = document.getElementById('event-description').value;
+    
+    if (this.currentEditingEventId) {
+      // 编辑现有事件
+      const eventIndex = FamilyManager.events.findIndex(e => e.id === this.currentEditingEventId);
+      if (eventIndex !== -1) {
+        FamilyManager.events[eventIndex] = {
+          ...FamilyManager.events[eventIndex],
+          name,
+          date,
+          time,
+          description
+        };
+        
+        this.showMessage('事件更新成功！', 'success');
+        this.currentEditingEventId = null;
+      }
+    } else {
+      // 添加新事件
+      const newEvent = {
+        id: Utils.generateId(),
+        name,
+        date,
+        time,
+        description,
+        createdBy: FamilyManager.currentUser.username
+      };
+      
+      FamilyManager.events.push(newEvent);
+      this.showMessage('事件添加成功！', 'success');
+    }
+    
+    // 保存数据
+    Utils.saveData();
+    
+    // 重置表单
+    this.resetEventForm();
+    
+    // 重新渲染事件列表
+    this.renderEvents();
+  },
+  
+  // 重置事件表单
+  resetEventForm: function() {
+    const eventForm = document.getElementById('event-form');
+    const addEventBtn = document.getElementById('add-event-btn');
+    const cancelEventBtn = document.getElementById('cancel-event-btn');
+    
+    if (eventForm) {
+      eventForm.reset();
+    }
+    
+    if (addEventBtn) {
+      addEventBtn.textContent = '添加事件';
+    }
+    
+    if (cancelEventBtn) {
+      cancelEventBtn.style.display = 'none';
+    }
+    
+    this.currentEditingEventId = null;
+  },
+  
+  // 处理取消事件编辑
+  handleCancelEvent: function() {
+    this.resetEventForm();
+  },
+  
+  // 渲染事件列表
+  renderEvents: function() {
+    const eventsTableBody = document.getElementById('events-table-body');
+    if (!eventsTableBody) return;
+    
+    // 清空表格
+    eventsTableBody.innerHTML = '';
+    
+    // 渲染事件行
+    FamilyManager.events.forEach(event => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${event.name}</td>
+        <td>${event.date}</td>
+        <td>${event.time}</td>
+        <td>${event.description || '-'}</td>
+        <td>
+          <button class="btn btn-edit" onclick="App.editEvent(${event.id})">编辑</button>
+          <button class="btn btn-delete" onclick="App.deleteEvent(${event.id})">删除</button>
+        </td>
+      `;
+      eventsTableBody.appendChild(row);
+    });
+  },
+  
+  // 编辑事件
+  editEvent: function(eventId) {
+    const event = FamilyManager.events.find(e => e.id === eventId);
+    if (!event) return;
+    
+    // 填充表单数据
+    document.getElementById('event-name').value = event.name;
+    document.getElementById('event-date').value = event.date;
+    document.getElementById('event-time').value = event.time;
+    document.getElementById('event-description').value = event.description || '';
+    
+    // 更新按钮状态
+    const addEventBtn = document.getElementById('add-event-btn');
+    const cancelEventBtn = document.getElementById('cancel-event-btn');
+    
+    if (addEventBtn) {
+      addEventBtn.textContent = '更新事件';
+    }
+    
+    if (cancelEventBtn) {
+      cancelEventBtn.style.display = 'inline-block';
+    }
+    
+    this.currentEditingEventId = eventId;
+    
+    // 滚动到表单位置
+    document.getElementById('events').scrollIntoView({ behavior: 'smooth' });
+  },
+  
+  // 删除事件
+  deleteEvent: function(eventId) {
+    if (confirm('确定要删除这个事件吗？')) {
+      const eventIndex = FamilyManager.events.findIndex(e => e.id === eventId);
+      if (eventIndex !== -1) {
+        FamilyManager.events.splice(eventIndex, 1);
+        
+        // 保存数据
+        Utils.saveData();
+        
+        // 重新渲染事件列表
+        this.renderEvents();
+        
+        this.showMessage('事件删除成功！', 'success');
+      }
+    }
   }
 };
 
