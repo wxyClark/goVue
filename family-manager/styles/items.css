@@ -1,0 +1,66 @@
+/* 物品管理页面专用样式 */
+
+/* 物品列表样式 */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.item-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.item-card h4 {
+  margin-bottom: 10px;
+  color: #35424a;
+  border-bottom: 1px solid #e8491d;
+  padding-bottom: 5px;
+}
+
+.item-card .item-category {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.item-card .item-location {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* 物品列表表格样式 */
+.items-table {
+  margin-top: 20px;
+}
+
+.items-table th:nth-child(1),
+.items-table td:nth-child(1) {
+  width: 30%;
+}
+
+.items-table th:nth-child(2),
+.items-table td:nth-child(2) {
+  width: 20%;
+}
+
+.items-table th:nth-child(3),
+.items-table td:nth-child(3) {
+  width: 30%;
+}
+
+.items-table th:nth-child(4),
+.items-table td:nth-child(4) {
+  width: 20%;
+  text-align: center;
+}

@@ -1,0 +1,35 @@
+/* 重要事件页面专用样式 */
+
+/* 事件列表样式 */
+.events-list {
+  list-style: none;
+  padding: 0;
+}
+
+.events-list li {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border-left: 4px solid #35424a;
+}
+
+.events-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.events-list .event-date {
+  font-weight: bold;
+  color: #e8491d;
+  margin-bottom: 5px;
+}
+
+.events-list .event-title {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.events-list .event-description {
+  color: #666;
+  font-size: 0.9rem;
+}

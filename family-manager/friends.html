@@ -4,39 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>家庭管理系统 - 朋友管理</title>
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/common.css" />
+  <link rel="stylesheet" href="styles/friends.css" />
 </head>
 <body>
-  <!-- 页面头部：包含标题和导航 -->
-  <header>
-    <h1>我的家庭管理系统</h1>
-    <nav>
-      <ul>
-        <li><a href="time.html">时间管理</a></li>
-        <li><a href="events.html">重要事件</a></li>
-        <li><a href="items.html">物品管理</a></li>
-        <li><a href="finance.html">资金管理</a></li>
-        <li><a href="friends.html" class="active">朋友管理</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- 页面头部容器 -->
+  <div id="header-container"></div>
 
-  <!-- 登录模块 -->
-  <section id="login">
-    <h2>登录</h2>
-    <!-- 登录表单，用于用户身份验证 -->
-    <form id="login-form" action="#" method="post">
-      <label>
-        用户名：
-        <input type="text" id="username" name="username" placeholder="请输入用户名" required />
-      </label>
-      <label>
-        密码：
-        <input type="password" id="password" name="password" placeholder="请输入密码" required />
-      </label>
-      <button type="submit">登录</button>
-    </form>
-  </section>
+  <!-- 登录模块容器 -->
+  <div id="login-container"></div>
 
   <main>
     <!-- 朋友管理模块 -->
@@ -102,6 +78,7 @@
   </footer>
   
   <!-- 引入 JavaScript 文件 -->
+  <script src="scripts/loader.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 </html>

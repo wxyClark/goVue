@@ -1,0 +1,113 @@
+/* 资金管理页面专用样式 */
+
+/* 财务概览样式 */
+.finance-summary {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.income,
+.expense,
+.balance {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 200px;
+  margin: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.income:hover,
+.expense:hover,
+.balance:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.income h4,
+.expense h4,
+.balance h4 {
+  margin-bottom: 10px;
+  color: #35424a;
+}
+
+.income p {
+  color: #2ecc71;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.expense p {
+  color: #e74c3c;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.balance p {
+  color: #3498db;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* 交易记录样式 */
+.transactions {
+  margin-top: 30px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border-left: 4px solid #35424a;
+}
+
+.transaction-item.expense {
+  border-left-color: #e74c3c;
+}
+
+.transaction-item.income {
+  border-left-color: #2ecc71;
+}
+
+.transaction-details {
+  flex: 1;
+}
+
+.transaction-description {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.transaction-category {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.transaction-amount {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.transaction-amount.expense {
+  color: #e74c3c;
+}
+
+.transaction-amount.income {
+  color: #2ecc71;
+}
+
+/* 财务图表容器 */
+.chart-container {
+  margin-top: 30px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
