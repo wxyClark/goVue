@@ -131,6 +131,9 @@ const App = {
     
     // 渲染朋友列表
     this.renderFriends();
+    
+    // 渲染提醒事项列表
+    this.renderReminders();
   },
   
   // 绑定事件监听器
@@ -253,6 +256,22 @@ const App = {
     if (date) {
       alert('您点击了日期：' + date);
     }
+  },
+  
+  // 渲染提醒事项列表
+  renderReminders: function() {
+    const remindersList = document.querySelector('.reminders-list');
+    if (!remindersList) return;
+    
+    // 清空列表
+    remindersList.innerHTML = '';
+    
+    // 渲染提醒事项
+    FamilyManager.reminders.forEach(reminder => {
+      const li = document.createElement('li');
+      li.innerHTML = `${reminder.time}：${reminder.content}`;
+      remindersList.appendChild(li);
+    });
   },
   
   // 更新页面显示
@@ -396,7 +415,7 @@ const App = {
   // 重置事件表单
   resetEventForm: function() {
     const eventForm = document.getElementById('event-form');
-    const addEventBtn = document.getElementById('add-event-btn');
+    const addEventBtn = document.getElementById('save-event-btn');
     const cancelEventBtn = document.getElementById('cancel-event-btn');
     
     if (eventForm) {
@@ -456,7 +475,7 @@ const App = {
     document.getElementById('event-description').value = event.description || '';
     
     // 更新按钮状态
-    const addEventBtn = document.getElementById('add-event-btn');
+    const addEventBtn = document.getElementById('save-event-btn');
     const cancelEventBtn = document.getElementById('cancel-event-btn');
     
     if (addEventBtn) {
