@@ -178,8 +178,13 @@ nav ul li a:hover {
   background-color: #5a6268;
 }
 
-/* 事件表单容器 */
-.event-form-container {
+/* 表单容器通用样式 */
+.event-form-container,
+.item-form-container,
+.transaction-form-container,
+.friend-form-container,
+.calendar-placeholder,
+.reminders-placeholder {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
