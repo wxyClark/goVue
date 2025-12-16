@@ -97,6 +97,15 @@ const App = {
   // 当前编辑的事件ID
   currentEditingEventId: null,
   
+  // 当前编辑的物品ID
+  currentEditingItemId: null,
+  
+  // 当前编辑的交易ID
+  currentEditingTransactionId: null,
+  
+  // 当前编辑的朋友ID
+  currentEditingFriendId: null,
+  
   // 初始化应用
   init: function() {
     // 加载本地存储数据
@@ -113,6 +122,15 @@ const App = {
     
     // 渲染事件列表
     this.renderEvents();
+    
+    // 渲染物品列表
+    this.renderItems();
+    
+    // 渲染交易列表
+    this.renderTransactions();
+    
+    // 渲染朋友列表
+    this.renderFriends();
   },
   
   // 绑定事件监听器
@@ -145,6 +163,42 @@ const App = {
     const cancelEventBtn = document.getElementById('cancel-event-btn');
     if (cancelEventBtn) {
       cancelEventBtn.addEventListener('click', this.handleCancelEvent.bind(this));
+    }
+    
+    // 物品表单提交
+    const itemForm = document.getElementById('item-form');
+    if (itemForm) {
+      itemForm.addEventListener('submit', this.handleItemSubmit.bind(this));
+    }
+    
+    // 取消物品编辑
+    const cancelItemBtn = document.getElementById('cancel-item-btn');
+    if (cancelItemBtn) {
+      cancelItemBtn.addEventListener('click', this.handleCancelItem.bind(this));
+    }
+    
+    // 交易表单提交
+    const transactionForm = document.getElementById('transaction-form');
+    if (transactionForm) {
+      transactionForm.addEventListener('submit', this.handleTransactionSubmit.bind(this));
+    }
+    
+    // 取消交易编辑
+    const cancelTransactionBtn = document.getElementById('cancel-transaction-btn');
+    if (cancelTransactionBtn) {
+      cancelTransactionBtn.addEventListener('click', this.handleCancelTransaction.bind(this));
+    }
+    
+    // 朋友表单提交
+    const friendForm = document.getElementById('friend-form');
+    if (friendForm) {
+      friendForm.addEventListener('submit', this.handleFriendSubmit.bind(this));
+    }
+    
+    // 取消朋友编辑
+    const cancelFriendBtn = document.getElementById('cancel-friend-btn');
+    if (cancelFriendBtn) {
+      cancelFriendBtn.addEventListener('click', this.handleCancelFriend.bind(this));
     }
   },
   
@@ -433,6 +487,463 @@ const App = {
         this.renderEvents();
         
         this.showMessage('事件删除成功！', 'success');
+      }
+    }
+  },
+  
+  // 处理物品表单提交
+  handleItemSubmit: function(event) {
+    event.preventDefault();
+    
+    // 获取表单数据
+    const name = document.getElementById('item-name').value;
+    const owner = document.getElementById('item-owner').value;
+    const quantity = parseInt(document.getElementById('item-quantity').value);
+    const location = document.getElementById('item-location').value;
+    
+    if (this.currentEditingItemId) {
+      // 编辑现有物品
+      const itemIndex = FamilyManager.items.findIndex(i => i.id === this.currentEditingItemId);
+      if (itemIndex !== -1) {
+        FamilyManager.items[itemIndex] = {
+          ...FamilyManager.items[itemIndex],
+          name,
+          owner,
+          quantity,
+          location
+        };
+        
+        this.showMessage('物品更新成功！', 'success');
+        this.currentEditingItemId = null;
+      }
+    } else {
+      // 添加新物品
+      const newItem = {
+        id: Utils.generateId(),
+        name,
+        owner,
+        quantity,
+        location,
+        createdBy: FamilyManager.currentUser.username
+      };
+      
+      FamilyManager.items.push(newItem);
+      this.showMessage('物品添加成功！', 'success');
+    }
+    
+    // 保存数据
+    Utils.saveData();
+    
+    // 重置表单
+    this.resetItemForm();
+    
+    // 重新渲染物品列表
+    this.renderItems();
+  },
+  
+  // 重置物品表单
+  resetItemForm: function() {
+    const itemForm = document.getElementById('item-form');
+    const addItemBtn = document.getElementById('add-item-btn');
+    const cancelItemBtn = document.getElementById('cancel-item-btn');
+    
+    if (itemForm) {
+      itemForm.reset();
+    }
+    
+    if (addItemBtn) {
+      addItemBtn.textContent = '添加物品';
+    }
+    
+    if (cancelItemBtn) {
+      cancelItemBtn.style.display = 'none';
+    }
+    
+    this.currentEditingItemId = null;
+  },
+  
+  // 处理取消物品编辑
+  handleCancelItem: function() {
+    this.resetItemForm();
+  },
+  
+  // 渲染物品列表
+  renderItems: function() {
+    const itemsTableBody = document.getElementById('items-table-body');
+    if (!itemsTableBody) return;
+    
+    // 清空表格
+    itemsTableBody.innerHTML = '';
+    
+    // 渲染物品行
+    FamilyManager.items.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.owner}</td>
+        <td>${item.quantity}</td>
+        <td>${item.location}</td>
+        <td>
+          <button class="btn btn-edit" onclick="App.editItem(${item.id})">编辑</button>
+          <button class="btn btn-delete" onclick="App.deleteItem(${item.id})">删除</button>
+        </td>
+      `;
+      itemsTableBody.appendChild(row);
+    });
+  },
+  
+  // 编辑物品
+  editItem: function(itemId) {
+    const item = FamilyManager.items.find(i => i.id === itemId);
+    if (!item) return;
+    
+    // 填充表单数据
+    document.getElementById('item-name').value = item.name;
+    document.getElementById('item-owner').value = item.owner;
+    document.getElementById('item-quantity').value = item.quantity;
+    document.getElementById('item-location').value = item.location;
+    
+    // 更新按钮状态
+    const addItemBtn = document.getElementById('add-item-btn');
+    const cancelItemBtn = document.getElementById('cancel-item-btn');
+    
+    if (addItemBtn) {
+      addItemBtn.textContent = '更新物品';
+    }
+    
+    if (cancelItemBtn) {
+      cancelItemBtn.style.display = 'inline-block';
+    }
+    
+    this.currentEditingItemId = itemId;
+    
+    // 滚动到表单位置
+    document.getElementById('items').scrollIntoView({ behavior: 'smooth' });
+  },
+  
+  // 删除物品
+  deleteItem: function(itemId) {
+    if (confirm('确定要删除这个物品吗？')) {
+      const itemIndex = FamilyManager.items.findIndex(i => i.id === itemId);
+      if (itemIndex !== -1) {
+        FamilyManager.items.splice(itemIndex, 1);
+        
+        // 保存数据
+        Utils.saveData();
+        
+        // 重新渲染物品列表
+        this.renderItems();
+        
+        this.showMessage('物品删除成功！', 'success');
+      }
+    }
+  },
+  
+  // 处理交易表单提交
+  handleTransactionSubmit: function(event) {
+    event.preventDefault();
+    
+    // 获取表单数据
+    const date = document.getElementById('transaction-date').value;
+    const type = document.getElementById('transaction-type').value;
+    const amount = parseFloat(document.getElementById('transaction-amount').value);
+    const description = document.getElementById('transaction-description').value;
+    
+    if (this.currentEditingTransactionId) {
+      // 编辑现有交易
+      const transactionIndex = FamilyManager.transactions.findIndex(t => t.id === this.currentEditingTransactionId);
+      if (transactionIndex !== -1) {
+        FamilyManager.transactions[transactionIndex] = {
+          ...FamilyManager.transactions[transactionIndex],
+          date,
+          type,
+          amount,
+          description
+        };
+        
+        this.showMessage('交易记录更新成功！', 'success');
+        this.currentEditingTransactionId = null;
+      }
+    } else {
+      // 添加新交易
+      const newTransaction = {
+        id: Utils.generateId(),
+        date,
+        type,
+        amount,
+        description,
+        createdBy: FamilyManager.currentUser.username
+      };
+      
+      FamilyManager.transactions.push(newTransaction);
+      this.showMessage('交易记录添加成功！', 'success');
+    }
+    
+    // 保存数据
+    Utils.saveData();
+    
+    // 重置表单
+    this.resetTransactionForm();
+    
+    // 重新渲染交易列表
+    this.renderTransactions();
+    
+    // 更新资金统计
+    this.updateFinanceStats();
+  },
+  
+  // 重置交易表单
+  resetTransactionForm: function() {
+    const transactionForm = document.getElementById('transaction-form');
+    const addTransactionBtn = document.getElementById('add-transaction-btn');
+    const cancelTransactionBtn = document.getElementById('cancel-transaction-btn');
+    
+    if (transactionForm) {
+      transactionForm.reset();
+    }
+    
+    if (addTransactionBtn) {
+      addTransactionBtn.textContent = '添加交易';
+    }
+    
+    if (cancelTransactionBtn) {
+      cancelTransactionBtn.style.display = 'none';
+    }
+    
+    this.currentEditingTransactionId = null;
+  },
+  
+  // 处理取消交易编辑
+  handleCancelTransaction: function() {
+    this.resetTransactionForm();
+  },
+  
+  // 渲染交易列表
+  renderTransactions: function() {
+    const transactionsTableBody = document.getElementById('transactions-table-body');
+    if (!transactionsTableBody) return;
+    
+    // 清空表格
+    transactionsTableBody.innerHTML = '';
+    
+    // 渲染交易行
+    FamilyManager.transactions.forEach(transaction => {
+      const row = document.createElement('tr');
+      // 格式化交易类型为中文
+      const typeText = transaction.type === 'income' ? '收入' : '支出';
+      // 格式化金额，添加货币符号
+      const amountText = transaction.type === 'income' 
+        ? `+¥${transaction.amount.toFixed(2)}` 
+        : `-¥${transaction.amount.toFixed(2)}`;
+      
+      row.innerHTML = `
+        <td>${transaction.date}</td>
+        <td>${typeText}</td>
+        <td>${amountText}</td>
+        <td>${transaction.description || '-'}</td>
+        <td>
+          <button class="btn btn-edit" onclick="App.editTransaction(${transaction.id})">编辑</button>
+          <button class="btn btn-delete" onclick="App.deleteTransaction(${transaction.id})">删除</button>
+        </td>
+      `;
+      transactionsTableBody.appendChild(row);
+    });
+  },
+  
+  // 编辑交易
+  editTransaction: function(transactionId) {
+    const transaction = FamilyManager.transactions.find(t => t.id === transactionId);
+    if (!transaction) return;
+    
+    // 填充表单数据
+    document.getElementById('transaction-date').value = transaction.date;
+    document.getElementById('transaction-type').value = transaction.type;
+    document.getElementById('transaction-amount').value = transaction.amount;
+    document.getElementById('transaction-description').value = transaction.description || '';
+    
+    // 更新按钮状态
+    const addTransactionBtn = document.getElementById('add-transaction-btn');
+    const cancelTransactionBtn = document.getElementById('cancel-transaction-btn');
+    
+    if (addTransactionBtn) {
+      addTransactionBtn.textContent = '更新交易';
+    }
+    
+    if (cancelTransactionBtn) {
+      cancelTransactionBtn.style.display = 'inline-block';
+    }
+    
+    this.currentEditingTransactionId = transactionId;
+    
+    // 滚动到表单位置
+    document.getElementById('finance').scrollIntoView({ behavior: 'smooth' });
+  },
+  
+  // 删除交易
+  deleteTransaction: function(transactionId) {
+    if (confirm('确定要删除这条交易记录吗？')) {
+      const transactionIndex = FamilyManager.transactions.findIndex(t => t.id === transactionId);
+      if (transactionIndex !== -1) {
+        FamilyManager.transactions.splice(transactionIndex, 1);
+        
+        // 保存数据
+        Utils.saveData();
+        
+        // 重新渲染交易列表
+        this.renderTransactions();
+        
+        // 更新资金统计
+        this.updateFinanceStats();
+        
+        this.showMessage('交易记录删除成功！', 'success');
+      }
+    }
+  },
+  
+  // 处理朋友表单提交
+  handleFriendSubmit: function(event) {
+    event.preventDefault();
+    
+    // 获取表单数据
+    const name = document.getElementById('friend-name').value;
+    const phone = document.getElementById('friend-phone').value;
+    const email = document.getElementById('friend-email').value;
+    const relationship = document.getElementById('friend-relationship').value;
+    
+    if (this.currentEditingFriendId) {
+      // 编辑现有朋友
+      const friendIndex = FamilyManager.friends.findIndex(f => f.id === this.currentEditingFriendId);
+      if (friendIndex !== -1) {
+        FamilyManager.friends[friendIndex] = {
+          ...FamilyManager.friends[friendIndex],
+          name,
+          phone,
+          email,
+          relationship
+        };
+        
+        this.showMessage('联系人更新成功！', 'success');
+        this.currentEditingFriendId = null;
+      }
+    } else {
+      // 添加新朋友
+      const newFriend = {
+        id: Utils.generateId(),
+        name,
+        phone,
+        email,
+        relationship,
+        createdBy: FamilyManager.currentUser.username
+      };
+      
+      FamilyManager.friends.push(newFriend);
+      this.showMessage('联系人添加成功！', 'success');
+    }
+    
+    // 保存数据
+    Utils.saveData();
+    
+    // 重置表单
+    this.resetFriendForm();
+    
+    // 重新渲染朋友列表
+    this.renderFriends();
+  },
+  
+  // 重置朋友表单
+  resetFriendForm: function() {
+    const friendForm = document.getElementById('friend-form');
+    const addFriendBtn = document.getElementById('add-friend-btn');
+    const cancelFriendBtn = document.getElementById('cancel-friend-btn');
+    
+    if (friendForm) {
+      friendForm.reset();
+    }
+    
+    if (addFriendBtn) {
+      addFriendBtn.textContent = '添加联系人';
+    }
+    
+    if (cancelFriendBtn) {
+      cancelFriendBtn.style.display = 'none';
+    }
+    
+    this.currentEditingFriendId = null;
+  },
+  
+  // 处理取消朋友编辑
+  handleCancelFriend: function() {
+    this.resetFriendForm();
+  },
+  
+  // 渲染朋友列表
+  renderFriends: function() {
+    const friendsTableBody = document.getElementById('friends-table-body');
+    if (!friendsTableBody) return;
+    
+    // 清空表格
+    friendsTableBody.innerHTML = '';
+    
+    // 渲染朋友行
+    FamilyManager.friends.forEach(friend => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${friend.name}</td>
+        <td>${friend.phone}</td>
+        <td>${friend.email || '-'}</td>
+        <td>${friend.relationship}</td>
+        <td>
+          <button class="btn btn-edit" onclick="App.editFriend(${friend.id})">编辑</button>
+          <button class="btn btn-delete" onclick="App.deleteFriend(${friend.id})">删除</button>
+        </td>
+      `;
+      friendsTableBody.appendChild(row);
+    });
+  },
+  
+  // 编辑朋友
+  editFriend: function(friendId) {
+    const friend = FamilyManager.friends.find(f => f.id === friendId);
+    if (!friend) return;
+    
+    // 填充表单数据
+    document.getElementById('friend-name').value = friend.name;
+    document.getElementById('friend-phone').value = friend.phone;
+    document.getElementById('friend-email').value = friend.email || '';
+    document.getElementById('friend-relationship').value = friend.relationship;
+    
+    // 更新按钮状态
+    const addFriendBtn = document.getElementById('add-friend-btn');
+    const cancelFriendBtn = document.getElementById('cancel-friend-btn');
+    
+    if (addFriendBtn) {
+      addFriendBtn.textContent = '更新联系人';
+    }
+    
+    if (cancelFriendBtn) {
+      cancelFriendBtn.style.display = 'inline-block';
+    }
+    
+    this.currentEditingFriendId = friendId;
+    
+    // 滚动到表单位置
+    document.getElementById('friends').scrollIntoView({ behavior: 'smooth' });
+  },
+  
+  // 删除朋友
+  deleteFriend: function(friendId) {
+    if (confirm('确定要删除这个联系人吗？')) {
+      const friendIndex = FamilyManager.friends.findIndex(f => f.id === friendId);
+      if (friendIndex !== -1) {
+        FamilyManager.friends.splice(friendIndex, 1);
+        
+        // 保存数据
+        Utils.saveData();
+        
+        // 重新渲染朋友列表
+        this.renderFriends();
+        
+        this.showMessage('联系人删除成功！', 'success');
       }
     }
   }

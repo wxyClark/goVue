@@ -178,6 +178,39 @@
     <!-- 物品管理模块 -->
     <section id="items">
       <h2>物品管理</h2>
+      
+      <!-- 添加物品表单 -->
+      <div class="item-form-container">
+        <h3>添加新物品</h3>
+        <form id="item-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="item-name">物品名称：</label>
+              <input type="text" id="item-name" name="name" placeholder="请输入物品名称" required />
+            </div>
+            <div class="form-group">
+              <label for="item-owner">所属人：</label>
+              <input type="text" id="item-owner" name="owner" placeholder="请输入所属人" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="item-quantity">数量：</label>
+              <input type="number" id="item-quantity" name="quantity" min="1" value="1" required />
+            </div>
+            <div class="form-group">
+              <label for="item-location">存放位置：</label>
+              <input type="text" id="item-location" name="location" placeholder="请输入存放位置" required />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="add-item-btn">添加物品</button>
+            <button type="button" id="cancel-item-btn" style="display: none;">取消</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- 物品列表 -->
       <div class="items-list">
         <h3>物品清单</h3>
         <table class="items-table">
@@ -187,27 +220,11 @@
               <th>所属人</th>
               <th>数量</th>
               <th>存放位置</th>
+              <th>操作</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>笔记本电脑</td>
-              <td>张三</td>
-              <td>1</td>
-              <td>书房</td>
-            </tr>
-            <tr>
-              <td>智能手机</td>
-              <td>李四</td>
-              <td>2</td>
-              <td>卧室</td>
-            </tr>
-            <tr>
-              <td>平板电脑</td>
-              <td>王五</td>
-              <td>1</td>
-              <td>客厅</td>
-            </tr>
+          <tbody id="items-table-body">
+            <!-- 物品数据将通过JavaScript动态生成 -->
           </tbody>
         </table>
       </div>
@@ -216,6 +233,41 @@
     <!-- 资金管理模块 -->
     <section id="finance">
       <h2>资金管理</h2>
+      
+      <!-- 添加交易表单 -->
+      <div class="transaction-form-container">
+        <h3>添加交易记录</h3>
+        <form id="transaction-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="transaction-date">日期：</label>
+              <input type="date" id="transaction-date" name="date" required />
+            </div>
+            <div class="form-group">
+              <label for="transaction-type">类型：</label>
+              <select id="transaction-type" name="type" required>
+                <option value="income">收入</option>
+                <option value="expense">支出</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="transaction-amount">金额：</label>
+              <input type="number" id="transaction-amount" name="amount" step="0.01" min="0.01" required />
+            </div>
+            <div class="form-group">
+              <label for="transaction-description">描述：</label>
+              <input type="text" id="transaction-description" name="description" placeholder="请输入交易描述" required />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="add-transaction-btn">添加交易</button>
+            <button type="button" id="cancel-transaction-btn" style="display: none;">取消</button>
+          </div>
+        </form>
+      </div>
+      
       <div class="finance-overview">
         <h3>收支概览</h3>
         <div class="finance-summary">
@@ -242,27 +294,11 @@
               <th>类型</th>
               <th>金额</th>
               <th>描述</th>
+              <th>操作</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>2023-05-01</td>
-              <td>收入</td>
-              <td>¥8,000.00</td>
-              <td>工资</td>
-            </tr>
-            <tr>
-              <td>2023-05-02</td>
-              <td>支出</td>
-              <td>¥1,000.00</td>
-              <td>房租</td>
-            </tr>
-            <tr>
-              <td>2023-05-03</td>
-              <td>支出</td>
-              <td>¥500.00</td>
-              <td> groceries</td>
-            </tr>
+          <tbody id="transactions-table-body">
+            <!-- 交易数据将通过JavaScript动态生成 -->
           </tbody>
         </table>
       </div>
@@ -271,6 +307,39 @@
     <!-- 朋友管理模块 -->
     <section id="friends">
       <h2>朋友管理</h2>
+      
+      <!-- 添加朋友表单 -->
+      <div class="friend-form-container">
+        <h3>添加新联系人</h3>
+        <form id="friend-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="friend-name">姓名：</label>
+              <input type="text" id="friend-name" name="name" placeholder="请输入联系人姓名" required />
+            </div>
+            <div class="form-group">
+              <label for="friend-phone">电话：</label>
+              <input type="tel" id="friend-phone" name="phone" placeholder="请输入电话号码" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="friend-email">邮箱：</label>
+              <input type="email" id="friend-email" name="email" placeholder="请输入邮箱地址" />
+            </div>
+            <div class="form-group">
+              <label for="friend-relationship">关系：</label>
+              <input type="text" id="friend-relationship" name="relationship" placeholder="请输入关系" required />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="add-friend-btn">添加联系人</button>
+            <button type="button" id="cancel-friend-btn" style="display: none;">取消</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- 朋友列表 -->
       <div class="friends-list">
         <h3>联系人列表</h3>
         <table class="friends-table">
@@ -280,27 +349,11 @@
               <th>电话</th>
               <th>邮箱</th>
               <th>关系</th>
+              <th>操作</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>张三</td>
-              <td>13800138000</td>
-              <td>zhangsan@example.com</td>
-              <td>同事</td>
-            </tr>
-            <tr>
-              <td>李四</td>
-              <td>13900139000</td>
-              <td>lisi@example.com</td>
-              <td>朋友</td>
-            </tr>
-            <tr>
-              <td>王五</td>
-              <td>13700137000</td>
-              <td>wangwu@example.com</td>
-              <td>家人</td>
-            </tr>
+          <tbody id="friends-table-body">
+            <!-- 朋友数据将通过JavaScript动态生成 -->
           </tbody>
         </table>
       </div>
