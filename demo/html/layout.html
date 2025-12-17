@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML布局 - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .layout-section {
+            margin-bottom: 2rem;
+        }
+        .layout-section h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        .layout-section h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 0.5rem;
+        }
+        .layout-section h3 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.8rem;
+            color: #444;
+        }
+        .example {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .example pre {
+            background-color: #f1f1f1;
+            padding: 0.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .example code {
+            background-color: #f1f1f1;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .layout-example {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .layout-box {
+            background-color: #e3f2fd;
+            border: 1px solid #2196f3;
+            padding: 1rem;
+            margin: 0.5rem;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            color: #1565c0;
+        }
+        .header-box {
+            background-color: #e8f5e9;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+        .nav-box {
+            background-color: #fff3e0;
+            border-color: #ff9800;
+            color: #e65100;
+        }
+        .main-box {
+            background-color: #f3e5f5;
+            border-color: #9c27b0;
+            color: #6a1b9a;
+        }
+        .sidebar-box {
+            background-color: #fff8e1;
+            border-color: #ffc107;
+            color: #ff6f00;
+        }
+        .footer-box {
+            background-color: #ffebee;
+            border-color: #f44336;
+            color: #c62828;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 25% 75%;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .flex-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .flex-container > div {
+            flex: 1;
+        }
+        .usage-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .usage-note h4 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html">HTML标签</a>
+                <a href="layout.html" class="active">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="layout-section">
+            <h1>HTML布局</h1>
+            <p>HTML布局是指如何组织和排列网页内容的结构。一个好的布局可以使网页内容清晰、易于导航和美观。</p>
+            <p>在HTML中，我们使用各种标签来创建布局结构，常用的布局标签包括 <code>&lt;div&gt;</code>、<code>&lt;header&gt;</code>、<code>&lt;nav&gt;</code>、<code>&lt;main&gt;</code>、<code>&lt;footer&gt;</code> 等。</p>
+
+            <h2>基本布局结构</h2>
+            <p>一个典型的网页布局通常包含以下几个部分：</p>
+            <div class="layout-example">
+                <div class="layout-box header-box">页头 (Header)</div>
+                <div class="layout-box nav-box">导航 (Navigation)</div>
+                <div class="layout-box main-box">主要内容 (Main Content)</div>
+                <div class="layout-box footer-box">页脚 (Footer)</div>
+            </div>
+
+            <h3>示例：简单的页面布局</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;简单页面布局&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;网站标题&lt;/h1&gt;
+    &lt;/header&gt;
+    
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;首页&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;关于我们&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;产品&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+    
+    &lt;main&gt;
+        &lt;h2&gt;主要内容&lt;/h2&gt;
+        &lt;p&gt;这是网站的主要内容区域。&lt;/p&gt;
+        &lt;p&gt;在这里可以放置文章、图片、视频等各种内容。&lt;/p&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2025 网站名称. 保留所有权利.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+            </div>
+
+            <h2>布局方法</h2>
+            <p>HTML布局可以通过多种方法实现，主要包括：</p>
+            
+            <h3>1. 块级元素布局</h3>
+            <p>使用块级元素（如 <code>&lt;div&gt;</code>）来创建页面结构，每个块级元素独占一行。</p>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;div class="container"&gt;
+    &lt;div class="header"&gt;页头&lt;/div&gt;
+    &lt;div class="nav"&gt;导航&lt;/div&gt;
+    &lt;div class="content"&gt;内容&lt;/div&gt;
+    &lt;div class="footer"&gt;页脚&lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+
+            <h3>2. Flexbox 布局</h3>
+            <p>Flexbox 是一种现代的布局模型，它提供了一种更有效的方式来布局、对齐和分配容器内项目的空间。</p>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;style&gt;
+    .flex-container {
+        display: flex;
+        gap: 1rem;
+    }
+    .flex-item {
+        flex: 1;
+        background-color: #e3f2fd;
+        padding: 1rem;
+        border: 1px solid #2196f3;
+    }
+&lt;/style&gt;
+
+&lt;div class="flex-container"&gt;
+    &lt;div class="flex-item"&gt;项目 1&lt;/div&gt;
+    &lt;div class="flex-item"&gt;项目 2&lt;/div&gt;
+    &lt;div class="flex-item"&gt;项目 3&lt;/div&gt;
+&lt;/div&gt;</pre>
+                
+                <h4>效果：</h4>
+                <div class="flex-container">
+                    <div class="layout-box">项目 1</div>
+                    <div class="layout-box">项目 2</div>
+                    <div class="layout-box">项目 3</div>
+                </div>
+            </div>
+
+            <h3>3. Grid 布局</h3>
+            <p>Grid 布局是一种二维布局系统，可以同时处理行和列，非常适合创建复杂的网页布局。</p>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;style&gt;
+    .grid-container {
+        display: grid;
+        grid-template-columns: 25% 75%;
+        gap: 1rem;
+    }
+    .grid-header {
+        grid-column: 1 / -1;
+        background-color: #e8f5e9;
+        padding: 1rem;
+        border: 1px solid #4caf50;
+    }
+    .grid-sidebar {
+        background-color: #fff3e0;
+        padding: 1rem;
+        border: 1px solid #ff9800;
+    }
+    .grid-content {
+        background-color: #f3e5f5;
+        padding: 1rem;
+        border: 1px solid #9c27b0;
+    }
+    .grid-footer {
+        grid-column: 1 / -1;
+        background-color: #ffebee;
+        padding: 1rem;
+        border: 1px solid #f44336;
+    }
+&lt;/style&gt;
+
+&lt;div class="grid-container"&gt;
+    &lt;div class="grid-header"&gt;页头&lt;/div&gt;
+    &lt;div class="grid-sidebar"&gt;侧边栏&lt;/div&gt;
+    &lt;div class="grid-content"&gt;主要内容&lt;/div&gt;
+    &lt;div class="grid-footer"&gt;页脚&lt;/div&gt;
+&lt;/div&gt;</pre>
+                
+                <h4>效果：</h4>
+                <div class="grid-container">
+                    <div class="header-box">页头</div>
+                    <div class="sidebar-box">侧边栏</div>
+                    <div class="main-box">主要内容</div>
+                    <div class="footer-box">页脚</div>
+                </div>
+            </div>
+
+            <h2>语义化布局标签</h2>
+            <p>HTML5 引入了一系列语义化布局标签，这些标签不仅定义了内容的结构，还提供了内容的含义，有助于搜索引擎和辅助技术理解页面结构。</p>
+            
+            <div class="tags-grid">
+                <div class="tag-card">
+                    <strong>&lt;header&gt;</strong>
+                    <div class="tag-desc">定义文档的页头，通常包含网站标题、标志等</div>
+                </div>
+                <div class="tag-card">
+                    <strong>&lt;nav&gt;</strong>
+                    <div class="tag-desc">定义导航链接区域</div>
+                </div>
+                <div class="tag-card">
+                    <strong>&lt;main&gt;</strong>
+                    <div class="tag-desc">定义文档的主要内容</div>
+                </div>
+                <div class="tag-card">
+                    <strong>&lt;section&gt;</strong>
+                    <div class="tag-desc">定义文档中的一个区域或部分</div>
+                </div>
+                <div class="tag-card">
+                    <strong>&lt;article&gt;</strong>
+                    <div class="tag-desc">定义独立的、完整的内容块，如文章、博客帖子等</div>
+                </div>
+                <div class="tag-card">
+                    <strong>&lt;aside&gt;</strong>
+                    <div class="tag-desc">定义与主要内容相关的侧边栏或补充信息</div>
+                </div>
+                <div class="tag-card">
+                    <strong>&lt;footer&gt;</strong>
+                    <div class="tag-desc">定义文档的页脚，通常包含版权信息、联系方式等</div>
+                </div>
+            </div>
+
+            <h3>示例：语义化布局</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;语义化布局&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: 75% 25%;
+            gap: 1rem;
+        }
+        article {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        aside {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;我的博客&lt;/h1&gt;
+    &lt;/header&gt;
+    
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;首页&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;文章&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;分类&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;关于&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+    
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;如何学习HTML布局&lt;/h2&gt;
+            &lt;p&gt;学习HTML布局需要掌握基本的HTML标签和CSS样式。&lt;/p&gt;
+            &lt;p&gt;现代布局技术如Flexbox和Grid提供了更强大的布局能力。&lt;/p&gt;
+        &lt;/article&gt;
+        
+        &lt;aside&gt;
+            &lt;h3&gt;热门文章&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;HTML基础&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;CSS样式&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;JavaScript入门&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2025 我的博客. 保留所有权利.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+            </div>
+
+            <div class="usage-note">
+                <h4>布局设计原则</h4>
+                <ul>
+                    <li><strong>语义化：</strong>使用语义化标签来提高页面的可访问性和SEO。</li>
+                    <li><strong>响应式：</strong>设计应适配不同屏幕尺寸和设备。</li>
+                    <li><strong>简洁明了：</strong>布局应清晰，避免过于复杂的嵌套结构。</li>
+                    <li><strong>可维护性：</strong>使用清晰的命名和组织结构，方便后续维护。</li>
+                    <li><strong>性能优化：</strong>避免不必要的嵌套和冗余代码，提高页面加载速度。</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

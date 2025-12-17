@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML表单 - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .forms-section {
+            margin-bottom: 2rem;
+        }
+        .forms-section h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        .forms-section h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 0.5rem;
+        }
+        .forms-section h3 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.8rem;
+            color: #444;
+        }
+        .example {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .example pre {
+            background-color: #f1f1f1;
+            padding: 0.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .example code {
+            background-color: #f1f1f1;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .form-example {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background-color: #f9f9f9;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .radio-group label,
+        .checkbox-group label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 0.5rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button[type="reset"] {
+            background-color: #f44336;
+        }
+        button[type="reset"]:hover {
+            background-color: #da190b;
+        }
+        .usage-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .usage-note h4 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+        .form-tags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .form-tag-card {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-tag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .form-tag-card strong {
+            color: #4CAF50;
+            font-size: 1.1rem;
+        }
+        .form-tag-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html" class="active">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="forms-section">
+            <h1>HTML表单</h1>
+            <p>HTML表单是用于收集用户输入的一种方式，它允许用户在网页上输入数据并提交给服务器。表单在网站中非常常见，用于登录、注册、搜索、反馈等功能。</p>
+            <p>HTML表单由各种表单元素组成，包括输入框、下拉菜单、文本域、按钮等。</p>
+
+            <h2>基本表单结构</h2>
+            <p>一个典型的HTML表单包含以下基本结构：</p>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;form action="/submit" method="post"&gt;
+    &lt;!-- 表单元素 --&gt;
+    &lt;input type="text" name="username" placeholder="用户名"&gt;
+    &lt;input type="password" name="password" placeholder="密码"&gt;
+    &lt;button type="submit"&gt;提交&lt;/button&gt;
+&lt;/form&gt;</pre>
+            </div>
+
+            <h3>form标签属性</h3>
+            <ul>
+                <li><strong>action：</strong>指定表单数据提交的URL地址</li>
+                <li><strong>method：</strong>指定提交方法，常用的有GET和POST</li>
+                <li><strong>enctype：</strong>指定表单数据的编码类型，用于文件上传</li>
+                <li><strong>target：</strong>指定表单提交后响应的显示位置</li>
+            </ul>
+
+            <h2>常用表单元素</h2>
+            
+            <div class="form-tags-grid">
+                <div class="form-tag-card">
+                    <strong>&lt;input&gt;</strong>
+                    <div class="form-tag-desc">输入控件，根据type属性有多种类型</div>
+                </div>
+                <div class="form-tag-card">
+                    <strong>&lt;label&gt;</strong>
+                    <div class="form-tag-desc">表单元素的标签</div>
+                </div>
+                <div class="form-tag-card">
+                    <strong>&lt;select&gt;</strong>
+                    <div class="form-tag-desc">下拉选择菜单</div>
+                </div>
+                <div class="form-tag-card">
+                    <strong>&lt;textarea&gt;</strong>
+                    <div class="form-tag-desc">多行文本输入框</div>
+                </div>
+                <div class="form-tag-card">
+                    <strong>&lt;button&gt;</strong>
+                    <div class="form-tag-desc">按钮控件</div>
+                </div>
+                <div class="form-tag-card">
+                    <strong>&lt;fieldset&gt;</strong>
+                    <div class="form-tag-desc">表单分组</div>
+                </div>
+                <div class="form-tag-card">
+                    <strong>&lt;legend&gt;</strong>
+                    <div class="form-tag-desc">分组标题</div>
+                </div>
+            </div>
+
+            <h3>1. 输入框 (input)</h3>
+            <p>input标签是最常用的表单元素之一，通过type属性可以创建不同类型的输入控件：</p>
+            
+            <h4>文本输入框</h4>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;label for="username"&gt;用户名：&lt;/label&gt;
+&lt;input type="text" id="username" name="username" placeholder="请输入用户名" required&gt;</pre>
+            </div>
+
+            <h4>密码输入框</h4>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;label for="password"&gt;密码：&lt;/label&gt;
+&lt;input type="password" id="password" name="password" placeholder="请输入密码" required&gt;</pre>
+            </div>
+
+            <h4>单选按钮</h4>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;label&gt;性别：&lt;/label&gt;
+&lt;div class="radio-group"&gt;
+    &lt;label&gt;&lt;input type="radio" name="gender" value="male"&gt; 男&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="gender" value="female"&gt; 女&lt;/label&gt;
+&lt;/div&gt;</pre>
+            </div>
+
+            <h4>复选框</h4>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;label&gt;兴趣爱好：&lt;/label&gt;
+&lt;div class="checkbox-group"&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="hobby" value="reading"&gt; 阅读&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="hobby" value="music"&gt; 音乐&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="hobby" value="sports"&gt; 运动&lt;/label&gt;
+&lt;/div&gt;</pre>
+            </div>
+
+            <h4>其他常用输入类型</h4>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;!-- 电子邮件 --&gt;
+&lt;label for="email"&gt;邮箱：&lt;/label&gt;
+&lt;input type="email" id="email" name="email" placeholder="请输入邮箱"&gt;
+
+&lt;!-- 电话号码 --&gt;
+&lt;label for="phone"&gt;电话：&lt;/label&gt;
+&lt;input type="tel" id="phone" name="phone" placeholder="请输入电话号码"&gt;
+
+&lt;!-- 日期选择器 --&gt;
+&lt;label for="birthday"&gt;出生日期：&lt;/label&gt;
+&lt;input type="date" id="birthday" name="birthday"&gt;
+
+&lt;!-- 数字输入框 --&gt;
+&lt;label for="age"&gt;年龄：&lt;/label&gt;
+&lt;input type="number" id="age" name="age" min="0" max="120"&gt;
+
+&lt;!-- 文件上传 --&gt;
+&lt;label for="avatar"&gt;头像：&lt;/label&gt;
+&lt;input type="file" id="avatar" name="avatar"&gt;</pre>
+            </div>
+
+            <h3>2. 下拉选择菜单 (select)</h3>
+            <p>select标签用于创建下拉选择菜单：</p>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;label for="city"&gt;城市：&lt;/label&gt;
+&lt;select id="city" name="city"&gt;
+    &lt;option value=""&gt;请选择城市&lt;/option&gt;
+    &lt;option value="beijing"&gt;北京&lt;/option&gt;
+    &lt;option value="shanghai"&gt;上海&lt;/option&gt;
+    &lt;option value="guangzhou"&gt;广州&lt;/option&gt;
+    &lt;option value="shenzhen"&gt;深圳&lt;/option&gt;
+&lt;/select&gt;</pre>
+            </div>
+
+            <h3>3. 文本域 (textarea)</h3>
+            <p>textarea标签用于创建多行文本输入框：</p>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;label for="message"&gt;留言：&lt;/label&gt;
+&lt;textarea id="message" name="message" rows="4" cols="50" placeholder="请输入留言内容"&gt;&lt;/textarea&gt;</pre>
+            </div>
+
+            <h3>4. 按钮 (button)</h3>
+            <p>button标签用于创建按钮：</p>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;button type="submit"&gt;提交表单&lt;/button&gt;
+&lt;button type="reset"&gt;重置表单&lt;/button&gt;
+&lt;button type="button"&gt;普通按钮&lt;/button&gt;</pre>
+            </div>
+
+            <h2>表单示例</h2>
+            <p>下面是一个完整的表单示例，包含多种表单元素：</p>
+            
+            <div class="form-example">
+                <h4>用户注册表单：</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="reg-username">用户名</label>
+                        <input type="text" id="reg-username" name="username" placeholder="请输入用户名" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-email">电子邮箱</label>
+                        <input type="email" id="reg-email" name="email" placeholder="请输入电子邮箱" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-password">密码</label>
+                        <input type="password" id="reg-password" name="password" placeholder="请输入密码" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-gender">性别</label>
+                        <div class="radio-group">
+                            <label><input type="radio" id="reg-gender" name="gender" value="male"> 男</label>
+                            <label><input type="radio" name="gender" value="female"> 女</label>
+                            <label><input type="radio" name="gender" value="other"> 其他</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-city">所在城市</label>
+                        <select id="reg-city" name="city">
+                            <option value="">请选择城市</option>
+                            <option value="beijing">北京</option>
+                            <option value="shanghai">上海</option>
+                            <option value="guangzhou">广州</option>
+                            <option value="shenzhen">深圳</option>
+                            <option value="hangzhou">杭州</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>兴趣爱好</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="hobby" value="reading"> 阅读</label>
+                            <label><input type="checkbox" name="hobby" value="music"> 音乐</label>
+                            <label><input type="checkbox" name="hobby" value="sports"> 运动</label>
+                            <label><input type="checkbox" name="hobby" value="travel"> 旅行</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-message">个人简介</label>
+                        <textarea id="reg-message" name="message" rows="4" placeholder="请输入个人简介"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit">注册</button>
+                        <button type="reset">重置</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="usage-note">
+                <h4>表单设计原则</h4>
+                <ul>
+                    <li><strong>清晰的标签：</strong>为每个表单元素提供清晰的标签，使用户知道需要输入什么内容。</li>
+                    <li><strong>适当的验证：</strong>使用HTML5表单验证属性（如required, min, max, pattern等）进行基本验证。</li>
+                    <li><strong>用户友好的提示：</strong>使用placeholder属性提供输入提示，使用title属性提供额外说明。</li>
+                    <li><strong>合理的布局：</strong>将相关的表单元素分组，使用fieldset和legend标签提高可读性。</li>
+                    <li><strong>响应式设计：</strong>确保表单在不同屏幕尺寸上都能正常显示和使用。</li>
+                    <li><strong>可访问性：</strong>使用label标签的for属性与表单元素关联，提高可访问性。</li>
+                </ul>
+            </div>
+
+            <h2>HTML5表单新特性</h2>
+            <p>HTML5引入了许多新的表单特性，包括：</p>
+            <ul>
+                <li>新的输入类型：email, tel, url, date, time, number, range, color等</li>
+                <li>表单验证属性：required, pattern, min, max, step, minlength, maxlength等</li>
+                <li>表单控件属性：placeholder, autocomplete, autofocus, multiple等</li>
+                <li>新的表单元素：datalist, output等</li>
+            </ul>
+
+            <h3>示例：HTML5表单特性</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;form&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="new-email"&gt;邮箱：&lt;/label&gt;
+        &lt;input type="email" id="new-email" name="email" placeholder="请输入邮箱" required&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="new-url"&gt;个人网站：&lt;/label&gt;
+        &lt;input type="url" id="new-url" name="website" placeholder="请输入网址"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="new-date"&gt;出生日期：&lt;/label&gt;
+        &lt;input type="date" id="new-date" name="birthday"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="new-range"&gt;评分：&lt;/label&gt;
+        &lt;input type="range" id="new-range" name="rating" min="1" max="10" value="5"&gt;
+        &lt;output for="new-range"&gt;5&lt;/output&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="new-color"&gt;喜欢的颜色：&lt;/label&gt;
+        &lt;input type="color" id="new-color" name="color" value="#4CAF50"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="new-datalist"&gt;选择浏览器：&lt;/label&gt;
+        &lt;input type="text" id="new-datalist" name="browser" list="browsers" placeholder="请选择或输入浏览器"&gt;
+        &lt;datalist id="browsers"&gt;
+            &lt;option value="Chrome"&gt;
+            &lt;option value="Firefox"&gt;
+            &lt;option value="Safari"&gt;
+            &lt;option value="Edge"&gt;
+            &lt;option value="Opera"&gt;
+        &lt;/datalist&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit"&gt;提交&lt;/button&gt;
+&lt;/form&gt;</pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>
