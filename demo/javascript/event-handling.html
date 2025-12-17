@@ -4,171 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript事件处理 - 前端学习路径</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header, footer {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        nav a:hover, nav a.active {
-            background-color: #555;
-        }
-        .main-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #555;
-            margin-top: 30px;
-        }
-        h3 {
-            color: #777;
-            margin-top: 20px;
-        }
-        .example {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border-left: 4px solid #333;
-        }
-        .code {
-            background-color: #333;
-            color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: monospace;
-            white-space: pre-wrap;
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .demo-area {
-            background-color: #e8f4f8;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-        .demo-button {
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        .demo-button:hover {
-            background-color: #2980b9;
-        }
-        .demo-box {
-            width: 100px;
-            height: 100px;
-            background-color: #3498db;
-            margin: 10px;
-            display: inline-block;
-            color: white;
-            text-align: center;
-            line-height: 100px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .demo-box:hover {
-            background-color: #2980b9;
-        }
-        #parent-box {
-            padding: 20px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        #child-box {
-            background-color: #e74c3c;
-        }
-        #event-info {
-            background-color: #f1c40f;
-            color: #333;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            min-height: 30px;
-        }
-        #form-demo {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        input[type="text"], input[type="email"] {
-            padding: 8px;
-            margin: 5px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 250px;
-        }
-        .output {
-            background-color: #2ecc71;
-            color: white;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
     <!-- 导入头部 -->
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('afterbegin', data);
-                // 设置当前页面为活动状态
-                document.querySelector('nav a[href="event-handling.html"]').classList.add('active');
-            });
-    </script>
 
     <div class="container">
         <div class="main-content">
@@ -186,7 +25,7 @@
 <button onclick="alert('按钮被点击了!')">点击我</button>
                 </div>
                 <div class="demo-area">
-                    <button onclick="alert('按钮被点击了!')" class="demo-button">点击我</button>
+                    <button id="inline-button" class="demo-button">点击我</button>
                 </div>
             </div>
             
@@ -242,7 +81,7 @@ function removeHandler() {
                 </div>
                 <div class="demo-area">
                     <button id="remove-event-button" class="demo-button">带移除功能的按钮</button>
-                    <button onclick="removeHandler()" class="demo-button">移除事件</button>
+                    <button id="remove-handler-button" class="demo-button">移除事件</button>
                 </div>
             </div>
             
@@ -457,7 +296,7 @@ list.appendChild(newItem);
                         <li style="padding: 10px; border: 1px solid #ddd; margin: 5px 0; cursor: pointer;">列表项2</li>
                         <li style="padding: 10px; border: 1px solid #ddd; margin: 5px 0; cursor: pointer;">列表项3</li>
                     </ul>
-                    <button onclick="addListItem()" class="demo-button">添加新列表项</button>
+                    <button id="add-list-item-button" class="demo-button">添加新列表项</button>
                 </div>
             </div>
             
@@ -492,97 +331,7 @@ emailInput.addEventListener('input', function(event) {
         </div>
     </div>
     
-    <!-- 导入底部 -->
-    <script>
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => document.body.insertAdjacentHTML('beforeend', data));
-    </script>
-    
     <!-- 演示脚本 -->
-    <script>
-        // DOM属性方式事件绑定
-        const domAttributeButton = document.getElementById('dom-attribute-button');
-        domAttributeButton.onclick = function() {
-            alert('DOM属性方式绑定的事件');
-        };
-        
-        // addEventListener方式事件绑定
-        const addEventListenerButton = document.getElementById('add-event-listener-button');
-        addEventListenerButton.addEventListener('click', function() {
-            alert('addEventListener方式绑定的事件');
-        });
-        addEventListenerButton.addEventListener('click', function() {
-            console.log('第二个点击事件处理函数');
-        });
-        
-        // 事件对象演示
-        const eventObjectButton = document.getElementById('event-object-button');
-        const eventInfo = document.getElementById('event-info');
-        eventObjectButton.addEventListener('click', function(event) {
-            let info = '';
-            info += '事件类型: ' + event.type + '<br>';
-            info += '目标元素: ' + event.target.tagName + '<br>';
-            info += '鼠标X坐标: ' + event.clientX + '<br>';
-            info += '鼠标Y坐标: ' + event.clientY + '<br>';
-            eventInfo.innerHTML = info;
-        });
-        
-        // 事件冒泡演示
-        const parentBox = document.getElementById('parent-box');
-        const childBox = document.getElementById('child-box');
-        
-        parentBox.addEventListener('click', function() {
-            eventInfo.innerHTML += '<br>父元素被点击';
-        });
-        
-        childBox.addEventListener('click', function() {
-            eventInfo.innerHTML += '<br>子元素被点击';
-        });
-        
-        // 事件捕获演示
-        const parentBox2 = document.getElementById('parent-box-2');
-        const childBox2 = document.getElementById('child-box-2');
-        
-        parentBox2.addEventListener('click', function() {
-            eventInfo.innerHTML += '<br>父元素捕获阶段';
-        }, true);
-        
-        childBox2.addEventListener('click', function() {
-            eventInfo.innerHTML += '<br>子元素冒泡阶段';
-        });
-        
-        // 表单输入事件
-        const emailInput = document.getElementById('email-input');
-        const emailOutput = document.getElementById('email-output');
-        
-        emailInput.addEventListener('input', function(event) {
-            const email = event.target.value;
-            if (email.includes('@')) {
-                emailOutput.textContent = '邮箱格式看起来有效';
-                emailOutput.style.backgroundColor = '#2ecc71';
-            } else {
-                emailOutput.textContent = '请输入有效的邮箱地址';
-                emailOutput.style.backgroundColor = '#e74c3c';
-            }
-        });
-        
-        // 添加列表项
-        function addListItem() {
-            const list = document.getElementById('item-list');
-            const newItem = document.createElement('li');
-            newItem.style.cssText = 'padding: 10px; border: 1px solid #ddd; margin: 5px 0; cursor: pointer;';
-            newItem.textContent = '新列表项 ' + (list.children.length + 1);
-            list.appendChild(newItem);
-        }
-        
-        // 事件委托
-        const itemList = document.getElementById('item-list');
-        itemList.addEventListener('click', function(event) {
-            if (event.target.tagName === 'LI') {
-                alert('列表项被点击: ' + event.target.textContent);
-            }
-        });
-    </script>
+    <script src="../js/event-handling_2.js"></script>
 </body>
 </html>

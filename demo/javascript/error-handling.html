@@ -4,92 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript错误处理 - 学习路径</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #444;
-            margin-top: 30px;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
-        }
-        h3 {
-            color: #555;
-            margin-top: 20px;
-        }
-        pre {
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            overflow-x: auto;
-            font-family: "Courier New", Courier, monospace;
-        }
-        code {
-            background-color: #f8f8f8;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: "Courier New", Courier, monospace;
-        }
-        .example {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .demo {
-            background-color: #e9f7fe;
-            border: 1px solid #b3e5fc;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        button {
-            background-color: #2196f3;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 5px;
-        }
-        button:hover {
-            background-color: #0d47a1;
-        }
-        #log {
-            background-color: #f5f5f5;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            height: 200px;
-            overflow-y: auto;
-            margin: 10px 0;
-            font-family: "Courier New", Courier, monospace;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin: 10px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
     <!-- 引入公共头部 -->
@@ -128,7 +43,7 @@
 
             <div class="demo">
                 <h3>演示：try...catch...finally</h3>
-                <button onclick="demoTryCatch()">测试try...catch</button>
+                <button id="try-catch-btn">测试try...catch</button>
                 <div id="log"></div>
             </div>
         </div>
@@ -178,7 +93,7 @@ try {
 
             <div class="demo">
                 <h3>演示：自定义错误</h3>
-                <button onclick="demoCustomError()">测试自定义错误</button>
+                <button id="custom-error-btn">测试自定义错误</button>
             </div>
         </div>
 
@@ -210,7 +125,7 @@ fetchData();</code></pre>
 
             <div class="demo">
                 <h3>演示：异步错误处理</h3>
-                <button onclick="demoAsyncError()">测试async/await错误处理</button>
+                <button id="async-error-btn">测试async/await错误处理</button>
             </div>
         </div>
 
@@ -230,86 +145,7 @@ fetchData();</code></pre>
     <!-- 引入公共页脚 -->
     <div id="footer-placeholder"></div>
 
-    <script>
-        // 加载公共头部和页脚
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-                // 设置当前页面为活动状态
-                document.querySelector('a[href="error-handling.html"]').classList.add('active');
-            });
-
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-
-        // 演示函数
-        function log(message) {
-            const logElement = document.getElementById('log');
-            logElement.innerHTML += new Date().toLocaleTimeString() + ' - ' + message + '<br>';
-            logElement.scrollTop = logElement.scrollHeight;
-        }
-
-        function demoTryCatch() {
-            log('=== 测试try...catch...finally ===');
-            try {
-                log('开始执行try块');
-                // 模拟一个错误
-                const result = 10 / 0;
-                log('计算结果:', result);
-            } catch (error) {
-                log('捕获到错误:');
-                log('错误名称:', error.name);
-                log('错误信息:', error.message);
-            } finally {
-                log('执行finally块');
-            }
-            log('=== 测试结束 ===');
-        }
-
-        function demoCustomError() {
-            // 创建自定义错误类
-            class ValidationError extends Error {
-                constructor(message) {
-                    super(message);
-                    this.name = 'ValidationError';
-                }
-            }
-
-            try {
-                const userAge = -10;
-                if (userAge < 0) {
-                    throw new ValidationError('年龄不能为负数');
-                }
-                alert('年龄有效');
-            } catch (error) {
-                if (error instanceof ValidationError) {
-                    alert('验证错误: ' + error.message);
-                } else {
-                    alert('其他错误: ' + error.message);
-                }
-            }
-        }
-
-        async function demoAsyncError() {
-            log('=== 测试异步错误处理 ===');
-            try {
-                log('开始异步请求');
-                // 模拟一个失败的异步请求
-                await new Promise((resolve, reject) => {
-                    setTimeout(() => reject(new Error('请求超时')), 1000);
-                });
-                log('请求成功');
-            } catch (error) {
-                log('捕获到异步错误:');
-                log('错误名称:', error.name);
-                log('错误信息:', error.message);
-            }
-            log('=== 测试结束 ===');
-        }
-    </script>
+    <!-- 外部JavaScript引用 -->
+    <script src="../js/error-handling.js"></script>
 </body>
 </html>

@@ -4,102 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript对象和数组 - 前端学习路径</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header, footer {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        nav a:hover, nav a.active {
-            background-color: #555;
-        }
-        .main-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #555;
-            margin-top: 30px;
-        }
-        h3 {
-            color: #777;
-            margin-top: 20px;
-        }
-        .example {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border-left: 4px solid #333;
-        }
-        .code {
-            background-color: #333;
-            color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: monospace;
-            white-space: pre-wrap;
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
     <!-- 导入头部 -->
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('afterbegin', data);
-                // 设置当前页面为活动状态
-                document.querySelector('nav a[href="objects-arrays.html"]').classList.add('active');
-            });
-    </script>
 
     <div class="container">
         <div class="main-content">
@@ -351,11 +259,7 @@ console.log("分数最高的学生:", topStudent);
         </div>
     </div>
     
-    <!-- 导入底部 -->
-    <script>
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => document.body.insertAdjacentHTML('beforeend', data));
-    </script>
+    <!-- 演示脚本 -->
+    <script src="../js/objects-arrays.js"></script>
 </body>
 </html>

@@ -4,124 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript DOM操作 - 前端学习路径</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header, footer {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        nav a:hover, nav a.active {
-            background-color: #555;
-        }
-        .main-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #555;
-            margin-top: 30px;
-        }
-        h3 {
-            color: #777;
-            margin-top: 20px;
-        }
-        .example {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border-left: 4px solid #333;
-        }
-        .code {
-            background-color: #333;
-            color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: monospace;
-            white-space: pre-wrap;
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .dom-demo {
-            background-color: #e8f4f8;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-        .demo-box {
-            width: 100px;
-            height: 100px;
-            background-color: #3498db;
-            margin: 10px;
-            display: inline-block;
-            color: white;
-            text-align: center;
-            line-height: 100px;
-            cursor: pointer;
-        }
-        #target-element {
-            border: 2px solid #333;
-            padding: 10px;
-            margin: 10px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
     <!-- 导入头部 -->
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('afterbegin', data);
-                // 设置当前页面为活动状态
-                document.querySelector('nav a[href="dom-manipulation.html"]').classList.add('active');
-            });
-    </script>
 
     <div class="container">
         <div class="main-content">
@@ -152,7 +38,7 @@ console.log(element);
                 </div>
                 <div class="dom-demo">
                     <div id="target-element">这是一个带有ID的元素</div>
-                    <button onclick="getElementByIdDemo()">获取元素</button>
+                    <button id="get-element-by-id-btn">获取元素</button>
                 </div>
             </div>
             
@@ -170,7 +56,7 @@ for (let i = 0; i < elements.length; i++) {
                     <div class="demo-box">元素1</div>
                     <div class="demo-box">元素2</div>
                     <div class="demo-box">元素3</div>
-                    <button onclick="getElementsByClassNameDemo()">获取元素</button>
+                    <button id="get-elements-by-class-name-btn">获取元素</button>
                 </div>
             </div>
             
@@ -182,7 +68,7 @@ const paragraphs = document.getElementsByTagName('p');
 console.log(paragraphs.length);
                 </div>
                 <div class="dom-demo">
-                    <button onclick="getElementsByTagNameDemo()">获取所有段落元素</button>
+                    <button id="get-elements-by-tag-name-btn">获取所有段落元素</button>
                 </div>
             </div>
             
@@ -201,7 +87,7 @@ allBoxes.forEach(function(box) {
 });
                 </div>
                 <div class="dom-demo">
-                    <button onclick="querySelectorDemo()">使用CSS选择器</button>
+                    <button id="query-selector-btn">使用CSS选择器</button>
                 </div>
             </div>
             
@@ -215,7 +101,7 @@ element.innerHTML = '<strong>新的</strong> HTML 内容';
                 </div>
                 <div class="dom-demo">
                     <div id="content-demo">原始内容</div>
-                    <button onclick="innerHTMLDemo()">修改innerHTML</button>
+                    <button id="inner-html-demo-btn">修改innerHTML</button>
                 </div>
             </div>
             
@@ -228,7 +114,7 @@ element.textContent = '新的文本内容 <strong>不会被解析</strong>';
                 </div>
                 <div class="dom-demo">
                     <div id="content-demo-2">原始文本内容</div>
-                    <button onclick="textContentDemo()">修改textContent</button>
+                    <button id="text-content-demo-btn">修改textContent</button>
                 </div>
             </div>
             
@@ -259,7 +145,7 @@ element.removeAttribute('class');
                 
                 <div class="dom-demo">
                     <a id="demo-link" href="#">示例链接</a>
-                    <button onclick="attributeDemo()">修改链接属性</button>
+                    <button id="attribute-demo-btn">修改链接属性</button>
                 </div>
             </div>
             
@@ -275,7 +161,7 @@ element.style.padding = '10px';
                 </div>
                 <div class="dom-demo">
                     <div id="style-demo">样式演示元素</div>
-                    <button onclick="styleDemo()">修改样式</button>
+                    <button id="style-demo-btn">修改样式</button>
                 </div>
             </div>
             
@@ -298,7 +184,7 @@ element.classList.contains('active'); // 返回布尔值
                 </div>
                 <div class="dom-demo">
                     <div id="class-demo" class="initial-class">类操作演示</div>
-                    <button onclick="classListDemo()">切换类</button>
+                    <button id="class-list-demo-btn">切换类</button>
                 </div>
             </div>
             
@@ -324,7 +210,7 @@ container.appendChild(newDiv);
                     <div id="create-container">
                         <h4>创建元素容器</h4>
                     </div>
-                    <button onclick="createElementDemo()">创建新元素</button>
+                    <button id="create-element-demo-btn">创建新元素</button>
                 </div>
             </div>
             
@@ -344,7 +230,7 @@ parent.removeChild(child);
                     <div id="remove-container">
                         <div id="element-to-remove">要删除的元素</div>
                     </div>
-                    <button onclick="removeElementDemo()">删除元素</button>
+                    <button id="remove-element-demo-btn">删除元素</button>
                 </div>
             </div>
             
@@ -372,109 +258,10 @@ const previousSibling = child.previousElementSibling;
     </div>
     
     <!-- 导入底部 -->
-    <script>
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => document.body.insertAdjacentHTML('beforeend', data));
-    </script>
     
     <!-- 演示脚本 -->
-    <script>
-        // DOM获取演示
-        function getElementByIdDemo() {
-            const element = document.getElementById('target-element');
-            alert('获取的元素: ' + element.textContent);
-        }
-        
-        function getElementsByClassNameDemo() {
-            const elements = document.getElementsByClassName('demo-box');
-            alert('找到 ' + elements.length + ' 个 demo-box 元素');
-        }
-        
-        function getElementsByTagNameDemo() {
-            const paragraphs = document.getElementsByTagName('p');
-            alert('文档中有 ' + paragraphs.length + ' 个段落元素');
-        }
-        
-        function querySelectorDemo() {
-            const firstBox = document.querySelector('.demo-box');
-            const allBoxes = document.querySelectorAll('.demo-box');
-            alert('第一个box: ' + firstBox.textContent + '\n总共有 ' + allBoxes.length + ' 个box');
-        }
-        
-        // 内容修改演示
-        function innerHTMLDemo() {
-            const element = document.getElementById('content-demo');
-            element.innerHTML = '<strong>新的</strong> HTML 内容';
-        }
-        
-        function textContentDemo() {
-            const element = document.getElementById('content-demo-2');
-            element.textContent = '新的文本内容 <strong>不会被解析</strong>';
-        }
-        
-        // 属性修改演示
-        function attributeDemo() {
-            const link = document.getElementById('demo-link');
-            if (link.getAttribute('href') === '#') {
-                link.setAttribute('href', 'https://www.example.com');
-                link.setAttribute('target', '_blank');
-                link.textContent = '外部链接';
-            } else {
-                link.setAttribute('href', '#');
-                link.removeAttribute('target');
-                link.textContent = '示例链接';
-            }
-        }
-        
-        // 样式修改演示
-        function styleDemo() {
-            const element = document.getElementById('style-demo');
-            element.style.color = element.style.color === 'red' ? 'black' : 'red';
-            element.style.fontSize = element.style.fontSize === '20px' ? '16px' : '20px';
-            element.style.backgroundColor = element.style.backgroundColor === 'yellow' ? 'transparent' : 'yellow';
-        }
-        
-        function classListDemo() {
-            const element = document.getElementById('class-demo');
-            element.classList.toggle('active');
-        }
-        
-        // 创建和删除元素演示
-        function createElementDemo() {
-            const newDiv = document.createElement('div');
-            newDiv.textContent = '这是新创建的元素';
-            newDiv.className = 'demo-box';
-            newDiv.style.backgroundColor = '#e74c3c';
-            
-            const container = document.getElementById('create-container');
-            container.appendChild(newDiv);
-        }
-        
-        function removeElementDemo() {
-            const element = document.getElementById('element-to-remove');
-            if (element) {
-                element.remove();
-                alert('元素已删除');
-            } else {
-                alert('元素不存在');
-            }
-        }
-    </script>
+    <script src="../js/dom-manipulation_2.js"></script>
     
-    <style>
-        .active {
-            background-color: #2ecc71 !important;
-            border-radius: 5px;
-            padding: 10px;
-        }
-        
-        .demo-class {
-            background-color: #9b59b6;
-            color: white;
-            padding: 10px;
-            margin: 5px;
-        }
-    </style>
+    
 </body>
 </html>
