@@ -1,0 +1,139 @@
+/* Flex布局基础样式 */
+.flex-container {
+    display: flex;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* 基础水平布局 */
+.flex-row {
+    flex-direction: row;
+}
+
+/* 垂直布局 */
+.flex-column {
+    flex-direction: column;
+}
+
+/* 水平居中 */
+.flex-center {
+    justify-content: center;
+}
+
+/* 垂直居中 */
+.flex-middle {
+    align-items: center;
+    height: 200px;
+}
+
+/* 水平和垂直居中 */
+.flex-center-middle {
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+/* 两端对齐 */
+.flex-between {
+    justify-content: space-between;
+}
+
+/* 平均分布 */
+.flex-around {
+    justify-content: space-around;
+}
+
+/* 等宽分布 */
+.flex-evenly {
+    justify-content: space-evenly;
+}
+
+/* 换行 */
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+/* 子项基础样式 */
+.flex-item {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 80px;
+}
+
+/* 侧边栏布局 */
+.sidebar-container {
+    display: flex;
+    height: 300px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    min-width: 150px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.main-content {
+    flex: 1;
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* 响应式布局 */
+.responsive-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.responsive-item {
+    flex: 1 1 200px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* 导航栏布局 */
+.nav-container {
+    display: flex;
+    background-color: #34495e;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.nav-logo {
+    color: white;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.nav-item {
+    color: white;
+    padding: 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.nav-item:hover {
+    background-color: #2c3e50;
+}

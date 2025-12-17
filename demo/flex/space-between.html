@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex两端对齐</title>
+    <link rel="stylesheet" href="../css/flex-layouts.css">
+</head>
+<body>
+    <h1>Flex两端对齐</h1>
+    <p>使用justify-content: space-between可以让子项在容器两端对齐，中间自动分配空间。</p>
+    
+    <div class="flex-container flex-between">
+        <div class="flex-item">项目1</div>
+        <div class="flex-item">项目2</div>
+        <div class="flex-item">项目3</div>
+    </div>
+    
+    <h2>space-around示例</h2>
+    <p>使用justify-content: space-around可以让子项在容器中均匀分布，两端有一半的间距。</p>
+    
+    <div class="flex-container flex-around">
+        <div class="flex-item">项目1</div>
+        <div class="flex-item">项目2</div>
+        <div class="flex-item">项目3</div>
+        <div class="flex-item">项目4</div>
+    </div>
+    
+    <h2>space-evenly示例</h2>
+    <p>使用justify-content: space-evenly可以让子项在容器中完全均匀分布，所有间距相等。</p>
+    
+    <div class="flex-container flex-evenly">
+        <div class="flex-item">项目1</div>
+        <div class="flex-item">项目2</div>
+        <div class="flex-item">项目3</div>
+        <div class="flex-item">项目4</div>
+        <div class="flex-item">项目5</div>
+    </div>
+</body>
+</html>

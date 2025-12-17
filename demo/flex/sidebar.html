@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex侧边栏布局</title>
+    <link rel="stylesheet" href="../css/flex-layouts.css">
+</head>
+<body>
+    <h1>Flex侧边栏布局</h1>
+    <p>这种布局常用于管理后台，左侧为导航栏，右侧为主内容区域。</p>
+    
+    <div class="sidebar-container">
+        <div class="sidebar">
+            <h3>导航菜单</h3>
+            <ul>
+                <li>首页</li>
+                <li>产品管理</li>
+                <li>用户管理</li>
+                <li>系统设置</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>主内容区域</h2>
+            <p>这里是主要的内容展示区域，可以包含各种功能模块。</p>
+            <p>使用flex: 1属性让主内容区域自动填充剩余空间。</p>
+        </div>
+    </div>
+</body>
+</html>
