@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量和数据类型 - JavaScript学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #2196F3;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2196F3;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #333;
+            border-bottom: 2px solid #2196F3;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            color: #555;
+        }
+        .example {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .code-block {
+            background-color: #f5f5f5;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: "Courier New", Courier, monospace;
+            overflow-x: auto;
+        }
+        .output {
+            background-color: #e8f5e8;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .notes {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">JavaScript学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="variables.html" class="active">变量和数据类型</a>
+                <a href="operators.html">运算符</a>
+                <a href="control-flow.html">控制流</a>
+                <a href="functions.html">函数</a>
+                <a href="objects.html">对象和数组</a>
+                <a href="dom.html">DOM操作</a>
+                <a href="events.html">事件处理</a>
+                <a href="async.html">异步编程</a>
+                <a href="error.html">错误处理</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>变量和数据类型</h1>
+        
+        <section>
+            <h2>变量声明</h2>
+            <p>JavaScript中可以使用三种方式声明变量：var、let和const。</p>
+            
+            <h3>1. 使用var声明变量</h3>
+            <div class="example">
+                <div class="code-block">
+var name = "张三";
+var age = 25;
+var isStudent = true;
+console.log(name, age, isStudent);
+                </div>
+                <div class="output">
+                    输出：张三 25 true
+                </div>
+                <div class="notes">
+                    注意：var声明的变量具有函数作用域或全局作用域，可能会导致变量提升问题，现代JavaScript中推荐使用let和const。
+                </div>
+            </div>
+            
+            <h3>2. 使用let声明变量</h3>
+            <div class="example">
+                <div class="code-block">
+let name = "李四";
+let age = 30;
+age = 31; // 可以重新赋值
+console.log(name, age);
+                </div>
+                <div class="output">
+                    输出：李四 31
+                </div>
+                <div class="notes">
+                    注意：let声明的变量具有块级作用域，不会被提升，推荐在大多数情况下使用。
+                </div>
+            </div>
+            
+            <h3>3. 使用const声明常量</h3>
+            <div class="example">
+                <div class="code-block">
+const PI = 3.14159;
+const name = "王五";
+// PI = 3.14; // 这会抛出错误，常量不能重新赋值
+console.log(PI, name);
+                </div>
+                <div class="output">
+                    输出：3.14159 王五
+                </div>
+                <div class="notes">
+                    注意：const声明的变量是常量，具有块级作用域，不能重新赋值，但对象和数组的内容可以修改。
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>数据类型</h2>
+            <p>JavaScript中有7种基本数据类型和1种引用数据类型：</p>
+            
+            <h3>1. 基本数据类型</h3>
+            <div class="example">
+                <div class="code-block">
+// 字符串类型
+let str = "Hello World";
+
+// 数字类型
+let num1 = 42;
+let num2 = 3.14;
+let num3 = NaN; // Not a Number
+let num4 = Infinity; // 无穷大
+
+// 布尔类型
+let isTrue = true;
+let isFalse = false;
+
+// Null类型
+let nullValue = null;
+
+// Undefined类型
+let undefinedValue;
+
+// BigInt类型 (ES2020)
+let bigInt = 123456789012345678901234567890n;
+
+// Symbol类型 (ES6)
+let symbol = Symbol("unique");
+
+console.log(typeof str); // string
+console.log(typeof num1); // number
+console.log(typeof isTrue); // boolean
+console.log(typeof nullValue); // object (这是一个历史遗留问题)
+console.log(typeof undefinedValue); // undefined
+console.log(typeof bigInt); // bigint
+console.log(typeof symbol); // symbol
+                </div>
+            </div>
+            
+            <h3>2. 引用数据类型</h3>
+            <div class="example">
+                <div class="code-block">
+// 对象
+let person = {
+    name: "张三",
+    age: 25,
+    isStudent: true
+};
+
+// 数组
+let fruits = ["苹果", "香蕉", "橙子"];
+
+// 函数
+function greet() {
+    console.log("Hello");
+}
+
+console.log(typeof person); // object
+console.log(typeof fruits); // object
+console.log(typeof greet); // function
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>类型转换</h2>
+            <p>JavaScript会自动进行类型转换，也可以手动进行类型转换。</p>
+            
+            <h3>1. 自动类型转换</h3>
+            <div class="example">
+                <div class="code-block">
+// 数字转字符串
+let num = 42;
+let str = "The answer is " + num;
+console.log(str); // "The answer is 42"
+
+// 字符串转数字
+let result = "10" - "5";
+console.log(result); // 5
+
+// 布尔值转数字
+let total = 100 + true; // true转换为1
+console.log(total); // 101
+
+// 数字转布尔值
+if (0) {
+    console.log("这不会执行");
+} else {
+    console.log("0被转换为false");
+}
+                </div>
+                <div class="output">
+                    输出：
+                    The answer is 42
+                    5
+                    101
+                    0被转换为false
+                </div>
+            </div>
+            
+            <h3>2. 手动类型转换</h3>
+            <div class="example">
+                <div class="code-block">
+// 转换为字符串
+let num = 42;
+let str1 = String(num);
+let str2 = num.toString();
+console.log(str1, str2); // "42" "42"
+
+// 转换为数字
+let str = "42";
+let num1 = Number(str);
+let num2 = parseInt(str);
+let num3 = parseFloat("3.14");
+console.log(num1, num2, num3); // 42 42 3.14
+
+// 转换为布尔值
+let bool1 = Boolean("Hello"); // true
+let bool2 = Boolean(0); // false
+let bool3 = Boolean(null); // false
+console.log(bool1, bool2, bool3); // true false false
+                </div>
+                <div class="output">
+                    输出：
+                    42 42
+                    42 42 3.14
+                    true false false
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 JavaScript学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的JavaScript学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

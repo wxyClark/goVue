@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数 - JavaScript学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #2196F3;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2196F3;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #333;
+            border-bottom: 2px solid #2196F3;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            color: #555;
+        }
+        .example {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .code-block {
+            background-color: #f5f5f5;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: "Courier New", Courier, monospace;
+            overflow-x: auto;
+        }
+        .output {
+            background-color: #e8f5e8;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .notes {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">JavaScript学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="variables.html">变量和数据类型</a>
+                <a href="operators.html">运算符</a>
+                <a href="control-flow.html">控制流</a>
+                <a href="functions.html" class="active">函数</a>
+                <a href="objects.html">对象和数组</a>
+                <a href="dom.html">DOM操作</a>
+                <a href="events.html">事件处理</a>
+                <a href="async.html">异步编程</a>
+                <a href="error.html">错误处理</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>函数</h1>
+        <p>函数是一段可重复使用的代码块，用于执行特定的任务。JavaScript提供了多种定义函数的方式。</p>
+        
+        <section>
+            <h2>函数定义</h2>
+            
+            <h3>1. 函数声明</h3>
+            <p>函数声明是最常用的函数定义方式。</p>
+            
+            <div class="example">
+                <div class="code-block">
+// 语法：function 函数名(参数1, 参数2, ...) {
+//     函数体
+//     return 返回值;
+// }
+
+function greet(name) {
+    return "Hello, " + name + "!";
+}
+
+// 调用函数
+let message = greet("张三");
+console.log(message);
+                </div>
+                <div class="output">
+                    输出：Hello, 张三!
+                </div>
+            </div>
+            
+            <h3>2. 函数表达式</h3>
+            <p>函数表达式将函数赋值给变量。</p>
+            
+            <div class="example">
+                <div class="code-block">
+// 语法：const/let/var 变量名 = function(参数1, 参数2, ...) {
+//     函数体
+// };
+
+const add = function(a, b) {
+    return a + b;
+};
+
+// 调用函数
+let result = add(5, 3);
+console.log(result);
+                </div>
+                <div class="output">
+                    输出：8
+                </div>
+                <div class="notes">
+                    注意：函数表达式不会被提升，必须先定义后使用。
+                </div>
+            </div>
+            
+            <h3>3. 箭头函数</h3>
+            <p>箭头函数是ES6引入的简洁函数定义方式。</p>
+            
+            <div class="example">
+                <div class="code-block">
+// 语法：const/let/var 变量名 = (参数1, 参数2, ...) => {
+//     函数体
+// };
+
+// 基本箭头函数
+const multiply = (a, b) => {
+    return a * b;
+};
+
+// 单参数可以省略括号
+const square = x => x * x;
+
+// 无参数需要括号
+const sayHello = () => "Hello!";
+
+console.log(multiply(5, 3)); // 15
+console.log(square(4)); // 16
+console.log(sayHello()); // "Hello!"
+                </div>
+                <div class="notes">
+                    注意：箭头函数没有自己的this，它会继承外部作用域的this值。
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>函数参数</h2>
+            
+            <h3>1. 默认参数</h3>
+            <p>ES6允许为函数参数设置默认值。</p>
+            
+            <div class="example">
+                <div class="code-block">
+function greet(name = "World") {
+    return "Hello, " + name + "!";
+}
+
+console.log(greet("张三")); // "Hello, 张三!"
+console.log(greet()); // "Hello, World!"
+                </div>
+            </div>
+            
+            <h3>2. 剩余参数</h3>
+            <p>剩余参数允许函数接受任意数量的参数，并将它们作为数组处理。</p>
+            
+            <div class="example">
+                <div class="code-block">
+function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3)); // 6
+console.log(sum(1, 2, 3, 4, 5)); // 15
+                </div>
+            </div>
+            
+            <h3>3. 解构参数</h3>
+            <p>解构参数允许将对象或数组作为参数传递，并在函数内部直接使用其属性或元素。</p>
+            
+            <div class="example">
+                <div class="code-block">
+// 对象解构参数
+function printPerson({ name, age, city }) {
+    console.log(`姓名：${name}，年龄：${age}，城市：${city}`);
+}
+
+// 数组解构参数
+function printCoordinates([x, y]) {
+    console.log(`X坐标：${x}，Y坐标：${y}`);
+}
+
+let person = { name: "张三", age: 25, city: "北京" };
+let point = [10, 20];
+
+printPerson(person); // 姓名：张三，年龄：25，城市：北京
+printCoordinates(point); // X坐标：10，Y坐标：20
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>函数返回值</h2>
+            <p>函数可以通过return语句返回值，一旦执行到return语句，函数就会终止。</p>
+            
+            <div class="example">
+                <div class="code-block">
+function isEven(num) {
+    if (num % 2 === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(isEven(4)); // true
+console.log(isEven(5)); // false
+
+// 没有return语句的函数返回undefined
+function doNothing() {
+    // 没有return
+}
+
+console.log(doNothing()); // undefined
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>函数作用域</h2>
+            <p>变量在函数内部定义时，只能在函数内部访问，这称为函数作用域。</p>
+            
+            <div class="example">
+                <div class="code-block">
+function outer() {
+    let outerVar = "外部变量";
+    
+    function inner() {
+        let innerVar = "内部变量";
+        console.log(outerVar); // 可以访问外部变量
+        console.log(innerVar); // 可以访问内部变量
+    }
+    
+    inner();
+    console.log(outerVar); // 可以访问外部变量
+    // console.log(innerVar); // 无法访问内部变量，会报错
+}
+
+outer();
+
+// 全局变量
+let globalVar = "全局变量";
+
+function useGlobal() {
+    console.log(globalVar); // 可以访问全局变量
+}
+
+useGlobal();
+                </div>
+                <div class="output">
+                    输出：
+                    外部变量
+                    内部变量
+                    外部变量
+                    全局变量
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>闭包</h2>
+            <p>闭包是指有权访问另一个函数作用域中变量的函数。</p>
+            
+            <div class="example">
+                <div class="code-block">
+function createCounter() {
+    let count = 0;
+    
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+let counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
+                </div>
+                <div class="notes">
+                    注意：闭包可以让变量在函数执行完毕后仍然保持其值，常用于创建私有变量和封装功能。
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>回调函数</h2>
+            <p>回调函数是作为参数传递给另一个函数的函数。</p>
+            
+            <div class="example">
+                <div class="code-block">
+// 接受回调函数的函数
+function processArray(arr, callback) {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        result.push(callback(arr[i]));
+    }
+    return result;
+}
+
+// 回调函数
+function double(num) {
+    return num * 2;
+}
+
+let numbers = [1, 2, 3, 4, 5];
+let doubled = processArray(numbers, double);
+console.log(doubled); // [2, 4, 6, 8, 10]
+
+// 使用箭头函数作为回调
+let squared = processArray(numbers, x => x * x);
+console.log(squared); // [1, 4, 9, 16, 25]
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 JavaScript学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的JavaScript学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

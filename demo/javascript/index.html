@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript学习中心 - 首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .intro-section {
+            background-color: #e3f2fd;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .intro-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2196F3;
+        }
+        .intro-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .js-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .feature-card {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            width: 200px;
+            text-align: center;
+        }
+        .knowledge-section {
+            margin-bottom: 2rem;
+        }
+        .knowledge-section h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #2196F3;
+            border-bottom: 2px solid #2196F3;
+            padding-bottom: 0.5rem;
+        }
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .knowledge-card {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .knowledge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .knowledge-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2196F3;
+        }
+        .knowledge-card a {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .knowledge-card a:hover {
+            color: #1976D2;
+            text-decoration: underline;
+        }
+        .knowledge-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="header-content">
+            <div class="logo">JavaScript学习中心</div>
+            <nav>
+                <a href="index.html" class="active">首页</a>
+                <a href="variables.html">变量和数据类型</a>
+                <a href="operators.html">运算符</a>
+                <a href="control-flow.html">控制流</a>
+                <a href="functions.html">函数</a>
+                <a href="objects-arrays.html">对象和数组</a>
+                <a href="dom-manipulation.html">DOM操作</a>
+                <a href="event-handling.html">事件处理</a>
+                <a href="async-programming.html">异步编程</a>
+                <a href="error-handling.html">错误处理</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <section class="intro-section">
+            <h1>Welcome to JavaScript学习中心</h1>
+            <p>JavaScript是一门强大的脚本语言，用于为网页添加交互性和动态功能。</p>
+            <p>从基础到进阶，循序渐进地掌握JavaScript核心概念，成为全栈开发者。</p>
+            
+            <div class="js-features">
+                <div class="feature-card">
+                    <h3>客户端脚本</h3>
+                    <p>在浏览器中运行</p>
+                </div>
+                <div class="feature-card">
+                    <h3>跨平台</h3>
+                    <p>支持所有现代浏览器</p>
+                </div>
+                <div class="feature-card">
+                    <h3>动态交互</h3>
+                    <p>实时更新页面内容</p>
+                </div>
+                <div class="feature-card">
+                    <h3>全栈开发</h3>
+                    <p>Node.js支持服务端</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="knowledge-section">
+            <h2>JavaScript基础知识</h2>
+            <div class="knowledge-grid">
+                <div class="knowledge-card">
+                    <h3><a href="variables.html">变量和数据类型</a></h3>
+                    <div class="knowledge-desc">了解JavaScript中的变量声明和基本数据类型</div>
+                </div>
+                <div class="knowledge-card">
+                    <h3><a href="operators.html">运算符</a></h3>
+                    <div class="knowledge-desc">学习JavaScript中的各种运算符和表达式</div>
+                </div>
+                <div class="knowledge-card">
+                    <h3><a href="control-flow.html">控制流</a></h3>
+                    <div class="knowledge-desc">掌握条件语句和循环结构</div>
+                </div>
+                <div class="knowledge-card">
+                    <h3><a href="functions.html">函数</a></h3>
+                    <div class="knowledge-desc">学习函数的定义、调用和参数传递</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="knowledge-section">
+            <h2>JavaScript高级特性</h2>
+            <div class="knowledge-grid">
+                <div class="knowledge-card">
+                    <h3><a href="objects-arrays.html">对象和数组</a></h3>
+                    <div class="knowledge-desc">了解对象和数组的创建和操作方法</div>
+                </div>
+                <div class="knowledge-card">
+                    <h3><a href="dom-manipulation.html">DOM操作</a></h3>
+                    <div class="knowledge-desc">学习如何操作HTML文档结构</div>
+                </div>
+                <div class="knowledge-card">
+                    <h3><a href="event-handling.html">事件处理</a></h3>
+                    <div class="knowledge-desc">掌握事件监听和处理方法</div>
+                </div>
+                <div class="knowledge-card">
+                    <h3><a href="async-programming.html">异步编程</a></h3>
+                    <div class="knowledge-desc">学习回调、Promise和async/await</div>
+                </div>
+                <div class="knowledge-card">
+                    <h3><a href="error-handling.html">错误处理</a></h3>
+                    <div class="knowledge-desc">掌握try/catch和错误处理机制</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 JavaScript学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的JavaScript学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

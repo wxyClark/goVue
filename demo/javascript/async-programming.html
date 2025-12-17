@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript异步编程 - 前端学习路径</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav a:hover, nav a.active {
+            background-color: #555;
+        }
+        .main-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #777;
+            margin-top: 20px;
+        }
+        .example {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #333;
+        }
+        .code {
+            background-color: #333;
+            color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .demo-area {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .demo-button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .demo-button:hover {
+            background-color: #2980b9;
+        }
+        .log {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .log-entry {
+            margin: 5px 0;
+        }
+        .time {
+            color: #95a5a6;
+            font-size: 0.8em;
+        }
+        .success {
+            color: #2ecc71;
+        }
+        .error {
+            color: #e74c3c;
+        }
+        .pending {
+            color: #f39c12;
+        }
+        .process {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .step {
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .step.completed {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .step.error {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .step.pending {
+            background-color: #f39c12;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导入头部 -->
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('afterbegin', data);
+                // 设置当前页面为活动状态
+                document.querySelector('nav a[href="async-programming.html"]').classList.add('active');
+            });
+    </script>
+
+    <div class="container">
+        <div class="main-content">
+            <h1>JavaScript异步编程</h1>
+            
+            <h2>异步编程概述</h2>
+            <p>JavaScript是单线程语言，异步编程是JavaScript处理耗时操作的核心机制，它允许程序在执行耗时操作（如网络请求、文件读取）时不会阻塞主线程。</p>
+            
+            <div class="example">
+                <h3>同步 vs 异步</h3>
+                <table>
+                    <tr>
+                        <th>同步编程</th>
+                        <th>异步编程</th>
+                    </tr>
+                    <tr>
+                        <td>代码按顺序执行，前一个任务完成后才会执行下一个任务</td>
+                        <td>代码不按顺序执行，耗时任务在后台执行，完成后通知主线程</td>
+                    </tr>
+                    <tr>
+                        <td>会阻塞主线程</td>
+                        <td>不会阻塞主线程</td>
+                    </tr>
+                    <tr>
+                        <td>适合简单的、快速完成的任务</td>
+                        <td>适合耗时的任务，如网络请求、文件操作</td>
+                    </tr>
+                    <tr>
+                        <td>示例：基本的数学运算、变量赋值</td>
+                        <td>示例：AJAX请求、定时器、事件处理</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h2>回调函数（Callback）</h2>
+            <p>回调函数是异步编程的最基本形式，它是一个作为参数传递给另一个函数的函数，在异步操作完成后被调用。</p>
+            
+            <div class="example">
+                <h3>回调函数的基本使用</h3>
+                <div class="code">
+// 模拟异步操作
+function fetchData(url, callback) {
+    setTimeout(() => {
+        // 模拟网络请求返回数据
+        const data = { id: 1, name: '张三', age: 30 };
+        // 调用回调函数，将数据传递给它
+        callback(null, data);
+    }, 1000);
+}
+
+// 使用回调函数
+fetchData('https://api.example.com/users', function(error, data) {
+    if (error) {
+        console.error('请求失败:', error);
+        return;
+    }
+    console.log('请求成功，数据:', data);
+});
+                </div>
+                <div class="demo-area">
+                    <button onclick="callbackDemo()" class="demo-button">运行回调函数示例</button>
+                    <div id="callback-log" class="log"></div>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>回调地狱（Callback Hell）</h3>
+                <p>当有多个异步操作需要按顺序执行时，回调函数会嵌套在一起，形成所谓的"回调地狱"，使代码难以阅读和维护。</p>
+                <div class="code">
+// 回调地狱示例
+fetchUser(id, function(error, user) {
+    if (error) return console.error(error);
+    
+    fetchPosts(user.id, function(error, posts) {
+        if (error) return console.error(error);
+        
+        fetchComments(posts[0].id, function(error, comments) {
+            if (error) return console.error(error);
+            
+            fetchAuthor(comments[0].authorId, function(error, author) {
+                if (error) return console.error(error);
+                
+                console.log('作者信息:', author);
+            });
+        });
+    });
+});
+                </div>
+            </div>
+            
+            <h2>Promise</h2>
+            <p>Promise是ES6引入的异步编程解决方案，它代表一个异步操作的最终完成（或失败）及其结果值。</p>
+            
+            <div class="example">
+                <h3>Promise的基本概念</h3>
+                <p>Promise有三种状态：</p>
+                <ul>
+                    <li><strong>pending（待定）</strong>：初始状态，既没有被兑现，也没有被拒绝</li>
+                    <li><strong>fulfilled（已兑现）</strong>：操作成功完成</li>
+                    <li><strong>rejected（已拒绝）</strong>：操作失败</li>
+                </ul>
+            </div>
+            
+            <div class="example">
+                <h3>创建Promise</h3>
+                <div class="code">
+// 创建Promise
+const promise = new Promise(function(resolve, reject) {
+    setTimeout(() => {
+        const success = true;
+        if (success) {
+            // 操作成功，调用resolve
+            resolve('操作成功完成');
+        } else {
+            // 操作失败，调用reject
+            reject('操作失败');
+        }
+    }, 1000);
+});
+
+// 使用Promise
+promise
+    .then(function(result) {
+        console.log('成功:', result);
+    })
+    .catch(function(error) {
+        console.error('失败:', error);
+    })
+    .finally(function() {
+        console.log('无论成功或失败都会执行');
+    });
+                </div>
+                <div class="demo-area">
+                    <button onclick="promiseDemo()" class="demo-button">运行Promise示例</button>
+                    <div id="promise-log" class="log"></div>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>Promise链式调用</h3>
+                <p>Promise的then方法可以返回一个新的Promise，从而实现链式调用，避免回调地狱。</p>
+                <div class="code">
+// 链式调用示例
+fetchUser(id)
+    .then(function(user) {
+        console.log('用户信息:', user);
+        return fetchPosts(user.id);
+    })
+    .then(function(posts) {
+        console.log('用户帖子:', posts);
+        return fetchComments(posts[0].id);
+    })
+    .then(function(comments) {
+        console.log('帖子评论:', comments);
+        return fetchAuthor(comments[0].authorId);
+    })
+    .then(function(author) {
+        console.log('作者信息:', author);
+    })
+    .catch(function(error) {
+        console.error('发生错误:', error);
+    });
+                </div>
+                <div class="demo-area">
+                    <button onclick="promiseChainDemo()" class="demo-button">运行Promise链式调用示例</button>
+                    <div id="promise-chain-log" class="log"></div>
+                    <div id="promise-chain-steps" class="process"></div>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>Promise的静态方法</h3>
+                <div class="code">
+// Promise.all - 并行执行多个Promise，全部成功才成功
+const promise1 = fetchData(1);
+const promise2 = fetchData(2);
+const promise3 = fetchData(3);
+
+Promise.all([promise1, promise2, promise3])
+    .then(function(results) {
+        console.log('所有Promise都成功:', results);
+    })
+    .catch(function(error) {
+        console.error('至少有一个Promise失败:', error);
+    });
+
+// Promise.race - 多个Promise中第一个完成的结果
+Promise.race([promise1, promise2, promise3])
+    .then(function(result) {
+        console.log('第一个完成的Promise结果:', result);
+    });
+
+// Promise.allSettled - 所有Promise都完成（无论成功或失败）
+Promise.allSettled([promise1, promise2, promise3])
+    .then(function(results) {
+        console.log('所有Promise的结果:', results);
+    });
+
+// Promise.resolve - 创建一个已兑现的Promise
+Promise.resolve('成功的结果').then(console.log);
+
+// Promise.reject - 创建一个已拒绝的Promise
+Promise.reject('失败的原因').catch(console.error);
+                </div>
+                <div class="demo-area">
+                    <button onclick="promiseStaticDemo()" class="demo-button">运行Promise静态方法示例</button>
+                    <div id="promise-static-log" class="log"></div>
+                </div>
+            </div>
+            
+            <h2>async/await</h2>
+            <p>async/await是ES2017引入的语法糖，它基于Promise，使异步代码看起来更像同步代码，提高了可读性和可维护性。</p>
+            
+            <div class="example">
+                <h3>async/await的基本使用</h3>
+                <div class="code">
+// async函数
+async function fetchData() {
+    try {
+        // 使用await等待Promise完成
+        const user = await fetchUser(id);
+        console.log('用户信息:', user);
+        
+        const posts = await fetchPosts(user.id);
+        console.log('用户帖子:', posts);
+        
+        const comments = await fetchComments(posts[0].id);
+        console.log('帖子评论:', comments);
+        
+        const author = await fetchAuthor(comments[0].authorId);
+        console.log('作者信息:', author);
+        
+        return author;
+    } catch (error) {
+        // 处理错误
+        console.error('发生错误:', error);
+        throw error;
+    }
+}
+
+// 调用async函数
+fetchData()
+    .then(function(result) {
+        console.log('最终结果:', result);
+    })
+    .catch(function(error) {
+        console.error('调用失败:', error);
+    });
+                </div>
+                <div class="demo-area">
+                    <button onclick="asyncAwaitDemo()" class="demo-button">运行async/await示例</button>
+                    <div id="async-await-log" class="log"></div>
+                    <div id="async-await-steps" class="process"></div>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>async/await并行处理</h3>
+                <p>使用Promise.all配合async/await可以实现并行处理多个异步操作。</p>
+                <div class="code">
+async function fetchMultipleData() {
+    try {
+        // 并行执行多个异步操作
+        const [user, posts, comments] = await Promise.all([
+            fetchUser(id),
+            fetchPosts(id),
+            fetchComments(id)
+        ]);
+        
+        console.log('用户信息:', user);
+        console.log('用户帖子:', posts);
+        console.log('帖子评论:', comments);
+        
+        return { user, posts, comments };
+    } catch (error) {
+        console.error('发生错误:', error);
+    }
+}
+
+fetchMultipleData();
+                </div>
+                <div class="demo-area">
+                    <button onclick="asyncParallelDemo()" class="demo-button">运行async/await并行处理示例</button>
+                    <div id="async-parallel-log" class="log"></div>
+                </div>
+            </div>
+            
+            <h2>实际应用示例</h2>
+            <p>以下是异步编程在实际开发中的应用示例：</p>
+            
+            <div class="example">
+                <h3>1. 异步数据加载</h3>
+                <div class="code">
+// 使用async/await加载数据
+async function loadUserData(userId) {
+    try {
+        // 模拟API请求
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        if (!response.ok) {
+            throw new Error('网络响应失败');
+        }
+        const user = await response.json();
+        
+        // 加载用户的帖子
+        const postsResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
+        const posts = await postsResponse.json();
+        
+        return { user, posts };
+    } catch (error) {
+        console.error('加载用户数据失败:', error);
+        throw error;
+    }
+}
+
+// 使用数据
+loadUserData(1)
+    .then(data => {
+        document.getElementById('user-info').innerHTML = `
+            <h3>${data.user.name}</h3>
+            <p>邮箱: ${data.user.email}</p>
+            <p>地址: ${data.user.address.street}, ${data.user.address.city}</p>
+        `;
+        
+        const postsList = data.posts.map(post => 
+            `<li><strong>${post.title}</strong><p>${post.body}</p></li>`
+        ).join('');
+        document.getElementById('user-posts').innerHTML = `<ul>${postsList}</ul>`;
+    });
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>2. 文件上传处理</h3>
+                <div class="code">
+// 文件上传处理
+async function uploadFile(file) {
+    try {
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (!response.ok) {
+            throw new Error('文件上传失败');
+        }
+        
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error('文件上传错误:', error);
+        throw error;
+    }
+}
+
+// 监听文件上传
+const fileInput = document.getElementById('file-upload');
+fileInput.addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        try {
+            const result = await uploadFile(file);
+            console.log('文件上传成功:', result);
+        } catch (error) {
+            console.error('文件上传失败:', error);
+        }
+    }
+});
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 导入底部 -->
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.body.insertAdjacentHTML('beforeend', data));
+    </script>
+    
+    <!-- 演示脚本 -->
+    <script>
+        // 日志工具函数
+        function logMessage(elementId, message, type = 'info') {
+            const log = document.getElementById(elementId);
+            const now = new Date();
+            const time = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.innerHTML = `<span class="time">[${time}]</span> ${message}`;
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+        }
+        
+        function clearLog(elementId) {
+            const log = document.getElementById(elementId);
+            log.innerHTML = '';
+        }
+        
+        // 回调函数示例
+        function callbackDemo() {
+            clearLog('callback-log');
+            
+            // 模拟异步操作
+            function fetchData(url, callback) {
+                logMessage('callback-log', `开始请求: ${url}`, 'pending');
+                setTimeout(() => {
+                    const data = { id: 1, name: '张三', age: 30 };
+                    logMessage('callback-log', `请求完成: ${url}`, 'success');
+                    callback(null, data);
+                }, 1000);
+            }
+            
+            // 使用回调函数
+            fetchData('https://api.example.com/users', function(error, data) {
+                if (error) {
+                    logMessage('callback-log', `请求失败: ${error}`, 'error');
+                    return;
+                }
+                logMessage('callback-log', `请求成功，数据: ${JSON.stringify(data)}`, 'success');
+            });
+        }
+        
+        // Promise示例
+        function promiseDemo() {
+            clearLog('promise-log');
+            
+            const promise = new Promise(function(resolve, reject) {
+                logMessage('promise-log', 'Promise开始执行', 'pending');
+                setTimeout(() => {
+                    const success = true;
+                    if (success) {
+                        logMessage('promise-log', 'Promise操作成功', 'success');
+                        resolve('操作成功完成');
+                    } else {
+                        logMessage('promise-log', 'Promise操作失败', 'error');
+                        reject('操作失败');
+                    }
+                }, 1000);
+            });
+            
+            promise
+                .then(function(result) {
+                    logMessage('promise-log', `Promise成功结果: ${result}`, 'success');
+                })
+                .catch(function(error) {
+                    logMessage('promise-log', `Promise失败原因: ${error}`, 'error');
+                })
+                .finally(function() {
+                    logMessage('promise-log', 'Promise执行完成', 'info');
+                });
+        }
+        
+        // Promise链式调用示例
+        function promiseChainDemo() {
+            clearLog('promise-chain-log');
+            const steps = document.getElementById('promise-chain-steps');
+            steps.innerHTML = '';
+            
+            // 模拟异步函数
+            function fetchUser(id) {
+                return new Promise(resolve => {
+                    const step = document.createElement('div');
+                    step.className = 'step pending';
+                    step.textContent = `正在获取用户 ${id}...`;
+                    steps.appendChild(step);
+                    
+                    setTimeout(() => {
+                        step.className = 'step completed';
+                        step.textContent = `用户 ${id} 获取成功`;
+                        resolve({ id, name: '张三' });
+                    }, 800);
+                });
+            }
+            
+            function fetchPosts(userId) {
+                return new Promise(resolve => {
+                    const step = document.createElement('div');
+                    step.className = 'step pending';
+                    step.textContent = `正在获取用户 ${userId} 的帖子...`;
+                    steps.appendChild(step);
+                    
+                    setTimeout(() => {
+                        step.className = 'step completed';
+                        step.textContent = `用户 ${userId} 的帖子获取成功`;
+                        resolve([{ id: 1, title: '帖子标题' }]);
+                    }, 800);
+                });
+            }
+            
+            function fetchComments(postId) {
+                return new Promise(resolve => {
+                    const step = document.createElement('div');
+                    step.className = 'step pending';
+                    step.textContent = `正在获取帖子 ${postId} 的评论...`;
+                    steps.appendChild(step);
+                    
+                    setTimeout(() => {
+                        step.className = 'step completed';
+                        step.textContent = `帖子 ${postId} 的评论获取成功`;
+                        resolve([{ id: 1, content: '评论内容', authorId: 2 }]);
+                    }, 800);
+                });
+            }
+            
+            function fetchAuthor(authorId) {
+                return new Promise(resolve => {
+                    const step = document.createElement('div');
+                    step.className = 'step pending';
+                    step.textContent = `正在获取作者 ${authorId} 的信息...`;
+                    steps.appendChild(step);
+                    
+                    setTimeout(() => {
+                        step.className = 'step completed';
+                        step.textContent = `作者 ${authorId} 的信息获取成功`;
+                        resolve({ id: 2, name: '李四' });
+                    }, 800);
+                });
+            }
+            
+            logMessage('promise-chain-log', '开始Promise链式调用', 'info');
+            
+            fetchUser(1)
+                .then(function(user) {
+                    logMessage('promise-chain-log', `获取用户成功: ${JSON.stringify(user)}`, 'success');
+                    return fetchPosts(user.id);
+                })
+                .then(function(posts) {
+                    logMessage('promise-chain-log', `获取帖子成功: ${JSON.stringify(posts)}`, 'success');
+                    return fetchComments(posts[0].id);
+                })
+                .then(function(comments) {
+                    logMessage('promise-chain-log', `获取评论成功: ${JSON.stringify(comments)}`, 'success');
+                    return fetchAuthor(comments[0].authorId);
+                })
+                .then(function(author) {
+                    logMessage('promise-chain-log', `获取作者成功: ${JSON.stringify(author)}`, 'success');
+                    logMessage('promise-chain-log', '链式调用完成', 'success');
+                })
+                .catch(function(error) {
+                    logMessage('promise-chain-log', `发生错误: ${error}`, 'error');
+                });
+        }
+        
+        // Promise静态方法示例
+        function promiseStaticDemo() {
+            clearLog('promise-static-log');
+            
+            // 模拟异步函数
+            function fetchData(id) {
+                return new Promise(resolve => {
+                    const delay = Math.random() * 2000 + 500;
+                    setTimeout(() => {
+                        resolve(`数据 ${id}`);
+                    }, delay);
+                });
+            }
+            
+            const promise1 = fetchData(1);
+            const promise2 = fetchData(2);
+            const promise3 = fetchData(3);
+            
+            logMessage('promise-static-log', '开始Promise.all示例', 'info');
+            
+            // Promise.all示例
+            Promise.all([promise1, promise2, promise3])
+                .then(function(results) {
+                    logMessage('promise-static-log', `Promise.all结果: ${results}`, 'success');
+                });
+            
+            // Promise.race示例
+            logMessage('promise-static-log', '开始Promise.race示例', 'info');
+            Promise.race([promise1, promise2, promise3])
+                .then(function(result) {
+                    logMessage('promise-static-log', `Promise.race结果: ${result}`, 'success');
+                });
+        }
+        
+        // async/await示例
+        function asyncAwaitDemo() {
+            clearLog('async-await-log');
+            const steps = document.getElementById('async-await-steps');
+            steps.innerHTML = '';
+            
+            // 模拟异步函数
+            async function fetchUser(id) {
+                const step = document.createElement('div');
+                step.className = 'step pending';
+                step.textContent = `正在获取用户 ${id}...`;
+                steps.appendChild(step);
+                
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        step.className = 'step completed';
+                        step.textContent = `用户 ${id} 获取成功`;
+                        resolve({ id, name: '张三' });
+                    }, 800);
+                });
+            }
+            
+            async function fetchPosts(userId) {
+                const step = document.createElement('div');
+                step.className = 'step pending';
+                step.textContent = `正在获取用户 ${userId} 的帖子...`;
+                steps.appendChild(step);
+                
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        step.className = 'step completed';
+                        step.textContent = `用户 ${userId} 的帖子获取成功`;
+                        resolve([{ id: 1, title: '帖子标题' }]);
+                    }, 800);
+                });
+            }
+            
+            async function fetchComments(postId) {
+                const step = document.createElement('div');
+                step.className = 'step pending';
+                step.textContent = `正在获取帖子 ${postId} 的评论...`;
+                steps.appendChild(step);
+                
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        step.className = 'step completed';
+                        step.textContent = `帖子 ${postId} 的评论获取成功`;
+                        resolve([{ id: 1, content: '评论内容' }]);
+                    }, 800);
+                });
+            }
+            
+            // 主函数
+            async function fetchData() {
+                logMessage('async-await-log', '开始async/await示例', 'info');
+                
+                try {
+                    const user = await fetchUser(1);
+                    logMessage('async-await-log', `获取用户成功: ${JSON.stringify(user)}`, 'success');
+                    
+                    const posts = await fetchPosts(user.id);
+                    logMessage('async-await-log', `获取帖子成功: ${JSON.stringify(posts)}`, 'success');
+                    
+                    const comments = await fetchComments(posts[0].id);
+                    logMessage('async-await-log', `获取评论成功: ${JSON.stringify(comments)}`, 'success');
+                    
+                    logMessage('async-await-log', 'async/await执行完成', 'success');
+                } catch (error) {
+                    logMessage('async-await-log', `发生错误: ${error}`, 'error');
+                }
+            }
+            
+            fetchData();
+        }
+        
+        // async/await并行处理示例
+        function asyncParallelDemo() {
+            clearLog('async-parallel-log');
+            
+            // 模拟异步函数
+            function fetchData(id) {
+                return new Promise(resolve => {
+                    const delay = Math.random() * 1500 + 500;
+                    setTimeout(() => {
+                        const result = { id, data: `数据 ${id}` };
+                        logMessage('async-parallel-log', `获取数据 ${id} 完成`, 'success');
+                        resolve(result);
+                    }, delay);
+                });
+            }
+            
+            // 主函数
+            async function fetchMultipleData() {
+                logMessage('async-parallel-log', '开始并行获取数据', 'info');
+                
+                try {
+                    // 并行执行多个异步操作
+                    const [data1, data2, data3] = await Promise.all([
+                        fetchData(1),
+                        fetchData(2),
+                        fetchData(3)
+                    ]);
+                    
+                    logMessage('async-parallel-log', `数据1: ${JSON.stringify(data1)}`, 'info');
+                    logMessage('async-parallel-log', `数据2: ${JSON.stringify(data2)}`, 'info');
+                    logMessage('async-parallel-log', `数据3: ${JSON.stringify(data3)}`, 'info');
+                    logMessage('async-parallel-log', '并行获取数据完成', 'success');
+                } catch (error) {
+                    logMessage('async-parallel-log', `发生错误: ${error}`, 'error');
+                }
+            }
+            
+            fetchMultipleData();
+        }
+    </script>
+</body>
+</html>

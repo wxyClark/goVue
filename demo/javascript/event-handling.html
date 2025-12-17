@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript事件处理 - 前端学习路径</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav a:hover, nav a.active {
+            background-color: #555;
+        }
+        .main-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #777;
+            margin-top: 20px;
+        }
+        .example {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #333;
+        }
+        .code {
+            background-color: #333;
+            color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .demo-area {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .demo-button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .demo-button:hover {
+            background-color: #2980b9;
+        }
+        .demo-box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 10px;
+            display: inline-block;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .demo-box:hover {
+            background-color: #2980b9;
+        }
+        #parent-box {
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        #child-box {
+            background-color: #e74c3c;
+        }
+        #event-info {
+            background-color: #f1c40f;
+            color: #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            min-height: 30px;
+        }
+        #form-demo {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        input[type="text"], input[type="email"] {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 250px;
+        }
+        .output {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导入头部 -->
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('afterbegin', data);
+                // 设置当前页面为活动状态
+                document.querySelector('nav a[href="event-handling.html"]').classList.add('active');
+            });
+    </script>
+
+    <div class="container">
+        <div class="main-content">
+            <h1>JavaScript事件处理</h1>
+            
+            <h2>事件处理概述</h2>
+            <p>事件是用户与网页交互时发生的动作，如点击、移动鼠标、按下键盘等。JavaScript可以监听这些事件并执行相应的代码。</p>
+            
+            <h2>事件绑定方式</h2>
+            
+            <div class="example">
+                <h3>1. HTML属性方式</h3>
+                <p>直接在HTML标签中使用on事件属性绑定事件处理函数。</p>
+                <div class="code">
+<button onclick="alert('按钮被点击了!')">点击我</button>
+                </div>
+                <div class="demo-area">
+                    <button onclick="alert('按钮被点击了!')" class="demo-button">点击我</button>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>2. DOM属性方式</h3>
+                <p>通过JavaScript给DOM元素的事件属性赋值。</p>
+                <div class="code">
+const button = document.getElementById('dom-attribute-button');
+button.onclick = function() {
+    alert('DOM属性方式绑定的事件');
+};
+                </div>
+                <div class="demo-area">
+                    <button id="dom-attribute-button" class="demo-button">DOM属性方式</button>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>3. addEventListener()方法</h3>
+                <p>现代推荐的事件绑定方式，可以为同一个事件添加多个处理函数。</p>
+                <div class="code">
+const button = document.getElementById('add-event-listener-button');
+button.addEventListener('click', function() {
+    alert('addEventListener方式绑定的事件');
+});
+
+// 可以添加多个事件处理函数
+button.addEventListener('click', function() {
+    console.log('第二个点击事件处理函数');
+});
+                </div>
+                <div class="demo-area">
+                    <button id="add-event-listener-button" class="demo-button">addEventListener方式</button>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>4. removeEventListener()方法</h3>
+                <p>可以移除通过addEventListener添加的事件处理函数。</p>
+                <div class="code">
+function handleClick() {
+    alert('点击事件');
+}
+
+const button = document.getElementById('remove-event-button');
+button.addEventListener('click', handleClick);
+
+// 移除事件处理函数
+function removeHandler() {
+    button.removeEventListener('click', handleClick);
+    alert('事件处理函数已移除');
+}
+                </div>
+                <div class="demo-area">
+                    <button id="remove-event-button" class="demo-button">带移除功能的按钮</button>
+                    <button onclick="removeHandler()" class="demo-button">移除事件</button>
+                </div>
+            </div>
+            
+            <h2>事件对象</h2>
+            <p>当事件发生时，浏览器会创建一个事件对象，包含事件的详细信息，并作为参数传递给事件处理函数。</p>
+            
+            <div class="example">
+                <h3>事件对象的属性和方法</h3>
+                <div class="code">
+const button = document.getElementById('event-object-button');
+button.addEventListener('click', function(event) {
+    // 事件类型
+    console.log('事件类型:', event.type);
+    
+    // 目标元素
+    console.log('目标元素:', event.target);
+    
+    // 当前元素（当前事件处理函数所在的元素）
+    console.log('当前元素:', event.currentTarget);
+    
+    // 鼠标位置
+    console.log('鼠标X坐标:', event.clientX, event.screenX);
+    console.log('鼠标Y坐标:', event.clientY, event.screenY);
+    
+    // 按键信息（键盘事件）
+    console.log('按键代码:', event.key, event.code);
+    
+    // 阻止默认行为
+    event.preventDefault();
+    
+    // 阻止事件冒泡
+    event.stopPropagation();
+});
+                </div>
+                <div class="demo-area">
+                    <button id="event-object-button" class="demo-button">测试事件对象</button>
+                    <div id="event-info">点击上面的按钮查看事件信息...</div>
+                </div>
+            </div>
+            
+            <h2>常见事件类型</h2>
+            
+            <table>
+                <tr>
+                    <th>事件类型</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>鼠标事件</td>
+                    <td>click, dblclick, mousedown, mouseup, mousemove, mouseover, mouseout, mouseenter, mouseleave</td>
+                </tr>
+                <tr>
+                    <td>键盘事件</td>
+                    <td>keydown, keyup, keypress</td>
+                </tr>
+                <tr>
+                    <td>表单事件</td>
+                    <td>submit, change, input, focus, blur, reset</td>
+                </tr>
+                <tr>
+                    <td>窗口事件</td>
+                    <td>load, resize, scroll, unload, beforeunload</td>
+                </tr>
+                <tr>
+                    <td>触摸事件</td>
+                    <td>touchstart, touchmove, touchend, touchcancel</td>
+                </tr>
+                <tr>
+                    <td>拖拽事件</td>
+                    <td>dragstart, drag, dragend, dragenter, dragover, dragleave, drop</td>
+                </tr>
+            </table>
+            
+            <h2>事件冒泡和事件捕获</h2>
+            <p>事件传播有三个阶段：</p>
+            <ol>
+                <li><strong>捕获阶段</strong>：事件从document开始向下传播到目标元素</li>
+                <li><strong>目标阶段</strong>：事件到达目标元素</li>
+                <li><strong>冒泡阶段</strong>：事件从目标元素向上传播回document</li>
+            </ol>
+            
+            <div class="example">
+                <h3>事件冒泡演示</h3>
+                <p>点击内部元素，事件会冒泡到父元素。</p>
+                <div class="code">
+// 父元素事件
+const parent = document.getElementById('parent-box');
+parent.addEventListener('click', function() {
+    console.log('父元素被点击');
+});
+
+// 子元素事件
+const child = document.getElementById('child-box');
+child.addEventListener('click', function() {
+    console.log('子元素被点击');
+});
+                </div>
+                <div class="demo-area">
+                    <div id="parent-box">
+                        <h4>父元素</h4>
+                        <div id="child-box" class="demo-box">子元素</div>
+                    </div>
+                    <div id="event-info">点击子元素查看事件冒泡...</div>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>事件捕获演示</h3>
+                <p>通过addEventListener的第三个参数设置为true来监听捕获阶段的事件。</p>
+                <div class="code">
+const parent = document.getElementById('parent-box-2');
+const child = document.getElementById('child-box-2');
+
+// 捕获阶段监听父元素事件
+parent.addEventListener('click', function() {
+    console.log('父元素捕获阶段');
+}, true);
+
+// 冒泡阶段监听子元素事件
+child.addEventListener('click', function() {
+    console.log('子元素冒泡阶段');
+});
+                </div>
+                <div class="demo-area">
+                    <div id="parent-box-2" style="padding: 20px; background-color: #ecf0f1; border-radius: 5px;">
+                        <h4>父元素</h4>
+                        <div id="child-box-2" class="demo-box">子元素</div>
+                    </div>
+                    <div id="event-info">点击子元素查看事件捕获和冒泡...</div>
+                </div>
+            </div>
+            
+            <h2>阻止默认行为和冒泡</h2>
+            
+            <div class="example">
+                <h3>阻止默认行为</h3>
+                <p>使用event.preventDefault()阻止元素的默认行为，如链接跳转、表单提交等。</p>
+                <div class="code">
+// 阻止链接跳转
+const link = document.getElementById('prevent-link');
+link.addEventListener('click', function(event) {
+    event.preventDefault();
+    alert('链接跳转被阻止');
+});
+
+// 阻止表单提交
+const form = document.getElementById('prevent-form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('表单提交被阻止');
+});
+                </div>
+                <div class="demo-area">
+                    <a href="https://www.example.com" id="prevent-link" style="color: #3498db;">点击我（阻止跳转）</a>
+                    <br><br>
+                    <form id="prevent-form">
+                        <input type="text" placeholder="输入内容">
+                        <button type="submit" class="demo-button">提交表单（阻止提交）</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>阻止事件冒泡</h3>
+                <p>使用event.stopPropagation()阻止事件冒泡到父元素。</p>
+                <div class="code">
+const parent = document.getElementById('parent-stop');
+const child = document.getElementById('child-stop');
+
+parent.addEventListener('click', function() {
+    alert('父元素事件触发');
+});
+
+child.addEventListener('click', function(event) {
+    event.stopPropagation();
+    alert('子元素事件触发，冒泡已阻止');
+});
+                </div>
+                <div class="demo-area">
+                    <div id="parent-stop" style="padding: 20px; background-color: #ecf0f1; border-radius: 5px;">
+                        <h4>父元素</h4>
+                        <div id="child-stop" class="demo-box">子元素（阻止冒泡）</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>事件委托</h2>
+            <p>事件委托是利用事件冒泡原理，将事件监听器添加到父元素而不是每个子元素上，从而提高性能并简化代码。</p>
+            
+            <div class="example">
+                <h3>事件委托示例</h3>
+                <div class="code">
+const list = document.getElementById('item-list');
+
+// 使用事件委托
+list.addEventListener('click', function(event) {
+    // 检查点击的是否是列表项
+    if (event.target.tagName === 'LI') {
+        alert('列表项被点击: ' + event.target.textContent);
+    }
+});
+
+// 动态添加新的列表项
+const newItem = document.createElement('li');
+newItem.textContent = '新列表项';
+list.appendChild(newItem);
+// 新添加的列表项也会响应点击事件
+                </div>
+                <div class="demo-area">
+                    <ul id="item-list" style="list-style-type: none; padding: 0;">
+                        <li style="padding: 10px; border: 1px solid #ddd; margin: 5px 0; cursor: pointer;">列表项1</li>
+                        <li style="padding: 10px; border: 1px solid #ddd; margin: 5px 0; cursor: pointer;">列表项2</li>
+                        <li style="padding: 10px; border: 1px solid #ddd; margin: 5px 0; cursor: pointer;">列表项3</li>
+                    </ul>
+                    <button onclick="addListItem()" class="demo-button">添加新列表项</button>
+                </div>
+            </div>
+            
+            <h2>表单事件处理</h2>
+            
+            <div class="example">
+                <h3>表单输入事件</h3>
+                <p>监听表单输入变化，实时验证或反馈。</p>
+                <div class="code">
+const emailInput = document.getElementById('email-input');
+const emailOutput = document.getElementById('email-output');
+
+emailInput.addEventListener('input', function(event) {
+    const email = event.target.value;
+    if (email.includes('@')) {
+        emailOutput.textContent = '邮箱格式看起来有效';
+        emailOutput.style.backgroundColor = '#2ecc71';
+    } else {
+        emailOutput.textContent = '请输入有效的邮箱地址';
+        emailOutput.style.backgroundColor = '#e74c3c';
+    }
+});
+                </div>
+                <div class="demo-area">
+                    <div id="form-demo">
+                        <label for="email-input">邮箱地址:</label>
+                        <input type="email" id="email-input" placeholder="请输入邮箱">
+                        <div id="email-output" class="output">请输入邮箱地址</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 导入底部 -->
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.body.insertAdjacentHTML('beforeend', data));
+    </script>
+    
+    <!-- 演示脚本 -->
+    <script>
+        // DOM属性方式事件绑定
+        const domAttributeButton = document.getElementById('dom-attribute-button');
+        domAttributeButton.onclick = function() {
+            alert('DOM属性方式绑定的事件');
+        };
+        
+        // addEventListener方式事件绑定
+        const addEventListenerButton = document.getElementById('add-event-listener-button');
+        addEventListenerButton.addEventListener('click', function() {
+            alert('addEventListener方式绑定的事件');
+        });
+        addEventListenerButton.addEventListener('click', function() {
+            console.log('第二个点击事件处理函数');
+        });
+        
+        // 事件对象演示
+        const eventObjectButton = document.getElementById('event-object-button');
+        const eventInfo = document.getElementById('event-info');
+        eventObjectButton.addEventListener('click', function(event) {
+            let info = '';
+            info += '事件类型: ' + event.type + '<br>';
+            info += '目标元素: ' + event.target.tagName + '<br>';
+            info += '鼠标X坐标: ' + event.clientX + '<br>';
+            info += '鼠标Y坐标: ' + event.clientY + '<br>';
+            eventInfo.innerHTML = info;
+        });
+        
+        // 事件冒泡演示
+        const parentBox = document.getElementById('parent-box');
+        const childBox = document.getElementById('child-box');
+        
+        parentBox.addEventListener('click', function() {
+            eventInfo.innerHTML += '<br>父元素被点击';
+        });
+        
+        childBox.addEventListener('click', function() {
+            eventInfo.innerHTML += '<br>子元素被点击';
+        });
+        
+        // 事件捕获演示
+        const parentBox2 = document.getElementById('parent-box-2');
+        const childBox2 = document.getElementById('child-box-2');
+        
+        parentBox2.addEventListener('click', function() {
+            eventInfo.innerHTML += '<br>父元素捕获阶段';
+        }, true);
+        
+        childBox2.addEventListener('click', function() {
+            eventInfo.innerHTML += '<br>子元素冒泡阶段';
+        });
+        
+        // 表单输入事件
+        const emailInput = document.getElementById('email-input');
+        const emailOutput = document.getElementById('email-output');
+        
+        emailInput.addEventListener('input', function(event) {
+            const email = event.target.value;
+            if (email.includes('@')) {
+                emailOutput.textContent = '邮箱格式看起来有效';
+                emailOutput.style.backgroundColor = '#2ecc71';
+            } else {
+                emailOutput.textContent = '请输入有效的邮箱地址';
+                emailOutput.style.backgroundColor = '#e74c3c';
+            }
+        });
+        
+        // 添加列表项
+        function addListItem() {
+            const list = document.getElementById('item-list');
+            const newItem = document.createElement('li');
+            newItem.style.cssText = 'padding: 10px; border: 1px solid #ddd; margin: 5px 0; cursor: pointer;';
+            newItem.textContent = '新列表项 ' + (list.children.length + 1);
+            list.appendChild(newItem);
+        }
+        
+        // 事件委托
+        const itemList = document.getElementById('item-list');
+        itemList.addEventListener('click', function(event) {
+            if (event.target.tagName === 'LI') {
+                alert('列表项被点击: ' + event.target.textContent);
+            }
+        });
+    </script>
+</body>
+</html>

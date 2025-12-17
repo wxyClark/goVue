@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM操作 - 前端学习路径</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav a:hover, nav a.active {
+            background-color: #555;
+        }
+        .main-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #777;
+            margin-top: 20px;
+        }
+        .example {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #333;
+        }
+        .code {
+            background-color: #333;
+            color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .dom-demo {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .demo-box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 10px;
+            display: inline-block;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+        #target-element {
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导入头部 -->
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('afterbegin', data);
+                // 设置当前页面为活动状态
+                document.querySelector('nav a[href="dom-manipulation.html"]').classList.add('active');
+            });
+    </script>
+
+    <div class="container">
+        <div class="main-content">
+            <h1>JavaScript DOM操作</h1>
+            
+            <h2>DOM简介</h2>
+            <p>DOM（Document Object Model）是HTML和XML文档的编程接口，它将文档组织成一个树形结构，允许程序动态地访问和修改文档的内容、结构和样式。</p>
+            
+            <div class="example">
+                <h3>DOM树结构</h3>
+                <p>DOM树由节点组成，主要包括：</p>
+                <ul>
+                    <li>文档节点（Document）：整个HTML文档</li>
+                    <li>元素节点（Element）：HTML标签</li>
+                    <li>文本节点（Text）：标签内的文本</li>
+                    <li>属性节点（Attribute）：元素的属性</li>
+                    <li>注释节点（Comment）：HTML注释</li>
+                </ul>
+            </div>
+            
+            <h2>获取DOM元素</h2>
+            <div class="example">
+                <h3>1. 通过ID获取</h3>
+                <div class="code">
+// getElementById()
+const element = document.getElementById('target-element');
+console.log(element);
+                </div>
+                <div class="dom-demo">
+                    <div id="target-element">这是一个带有ID的元素</div>
+                    <button onclick="getElementByIdDemo()">获取元素</button>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>2. 通过类名获取</h3>
+                <div class="code">
+// getElementsByClassName() - 返回HTMLCollection
+const elements = document.getElementsByClassName('demo-box');
+console.log(elements);
+for (let i = 0; i < elements.length; i++) {
+    console.log(elements[i]);
+}
+                </div>
+                <div class="dom-demo">
+                    <div class="demo-box">元素1</div>
+                    <div class="demo-box">元素2</div>
+                    <div class="demo-box">元素3</div>
+                    <button onclick="getElementsByClassNameDemo()">获取元素</button>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>3. 通过标签名获取</h3>
+                <div class="code">
+// getElementsByTagName() - 返回HTMLCollection
+const paragraphs = document.getElementsByTagName('p');
+console.log(paragraphs.length);
+                </div>
+                <div class="dom-demo">
+                    <button onclick="getElementsByTagNameDemo()">获取所有段落元素</button>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>4. 通过CSS选择器获取</h3>
+                <div class="code">
+// querySelector() - 返回第一个匹配的元素
+const firstBox = document.querySelector('.demo-box');
+console.log(firstBox);
+
+// querySelectorAll() - 返回NodeList
+const allBoxes = document.querySelectorAll('.demo-box');
+console.log(allBoxes);
+allBoxes.forEach(function(box) {
+    console.log(box);
+});
+                </div>
+                <div class="dom-demo">
+                    <button onclick="querySelectorDemo()">使用CSS选择器</button>
+                </div>
+            </div>
+            
+            <h2>修改元素内容</h2>
+            <div class="example">
+                <h3>1. innerHTML</h3>
+                <p>可以修改元素的HTML内容，包括标签</p>
+                <div class="code">
+const element = document.getElementById('content-demo');
+element.innerHTML = '<strong>新的</strong> HTML 内容';
+                </div>
+                <div class="dom-demo">
+                    <div id="content-demo">原始内容</div>
+                    <button onclick="innerHTMLDemo()">修改innerHTML</button>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>2. textContent</h3>
+                <p>修改元素的文本内容，不解析HTML标签</p>
+                <div class="code">
+const element = document.getElementById('content-demo');
+element.textContent = '新的文本内容 <strong>不会被解析</strong>';
+                </div>
+                <div class="dom-demo">
+                    <div id="content-demo-2">原始文本内容</div>
+                    <button onclick="textContentDemo()">修改textContent</button>
+                </div>
+            </div>
+            
+            <h2>修改元素属性</h2>
+            <div class="example">
+                <h3>1. 直接修改属性</h3>
+                <div class="code">
+const img = document.querySelector('img');
+img.src = 'new-image.jpg';
+img.alt = '新图片';
+                </div>
+                
+                <h3>2. setAttribute() 和 getAttribute()</h3>
+                <div class="code">
+const link = document.querySelector('a');
+link.setAttribute('href', 'https://www.example.com');
+link.setAttribute('target', '_blank');
+
+const href = link.getAttribute('href');
+console.log(href);
+                </div>
+                
+                <h3>3. removeAttribute()</h3>
+                <div class="code">
+const element = document.getElementById('target');
+element.removeAttribute('class');
+                </div>
+                
+                <div class="dom-demo">
+                    <a id="demo-link" href="#">示例链接</a>
+                    <button onclick="attributeDemo()">修改链接属性</button>
+                </div>
+            </div>
+            
+            <h2>修改元素样式</h2>
+            <div class="example">
+                <h3>1. 通过style属性</h3>
+                <div class="code">
+const element = document.getElementById('style-demo');
+element.style.color = 'red';
+element.style.fontSize = '20px';
+element.style.backgroundColor = 'yellow';
+element.style.padding = '10px';
+                </div>
+                <div class="dom-demo">
+                    <div id="style-demo">样式演示元素</div>
+                    <button onclick="styleDemo()">修改样式</button>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>2. 通过classList</h3>
+                <div class="code">
+const element = document.getElementById('class-demo');
+
+// 添加类
+element.classList.add('new-class');
+
+// 移除类
+element.classList.remove('old-class');
+
+// 切换类（存在则移除，不存在则添加）
+element.classList.toggle('active');
+
+// 检查类是否存在
+element.classList.contains('active'); // 返回布尔值
+                </div>
+                <div class="dom-demo">
+                    <div id="class-demo" class="initial-class">类操作演示</div>
+                    <button onclick="classListDemo()">切换类</button>
+                </div>
+            </div>
+            
+            <h2>创建和删除元素</h2>
+            <div class="example">
+                <h3>1. 创建元素</h3>
+                <div class="code">
+// 创建新元素
+const newDiv = document.createElement('div');
+
+// 设置内容
+newDiv.textContent = '这是新创建的元素';
+
+// 设置属性
+newDiv.id = 'new-element';
+newDiv.className = 'demo-class';
+
+// 添加到文档
+const container = document.getElementById('container');
+container.appendChild(newDiv);
+                </div>
+                <div class="dom-demo">
+                    <div id="create-container">
+                        <h4>创建元素容器</h4>
+                    </div>
+                    <button onclick="createElementDemo()">创建新元素</button>
+                </div>
+            </div>
+            
+            <div class="example">
+                <h3>2. 删除元素</h3>
+                <div class="code">
+// 方式1：移除自己
+const element = document.getElementById('remove-element');
+element.remove();
+
+// 方式2：通过父元素移除
+const parent = document.getElementById('parent');
+const child = document.getElementById('child');
+parent.removeChild(child);
+                </div>
+                <div class="dom-demo">
+                    <div id="remove-container">
+                        <div id="element-to-remove">要删除的元素</div>
+                    </div>
+                    <button onclick="removeElementDemo()">删除元素</button>
+                </div>
+            </div>
+            
+            <h2>DOM遍历</h2>
+            <div class="example">
+                <h3>父子关系遍历</h3>
+                <div class="code">
+const parent = document.getElementById('parent');
+
+// 获取子元素
+const children = parent.children; // HTMLCollection
+const firstChild = parent.firstElementChild;
+const lastChild = parent.lastElementChild;
+
+// 获取父元素
+const child = document.getElementById('child');
+const parentElement = child.parentElement;
+
+// 获取兄弟元素
+const nextSibling = child.nextElementSibling;
+const previousSibling = child.previousElementSibling;
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 导入底部 -->
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.body.insertAdjacentHTML('beforeend', data));
+    </script>
+    
+    <!-- 演示脚本 -->
+    <script>
+        // DOM获取演示
+        function getElementByIdDemo() {
+            const element = document.getElementById('target-element');
+            alert('获取的元素: ' + element.textContent);
+        }
+        
+        function getElementsByClassNameDemo() {
+            const elements = document.getElementsByClassName('demo-box');
+            alert('找到 ' + elements.length + ' 个 demo-box 元素');
+        }
+        
+        function getElementsByTagNameDemo() {
+            const paragraphs = document.getElementsByTagName('p');
+            alert('文档中有 ' + paragraphs.length + ' 个段落元素');
+        }
+        
+        function querySelectorDemo() {
+            const firstBox = document.querySelector('.demo-box');
+            const allBoxes = document.querySelectorAll('.demo-box');
+            alert('第一个box: ' + firstBox.textContent + '\n总共有 ' + allBoxes.length + ' 个box');
+        }
+        
+        // 内容修改演示
+        function innerHTMLDemo() {
+            const element = document.getElementById('content-demo');
+            element.innerHTML = '<strong>新的</strong> HTML 内容';
+        }
+        
+        function textContentDemo() {
+            const element = document.getElementById('content-demo-2');
+            element.textContent = '新的文本内容 <strong>不会被解析</strong>';
+        }
+        
+        // 属性修改演示
+        function attributeDemo() {
+            const link = document.getElementById('demo-link');
+            if (link.getAttribute('href') === '#') {
+                link.setAttribute('href', 'https://www.example.com');
+                link.setAttribute('target', '_blank');
+                link.textContent = '外部链接';
+            } else {
+                link.setAttribute('href', '#');
+                link.removeAttribute('target');
+                link.textContent = '示例链接';
+            }
+        }
+        
+        // 样式修改演示
+        function styleDemo() {
+            const element = document.getElementById('style-demo');
+            element.style.color = element.style.color === 'red' ? 'black' : 'red';
+            element.style.fontSize = element.style.fontSize === '20px' ? '16px' : '20px';
+            element.style.backgroundColor = element.style.backgroundColor === 'yellow' ? 'transparent' : 'yellow';
+        }
+        
+        function classListDemo() {
+            const element = document.getElementById('class-demo');
+            element.classList.toggle('active');
+        }
+        
+        // 创建和删除元素演示
+        function createElementDemo() {
+            const newDiv = document.createElement('div');
+            newDiv.textContent = '这是新创建的元素';
+            newDiv.className = 'demo-box';
+            newDiv.style.backgroundColor = '#e74c3c';
+            
+            const container = document.getElementById('create-container');
+            container.appendChild(newDiv);
+        }
+        
+        function removeElementDemo() {
+            const element = document.getElementById('element-to-remove');
+            if (element) {
+                element.remove();
+                alert('元素已删除');
+            } else {
+                alert('元素不存在');
+            }
+        }
+    </script>
+    
+    <style>
+        .active {
+            background-color: #2ecc71 !important;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .demo-class {
+            background-color: #9b59b6;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</body>
+</html>
