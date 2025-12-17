@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML知识点学习 - 首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .welcome-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        .welcome-section p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .topic-card {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .topic-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        .topic-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .topic-card ul li {
+            margin-bottom: 0.5rem;
+        }
+        .topic-card ul li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .topic-card ul li a:hover {
+            color: #4CAF50;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html" class="active">首页</a>
+                <a href="tags.html">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="welcome-section">
+            <h1>欢迎来到HTML学习中心</h1>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+            <p>从基础到进阶，循序渐进地掌握HTML核心知识点</p>
+        </section>
+
+        <section class="topics-grid">
+            <div class="topic-card">
+                <h2>HTML基础标签</h2>
+                <ul>
+                    <li><a href="h1.html">标题标签 (h1-h6)</a></li>
+                    <li><a href="p.html">段落标签 (p)</a></li>
+                    <li><a href="a.html">链接标签 (a)</a></li>
+                    <li><a href="img.html">图片标签 (img)</a></li>
+                    <li><a href="div.html">容器标签 (div)</a></li>
+                    <li><a href="span.html">内联容器 (span)</a></li>
+                </ul>
+            </div>
+
+            <div class="topic-card">
+                <h2>文本格式化</h2>
+                <ul>
+                    <li><a href="strong.html">强调 (strong)</a></li>
+                    <li><a href="em.html">斜体 (em)</a></li>
+                    <li><a href="b.html">粗体 (b)</a></li>
+                    <li><a href="i.html">斜体 (i)</a></li>
+                    <li><a href="u.html">下划线 (u)</a></li>
+                    <li><a href="br.html">换行 (br)</a></li>
+                </ul>
+            </div>
+
+            <div class="topic-card">
+                <h2>列表标签</h2>
+                <ul>
+                    <li><a href="ul.html">无序列表 (ul)</a></li>
+                    <li><a href="ol.html">有序列表 (ol)</a></li>
+                    <li><a href="li.html">列表项 (li)</a></li>
+                    <li><a href="dl.html">定义列表 (dl)</a></li>
+                    <li><a href="dt.html">定义术语 (dt)</a></li>
+                    <li><a href="dd.html">定义描述 (dd)</a></li>
+                </ul>
+            </div>
+
+            <div class="topic-card">
+                <h2>表单元素</h2>
+                <ul>
+                    <li><a href="form.html">表单 (form)</a></li>
+                    <li><a href="input.html">输入框 (input)</a></li>
+                    <li><a href="label.html">标签 (label)</a></li>
+                    <li><a href="select.html">下拉菜单 (select)</a></li>
+                    <li><a href="textarea.html">文本域 (textarea)</a></li>
+                    <li><a href="button.html">按钮 (button)</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

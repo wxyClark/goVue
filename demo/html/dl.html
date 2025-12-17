@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定义列表标签 (dl) - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .example-section {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .example-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example-section h3 {
+            color: #333;
+            margin: 1rem 0 0.5rem 0;
+        }
+        .code-example {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+        .custom-dl dt {
+            font-weight: bold;
+            color: #4CAF50;
+            margin-top: 1rem;
+        }
+        .custom-dl dd {
+            margin-left: 1rem;
+            color: #666;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>定义列表标签 (dl)</h1>
+        
+        <div class="example-section">
+            <h2>基本用法</h2>
+            <p><strong>dl标签</strong>用于创建定义列表，包含定义术语(<strong>dt</strong>)和定义描述(<strong>dd</strong>)。</p>
+            <p>定义列表常用于展示术语和解释、问答等配对信息。</p>
+            
+            <dl>
+                <dt>HTML</dt>
+                <dd>超文本标记语言，用于创建网页结构。</dd>
+                <dt>CSS</dt>
+                <dd>层叠样式表，用于设计网页外观。</dd>
+                <dt>JavaScript</dt>
+                <dd>脚本语言，用于实现网页交互功能。</dd>
+            </dl>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;超文本标记语言，用于创建网页结构。&lt;/dd&gt;
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;层叠样式表，用于设计网页外观。&lt;/dd&gt;
+    &lt;dt&gt;JavaScript&lt;/dt&gt;
+    &lt;dd&gt;脚本语言，用于实现网页交互功能。&lt;/dd&gt;
+&lt;/dl&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>自定义样式的定义列表</h2>
+            <p>可以通过CSS为定义列表添加自定义样式：</p>
+            
+            <dl class="custom-dl">
+                <dt>前端开发</dt>
+                <dd>负责构建用户可以直接看到和交互的网页部分。</dd>
+                <dt>后端开发</dt>
+                <dd>负责处理服务器端逻辑、数据库交互和API开发。</dd>
+                <dt>全栈开发</dt>
+                <dd>同时掌握前端和后端开发技能的开发者。</dd>
+            </dl>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;dl class="custom-dl"&gt;
+    &lt;dt&gt;前端开发&lt;/dt&gt;
+    &lt;dd&gt;负责构建用户可以直接看到和交互的网页部分。&lt;/dd&gt;
+    &lt;dt&gt;后端开发&lt;/dt&gt;
+    &lt;dd&gt;负责处理服务器端逻辑、数据库交互和API开发。&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;style&gt;
+    .custom-dl dt {
+        font-weight: bold;
+        color: #4CAF50;
+        margin-top: 1rem;
+    }
+    .custom-dl dd {
+        margin-left: 1rem;
+        color: #666;
+    }
+&lt;/style&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>一个术语多个描述</h2>
+            <p>一个定义术语(dt)可以对应多个定义描述(dd)：</p>
+            
+            <dl>
+                <dt>Web开发</dt>
+                <dd>前端开发：构建用户界面</dd>
+                <dd>后端开发：处理服务器逻辑</dd>
+                <dd>全栈开发：同时掌握前后端技能</dd>
+            </dl>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;dl&gt;
+    &lt;dt&gt;Web开发&lt;/dt&gt;
+    &lt;dd&gt;前端开发：构建用户界面&lt;/dd&gt;
+    &lt;dd&gt;后端开发：处理服务器逻辑&lt;/dd&gt;
+    &lt;dd&gt;全栈开发：同时掌握前后端技能&lt;/dd&gt;
+&lt;/dl&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>复杂内容的定义列表</h2>
+            <p>定义列表中的dt和dd可以包含各种HTML内容：</p>
+            
+            <dl>
+                <dt>
+                    <strong>响应式设计</strong>
+                </dt>
+                <dd>
+                    <p>响应式设计是一种网页设计方法，使网页能够适应不同屏幕尺寸和设备。</p>
+                    <ul>
+                        <li>使用CSS媒体查询</li>
+                        <li>弹性布局和网格系统</li>
+                        <li>流体图像和媒体</li>
+                    </ul>
+                </dd>
+                <dt>
+                    <strong>语义化HTML</strong>
+                </dt>
+                <dd>
+                    <p>语义化HTML是指使用具有明确含义的HTML标签，使网页内容更易于理解。</p>
+                    <ul>
+                        <li>&lt;header&gt;：页面头部</li>
+                        <li>&lt;nav&gt;：导航菜单</li>
+                        <li>&lt;main&gt;：主要内容</li>
+                        <li>&lt;footer&gt;：页面底部</li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;dl&gt;
+    &lt;dt&gt;
+        &lt;strong&gt;响应式设计&lt;/strong&gt;
+    &lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;p&gt;响应式设计是一种网页设计方法，使网页能够适应不同屏幕尺寸和设备。&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;使用CSS媒体查询&lt;/li&gt;
+            &lt;li&gt;弹性布局和网格系统&lt;/li&gt;
+            &lt;li&gt;流体图像和媒体&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/dd&gt;
+    &lt;dt&gt;
+        &lt;strong&gt;语义化HTML&lt;/strong&gt;
+    &lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;p&gt;语义化HTML是指使用具有明确含义的HTML标签，使网页内容更易于理解。&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&amp;lt;header&amp;gt;：页面头部&lt;/li&gt;
+            &lt;li&gt;&amp;lt;nav&amp;gt;：导航菜单&lt;/li&gt;
+            &lt;li&gt;&amp;lt;main&amp;gt;：主要内容&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>定义列表的使用场景</h2>
+            <p>定义列表适用于以下场景：</p>
+            <ul>
+                <li>术语表和词汇解释</li>
+                <li>产品特性说明</li>
+                <li>FAQ（常见问题解答）</li>
+                <li>属性和值的配对展示</li>
+                <li>API文档</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

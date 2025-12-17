@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML斜体强调标签 - em</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        .content-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .code {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+        }
+        
+        /* 示例样式 */
+        .custom-em {
+            font-style: italic;
+            color: blue;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html" class="active">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>HTML斜体强调标签 (em)</h2>
+            <p>em标签用于表示强调的内容，具有语义含义，默认显示为斜体。</p>
+            
+            <div class="example">
+                <h3>基本em示例：</h3>
+                <p>
+                    我<strong>真的</strong>是<em>非常</em>喜欢这个产品。
+                </p>
+                <p>
+                    他说："<em>明天一定会下雨</em>。"结果真的下雨了。
+                </p>
+                <p>
+                    这个单词的<em>发音</em>需要特别注意。
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    我&lt;strong&gt;真的&lt;/strong&gt;是&lt;em&gt;非常&lt;/em&gt;喜欢这个产品。
+&lt;/p&gt;
+
+&lt;p&gt;
+    他说："&lt;em&gt;明天一定会下雨&lt;/em&gt;。"结果真的下雨了。
+&lt;/p&gt;
+
+&lt;p&gt;
+    这个单词的&lt;em&gt;发音&lt;/em&gt;需要特别注意。
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>em与其他标签结合：</h3>
+                <p>
+                    <strong>提示：</strong>请在<em>30分钟内</em>完成支付。
+                </p>
+                <p>
+                    <a href="#">点击这里</a>了解<em>更多详情</em>。
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    &lt;strong&gt;提示：&lt;/strong&gt;请在&lt;em&gt;30分钟内&lt;/em&gt;完成支付。
+&lt;/p&gt;
+
+&lt;p&gt;
+    &lt;a href="#"&gt;点击这里&lt;/a&gt;了解&lt;em&gt;更多详情&lt;/em&gt;。
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>自定义em样式：</h3>
+                <p>
+                    默认的em标签：<em>这是强调内容</em>
+                </p>
+                <p>
+                    自定义样式的em：<em class="custom-em">这是带蓝色的强调内容</em>
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    默认的em标签：&lt;em&gt;这是强调内容&lt;/em&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+    自定义样式的em：&lt;em class="custom-em"&gt;这是带蓝色的强调内容&lt;/em&gt;
+&lt;/p&gt;
+
+/* CSS样式 */
+.custom-em {
+    font-style: italic;
+    color: blue;
+}
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>em的语义含义：</h3>
+                <p>
+                    em标签不仅仅是为了显示斜体，更重要的是它的语义。屏幕阅读器会用不同的方式读出em内容，提高可访问性。
+                </p>
+                <p>
+                    例如，在无障碍环境中，屏幕阅读器可能会对em内容使用不同的语调和语速来表示强调。
+                </p>
+                
+                <div class="code">
+&lt;!-- 语义化的用法（推荐） --&gt;
+&lt;p&gt;我&lt;em&gt;非常&lt;/em&gt;感谢你的帮助。&lt;/p&gt;
+
+&lt;!-- 仅用于样式的用法（不推荐） --&gt;
+&lt;p&gt;我&lt;span style="font-style: italic;"&gt;非常&lt;/span&gt;感谢你的帮助。&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>em与i标签的区别：</h3>
+                <p>
+                    <em>em标签：</em>具有语义含义，表示强调，默认显示为斜体。
+                </p>
+                <p>
+                    <i>i标签：</i>仅用于视觉上的斜体效果，没有语义含义，适用于外来词、技术术语等。
+                </p>
+                <p>
+                    从语义化的角度出发，应该优先使用em标签来表示强调内容，而不是i标签。
+                </p>
+                
+                <div class="code">
+&lt;!-- 语义化用法（推荐） --&gt;
+&lt;p&gt;这个方案&lt;em&gt;确实&lt;/em&gt;比之前的更好。&lt;/p&gt;
+
+&lt;!-- 仅样式用法（适用于特定场景） --&gt;
+&lt;p&gt;这个单词的发音是&lt;i&gt;exemplary&lt;/i&gt;。&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>em的嵌套使用：</h3>
+                <p>
+                    通常不建议嵌套使用em标签，但在某些特殊情况下可以使用：
+                </p>
+                <p>
+                    他强调说："<em>一定要<em>仔细</em>检查每一个细节</em>。"
+                </p>
+                <p>
+                    注意：过多的嵌套会降低内容的可读性，应尽量避免。
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    他强调说："&lt;em&gt;一定要&lt;em&gt;仔细&lt;/em&gt;检查每一个细节&lt;/em&gt;。"
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>em在引用中的使用：</h3>
+                <blockquote style="border-left: 4px solid #4CAF50; padding-left: 1rem; margin: 1rem 0;">
+                    正如爱因斯坦所说："<em>想象力比知识更重要</em>。"
+                </blockquote>
+                
+                <div class="code">
+&lt;blockquote style="border-left: 4px solid #4CAF50; padding-left: 1rem; margin: 1rem 0;"&gt;
+    正如爱因斯坦所说："&lt;em&gt;想象力比知识更重要&lt;/em&gt;。"
+&lt;/blockquote&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>em在标题中的使用：</h3>
+                <h1>如何<em>高效</em>学习HTML</h1>
+                <h2><em>循序渐进</em>的学习路径</h2>
+                <h3>掌握<em>核心概念</em>的重要性</h3>
+                
+                <div class="code">
+&lt;h1&gt;如何&lt;em&gt;高效&lt;/em&gt;学习HTML&lt;/h1&gt;
+&lt;h2&gt;&lt;em&gt;循序渐进&lt;/em&gt;的学习路径&lt;/h2&gt;
+&lt;h3&gt;掌握&lt;em&gt;核心概念&lt;/em&gt;的重要性&lt;/h3&gt;
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

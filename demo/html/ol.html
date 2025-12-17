@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有序列表标签 (ol) - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .example-section {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .example-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example-section h3 {
+            color: #333;
+            margin: 1rem 0 0.5rem 0;
+        }
+        .code-example {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+        .lower-alpha {
+            list-style-type: lower-alpha;
+        }
+        .upper-alpha {
+            list-style-type: upper-alpha;
+        }
+        .lower-roman {
+            list-style-type: lower-roman;
+        }
+        .upper-roman {
+            list-style-type: upper-roman;
+        }
+        .decimal-leading-zero {
+            list-style-type: decimal-leading-zero;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>有序列表标签 (ol)</h1>
+        
+        <div class="example-section">
+            <h2>基本用法</h2>
+            <p><strong>ol标签</strong>用于创建有序列表，列表项使用<strong>li标签</strong>表示，默认使用数字编号。</p>
+            
+            <ol>
+                <li>准备HTML结构</li>
+                <li>添加CSS样式</li>
+                <li>编写JavaScript交互</li>
+                <li>测试和调试</li>
+            </ol>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;ol&gt;
+    &lt;li&gt;准备HTML结构&lt;/li&gt;
+    &lt;li&gt;添加CSS样式&lt;/li&gt;
+    &lt;li&gt;编写JavaScript交互&lt;/li&gt;
+    &lt;li&gt;测试和调试&lt;/li&gt;
+&lt;/ol&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>列表样式类型</h2>
+            <p>可以通过CSS的<code>list-style-type</code>属性改变列表项的编号样式：</p>
+            
+            <h3>默认样式（decimal）</h3>
+            <ol>
+                <li>默认数字编号</li>
+                <li>顺序排列</li>
+            </ol>
+            
+            <h3>小写字母（lower-alpha）</h3>
+            <ol class="lower-alpha">
+                <li>小写字母编号</li>
+                <li>顺序排列</li>
+            </ol>
+            
+            <h3>大写字母（upper-alpha）</h3>
+            <ol class="upper-alpha">
+                <li>大写字母编号</li>
+                <li>顺序排列</li>
+            </ol>
+            
+            <h3>小写罗马数字（lower-roman）</h3>
+            <ol class="lower-roman">
+                <li>小写罗马数字编号</li>
+                <li>顺序排列</li>
+            </ol>
+            
+            <h3>大写罗马数字（upper-roman）</h3>
+            <ol class="upper-roman">
+                <li>大写罗马数字编号</li>
+                <li>顺序排列</li>
+            </ol>
+            
+            <h3>前导零数字（decimal-leading-zero）</h3>
+            <ol class="decimal-leading-zero">
+                <li>前导零数字编号</li>
+                <li>顺序排列</li>
+            </ol>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;!-- 小写字母 --&gt;
+&lt;ol class="lower-alpha"&gt;
+    &lt;li&gt;小写字母编号&lt;/li&gt;
+    &lt;li&gt;顺序排列&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- 小写罗马数字 --&gt;
+&lt;ol class="lower-roman"&gt;
+    &lt;li&gt;小写罗马数字编号&lt;/li&gt;
+    &lt;li&gt;顺序排列&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;style&gt;
+    .lower-alpha {
+        list-style-type: lower-alpha;
+    }
+    .lower-roman {
+        list-style-type: lower-roman;
+    }
+&lt;/style&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>自定义起始编号</h2>
+            <p>可以使用<code>start</code>属性指定有序列表的起始编号：</p>
+            
+            <ol start="5">
+                <li>第五步</li>
+                <li>第六步</li>
+                <li>第七步</li>
+            </ol>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;ol start="5"&gt;
+    &lt;li&gt;第五步&lt;/li&gt;
+    &lt;li&gt;第六步&lt;/li&gt;
+    &lt;li&gt;第七步&lt;/li&gt;
+&lt;/ol&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>反向排序</h2>
+            <p>可以使用<code>reversed</code>属性实现反向排序的有序列表：</p>
+            
+            <ol reversed>
+                <li>最后一步</li>
+                <li>倒数第二步</li>
+                <li>倒数第三步</li>
+            </ol>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;ol reversed&gt;
+    &lt;li&gt;最后一步&lt;/li&gt;
+    &lt;li&gt;倒数第二步&lt;/li&gt;
+    &lt;li&gt;倒数第三步&lt;/li&gt;
+&lt;/ol&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>自定义列表项编号</h2>
+            <p>可以使用<code>value</code>属性为特定列表项指定自定义编号：</p>
+            
+            <ol>
+                <li>第一步</li>
+                <li>第二步</li>
+                <li value="10">第十步</li>
+                <li>第十一步</li>
+                <li>第十二步</li>
+            </ol>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;ol&gt;
+    &lt;li&gt;第一步&lt;/li&gt;
+    &lt;li&gt;第二步&lt;/li&gt;
+    &lt;li value="10"&gt;第十步&lt;/li&gt;
+    &lt;li&gt;第十一步&lt;/li&gt;
+    &lt;li&gt;第十二步&lt;/li&gt;
+&lt;/ol&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>嵌套列表</h2>
+            <p>有序列表可以与其他列表嵌套使用，创建复杂的层级结构：</p>
+            
+            <ol>
+                <li>前端开发
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </li>
+                <li>后端开发
+                    <ol class="lower-alpha">
+                        <li>PHP</li>
+                        <li>Python</li>
+                        <li>Node.js
+                            <ol class="lower-roman">
+                                <li>Express</li>
+                                <li>Koa</li>
+                                <li>NestJS</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+                <li>数据库
+                    <ul>
+                        <li>MySQL</li>
+                        <li>MongoDB</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;ol&gt;
+    &lt;li&gt;前端开发
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;后端开发
+        &lt;ol class="lower-alpha"&gt;
+            &lt;li&gt;PHP&lt;/li&gt;
+            &lt;li&gt;Python&lt;/li&gt;
+            &lt;li&gt;Node.js
+                &lt;ol class="lower-roman"&gt;
+                    &lt;li&gt;Express&lt;/li&gt;
+                    &lt;li&gt;Koa&lt;/li&gt;
+                    &lt;li&gt;NestJS&lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

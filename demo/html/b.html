@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粗体标签 (b) - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .example-section {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .example-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example-section h3 {
+            color: #333;
+            margin: 1rem 0 0.5rem 0;
+        }
+        .code-example {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>粗体标签 (b)</h1>
+        
+        <div class="example-section">
+            <h2>基本用法</h2>
+            <p><b>b标签</b>用于表示粗体文本，主要用于视觉上的强调。</p>
+            <p>这是一个示例：我想要<b>突出显示</b>这段文本。</p>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;p&gt;我想要&lt;b&gt;突出显示&lt;/b&gt;这段文本。&lt;/p&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>与strong标签的区别</h2>
+            <p><b>b标签</b>只是视觉上的粗体效果，而<strong>strong标签</strong>表示语义上的重要性。</p>
+            <p>示例：</p>
+            <p>请<b>注意</b>这个消息。</p>
+            <p>请<strong>务必注意</strong>这个重要消息！</p>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;p&gt;请&lt;b&gt;注意&lt;/b&gt;这个消息。&lt;/p&gt;
+&lt;p&gt;请&lt;strong&gt;务必注意&lt;/strong&gt;这个重要消息！&lt;/p&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>与其他标签结合使用</h2>
+            <p>可以与其他文本格式化标签结合使用：</p>
+            <p>我<strong>真的</strong>是<b>非常</b>喜欢这个产品。</p>
+            <p>这个<em>新功能</em>有<b>三个</b>主要特点。</p>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;p&gt;我&lt;strong&gt;真的&lt;/strong&gt;是&lt;b&gt;非常&lt;/b&gt;喜欢这个产品。&lt;/p&gt;
+&lt;p&gt;这个&lt;em&gt;新功能&lt;/em&gt;有&lt;b&gt;三个&lt;/b&gt;主要特点。&lt;/p&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>使用CSS自定义样式</h2>
+            <p>可以通过CSS来改变b标签的样式：</p>
+            <p>
+                <b class="custom-b">这是一个自定义样式的粗体文本</b>
+            </p>
+            
+            <style>
+                .custom-b {
+                    color: red;
+                    font-weight: 800;
+                    text-decoration: underline;
+                }
+            </style>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;style&gt;
+    .custom-b {
+        color: red;
+        font-weight: 800;
+        text-decoration: underline;
+    }
+&lt;/style&gt;
+
+&lt;p&gt;
+    &lt;b class="custom-b"&gt;这是一个自定义样式的粗体文本&lt;/b&gt;
+&lt;/p&gt;
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

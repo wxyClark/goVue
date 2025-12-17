@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML标题标签 - h1-h6</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        .content-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .code {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html" class="active">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>HTML标题标签 (h1 - h6)</h2>
+            <p>HTML提供了6个级别的标题标签，从h1（最高级别）到h6（最低级别）。</p>
+            
+            <div class="example">
+                <h3>标题标签示例：</h3>
+                <h1>这是h1标签（最高级别标题）</h1>
+                <h2>这是h2标签（二级标题）</h2>
+                <h3>这是h3标签（三级标题）</h3>
+                <h4>这是h4标签（四级标题）</h4>
+                <h5>这是h5标签（五级标题）</h5>
+                <h6>这是h6标签（最低级别标题）</h6>
+                
+                <div class="code">
+&lt;h1&gt;这是h1标签（最高级别标题）&lt;/h1&gt;
+&lt;h2&gt;这是h2标签（二级标题）&lt;/h2&gt;
+&lt;h3&gt;这是h3标签（三级标题）&lt;/h3&gt;
+&lt;h4&gt;这是h4标签（四级标题）&lt;/h4&gt;
+&lt;h5&gt;这是h5标签（五级标题）&lt;/h5&gt;
+&lt;h6&gt;这是h6标签（最低级别标题）&lt;/h6&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>标题标签的使用注意事项：</h3>
+                <ul>
+                    <li>每个页面应该只有一个h1标签，用于页面的主标题</li>
+                    <li>标题标签应该按照级别顺序使用，不要跳过级别</li>
+                    <li>标题标签不仅用于样式，还用于SEO和无障碍访问</li>
+                    <li>使用语义化的标题内容，准确描述页面结构</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

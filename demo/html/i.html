@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斜体标签 (i) - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .example-section {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .example-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example-section h3 {
+            color: #333;
+            margin: 1rem 0 0.5rem 0;
+        }
+        .code-example {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>斜体标签 (i)</h1>
+        
+        <div class="example-section">
+            <h2>基本用法</h2>
+            <p><i>i标签</i>用于表示斜体文本，主要用于视觉上的倾斜效果。</p>
+            <p>这是一个示例：这本书的标题是<i>HTML权威指南</i>。</p>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;p&gt;这本书的标题是&lt;i&gt;HTML权威指南&lt;/i&gt;。&lt;/p&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>与em标签的区别</h2>
+            <p><i>i标签</i>只是视觉上的斜体效果，而<em>em标签</em>表示语义上的强调。</p>
+            <p>示例：</p>
+            <p>这个单词的发音是<i>phenomenon</i>。</p>
+            <p>我<em>强烈建议</em>你学习这个概念。</p>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;p&gt;这个单词的发音是&lt;i&gt;phenomenon&lt;/i&gt;。&lt;/p&gt;
+&lt;p&gt;我&lt;em&gt;强烈建议&lt;/em&gt;你学习这个概念。&lt;/p&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>常见使用场景</h2>
+            <p>i标签常用于：</p>
+            <ul>
+                <li>外来词或短语：<i>bon appétit</i>（法语：祝好胃口）</li>
+                <li>科学术语：<i>Homo sapiens</i>（智人）</li>
+                <li>技术术语：<i>JavaScript</i>（编程语言）</li>
+                <li>发音或音标：<i>θ</i>（希腊字母theta）</li>
+            </ul>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;ul&gt;
+    &lt;li&gt;外来词或短语：&lt;i&gt;bon appétit&lt;/i&gt;（法语：祝好胃口）&lt;/li&gt;
+    &lt;li&gt;科学术语：&lt;i&gt;Homo sapiens&lt;/i&gt;（智人）&lt;/li&gt;
+    &lt;li&gt;技术术语：&lt;i&gt;JavaScript&lt;/i&gt;（编程语言）&lt;/li&gt;
+    &lt;li&gt;发音或音标：&lt;i&gt;θ&lt;/i&gt;（希腊字母theta）&lt;/li&gt;
+&lt;/ul&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>与其他标签结合使用</h2>
+            <p>可以与其他文本格式化标签结合使用：</p>
+            <p>这个<i>新功能</i>有<strong>三个</strong>主要特点。</p>
+            <p>在<em>HTML5</em>中，<i>canvas</i>元素用于绘制图形。</p>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;p&gt;这个&lt;i&gt;新功能&lt;/i&gt;有&lt;strong&gt;三个&lt;/strong&gt;主要特点。&lt;/p&gt;
+&lt;p&gt;在&lt;em&gt;HTML5&lt;/em&gt;中，&lt;i&gt;canvas&lt;/i&gt;元素用于绘制图形。&lt;/p&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>使用CSS自定义样式</h2>
+            <p>可以通过CSS来改变i标签的样式：</p>
+            <p>
+                <i class="custom-i">这是一个自定义样式的斜体文本</i>
+            </p>
+            
+            <style>
+                .custom-i {
+                    color: purple;
+                    font-style: italic;
+                    font-weight: bold;
+                }
+            </style>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;style&gt;
+    .custom-i {
+        color: purple;
+        font-style: italic;
+        font-weight: bold;
+    }
+&lt;/style&gt;
+
+&lt;p&gt;
+    &lt;i class="custom-i"&gt;这是一个自定义样式的斜体文本&lt;/i&gt;
+&lt;/p&gt;
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

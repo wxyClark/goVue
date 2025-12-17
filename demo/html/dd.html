@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 定义描述标签 (dd) - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .tag-section {
+            margin-bottom: 2rem;
+        }
+        .tag-section h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        .tag-section h2 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 0.5rem;
+        }
+        .tag-section h3 {
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem;
+            color: #444;
+        }
+        .example {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .example pre {
+            background-color: #f1f1f1;
+            padding: 0.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .example code {
+            background-color: #f1f1f1;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .tag-desc {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .usage-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .usage-note h4 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+        .custom-dt {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        .custom-dd {
+            color: #555;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .nested-dl {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .nested-dt {
+            font-weight: 600;
+            color: #34495e;
+        }
+        .nested-dd {
+            color: #666;
+            margin-left: 1rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html" class="active">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="tag-section">
+            <h1>HTML 定义描述标签 (dd)</h1>
+            
+            <div class="tag-desc">
+                <p><code>&lt;dd&gt;</code> 标签用于在定义列表中提供术语（<code>&lt;dt&gt;</code>）的描述或定义，与 <code>&lt;dl&gt;</code> 和 <code>&lt;dt&gt;</code> 标签配合使用。</p>
+                <p>它用于解释或描述前面的 <code>&lt;dt&gt;</code> 元素中定义的术语，通常会被浏览器自动缩进显示。</p>
+            </div>
+
+            <h2>基本语法</h2>
+            <div class="example">
+                <pre>&lt;dl&gt;
+    &lt;dt&gt;术语&lt;/dt&gt;
+    &lt;dd&gt;术语的定义或描述&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+            </div>
+
+            <h2>使用示例</h2>
+            
+            <h3>示例1：基本使用</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;dl&gt;
+    &lt;dt&gt;HTTP&lt;/dt&gt;
+    &lt;dd&gt;超文本传输协议，用于在Web浏览器和服务器之间传输数据。&lt;/dd&gt;
+    
+    &lt;dt&gt;HTTPS&lt;/dt&gt;
+    &lt;dd&gt;安全的HTTP协议，通过SSL/TLS加密数据传输。&lt;/dd&gt;
+    
+    &lt;dt&gt;URL&lt;/dt&gt;
+    &lt;dd&gt;统一资源定位符，用于标识互联网上的资源。&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                
+                <h4>效果：</h4>
+                <dl>
+                    <dt>HTTP</dt>
+                    <dd>超文本传输协议，用于在Web浏览器和服务器之间传输数据。</dd>
+                    
+                    <dt>HTTPS</dt>
+                    <dd>安全的HTTP协议，通过SSL/TLS加密数据传输。</dd>
+                    
+                    <dt>URL</dt>
+                    <dd>统一资源定位符，用于标识互联网上的资源。</dd>
+                </dl>
+            </div>
+
+            <h3>示例2：带样式的定义描述</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;style&gt;
+.custom-dt {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+.custom-dd {
+    color: #555;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+&lt;/style&gt;
+
+&lt;dl&gt;
+    &lt;dt class="custom-dt"&gt;数据库&lt;/dt&gt;
+    &lt;dd class="custom-dd"&gt;存储和管理数据的系统，用于高效地检索、更新和管理数据。&lt;/dd&gt;
+    
+    &lt;dt class="custom-dt"&gt;SQL&lt;/dt&gt;
+    &lt;dd class="custom-dd"&gt;结构化查询语言，用于与数据库进行交互和管理数据。&lt;/dd&gt;
+    
+    &lt;dt class="custom-dt"&gt;NoSQL&lt;/dt&gt;
+    &lt;dd class="custom-dd"&gt;非关系型数据库，用于处理大量非结构化或半结构化数据。&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                
+                <h4>效果：</h4>
+                <dl>
+                    <dt class="custom-dt">数据库</dt>
+                    <dd class="custom-dd">存储和管理数据的系统，用于高效地检索、更新和管理数据。</dd>
+                    
+                    <dt class="custom-dt">SQL</dt>
+                    <dd class="custom-dd">结构化查询语言，用于与数据库进行交互和管理数据。</dd>
+                    
+                    <dt class="custom-dt">NoSQL</dt>
+                    <dd class="custom-dd">非关系型数据库，用于处理大量非结构化或半结构化数据。</dd>
+                </dl>
+            </div>
+
+            <h3>示例3：一个术语多个描述</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;dl&gt;
+    &lt;dt&gt;PHP的特点&lt;/dt&gt;
+    &lt;dd&gt;开源免费，可以自由下载和使用。&lt;/dd&gt;
+    &lt;dd&gt;语法简单，易于学习和使用。&lt;/dd&gt;
+    &lt;dd&gt;支持多种数据库和操作系统。&lt;/dd&gt;
+    &lt;dd&gt;可以嵌入HTML中，方便开发Web应用。&lt;/dd&gt;
+    
+    &lt;dt&gt;CSS的功能&lt;/dt&gt;
+    &lt;dd&gt;控制网页的布局和排版。&lt;/dd&gt;
+    &lt;dd&gt;设置字体、颜色和背景样式。&lt;/dd&gt;
+    &lt;dd&gt;实现响应式设计，适配不同设备。&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                
+                <h4>效果：</h4>
+                <dl>
+                    <dt>PHP的特点</dt>
+                    <dd>开源免费，可以自由下载和使用。</dd>
+                    <dd>语法简单，易于学习和使用。</dd>
+                    <dd>支持多种数据库和操作系统。</dd>
+                    <dd>可以嵌入HTML中，方便开发Web应用。</dd>
+                    
+                    <dt>CSS的功能</dt>
+                    <dd>控制网页的布局和排版。</dd>
+                    <dd>设置字体、颜色和背景样式。</dd>
+                    <dd>实现响应式设计，适配不同设备。</dd>
+                </dl>
+            </div>
+
+            <h3>示例4：嵌套定义列表</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;style&gt;
+.nested-dl {
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.nested-dt {
+    font-weight: 600;
+    color: #34495e;
+}
+.nested-dd {
+    color: #666;
+    margin-left: 1rem;
+}
+&lt;/style&gt;
+
+&lt;dl&gt;
+    &lt;dt&gt;服务器&lt;/dt&gt;
+    &lt;dd&gt;
+        提供服务的计算机系统或程序。
+        &lt;dl class="nested-dl"&gt;
+            &lt;dt class="nested-dt"&gt;Web服务器&lt;/dt&gt;
+            &lt;dd class="nested-dd"&gt;处理HTTP请求并返回网页内容。&lt;/dd&gt;
+            
+            &lt;dt class="nested-dt"&gt;应用服务器&lt;/dt&gt;
+            &lt;dd class="nested-dd"&gt;运行Web应用程序逻辑。&lt;/dd&gt;
+            
+            &lt;dt class="nested-dt"&gt;数据库服务器&lt;/dt&gt;
+            &lt;dd class="nested-dd"&gt;管理数据库并处理数据查询。&lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                
+                <h4>效果：</h4>
+                <dl>
+                    <dt>服务器</dt>
+                    <dd>
+                        提供服务的计算机系统或程序。
+                        <dl class="nested-dl">
+                            <dt class="nested-dt">Web服务器</dt>
+                            <dd class="nested-dd">处理HTTP请求并返回网页内容。</dd>
+                            
+                            <dt class="nested-dt">应用服务器</dt>
+                            <dd class="nested-dd">运行Web应用程序逻辑。</dd>
+                            
+                            <dt class="nested-dt">数据库服务器</dt>
+                            <dd class="nested-dd">管理数据库并处理数据查询。</dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
+
+            <h3>示例5：与其他标签结合使用</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;dl&gt;
+    &lt;dt&gt;前端技术栈&lt;/dt&gt;
+    &lt;dd&gt;
+        <strong>HTML</strong>：创建网页结构<br>
+        <strong>CSS</strong>：设计网页样式<br>
+        <strong>JavaScript</strong>：实现网页交互
+    &lt;/dd&gt;
+    
+    &lt;dt&gt;后端技术栈&lt;/dt&gt;
+    &lt;dd&gt;
+        <strong>PHP</strong>：服务器端脚本语言<br>
+        <strong>Node.js</strong>：基于JavaScript的服务器环境<br>
+        <strong>Python</strong>：通用编程语言
+    &lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                
+                <h4>效果：</h4>
+                <dl>
+                    <dt>前端技术栈</dt>
+                    <dd>
+                        <strong>HTML</strong>：创建网页结构<br>
+                        <strong>CSS</strong>：设计网页样式<br>
+                        <strong>JavaScript</strong>：实现网页交互
+                    </dd>
+                    
+                    <dt>后端技术栈</dt>
+                    <dd>
+                        <strong>PHP</strong>：服务器端脚本语言<br>
+                        <strong>Node.js</strong>：基于JavaScript的服务器环境<br>
+                        <strong>Python</strong>：通用编程语言
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="usage-note">
+                <h4>使用注意事项</h4>
+                <ul>
+                    <li><strong>语义化意义：</strong><code>&lt;dd&gt;</code> 标签具有明确的语义，用于提供术语的定义或描述，有助于搜索引擎和辅助技术理解内容结构。</li>
+                    <li><strong>正确嵌套：</strong><code>&lt;dd&gt;</code> 只能作为 <code>&lt;dl&gt;</code> 标签的直接子元素，且通常紧跟在 <code>&lt;dt&gt;</code> 元素之后。</li>
+                    <li><strong>多个描述：</strong>一个 <code>&lt;dt&gt;</code> 元素可以对应多个 <code>&lt;dd&gt;</code> 元素，表示一个术语有多个定义或描述。</li>
+                    <li><strong>默认样式：</strong>浏览器通常会对 <code>&lt;dd&gt;</code> 元素应用左缩进样式，这有助于视觉上区分术语和描述。</li>
+                    <li><strong>自定义样式：</strong>可以使用CSS自定义 <code>&lt;dd&gt;</code> 元素的外观，包括缩进、字体、颜色、背景等。</li>
+                    <li><strong>内容丰富性：</strong><code>&lt;dd&gt;</code> 元素内可以包含各种HTML内容，如文本、链接、图片、列表等。</li>
+                </ul>
+            </div>
+
+            <h2>浏览器支持</h2>
+            <div class="tag-desc">
+                <p>所有现代浏览器都支持 <code>&lt;dd&gt;</code> 标签：</p>
+                <ul>
+                    <li>Chrome (所有版本)</li>
+                    <li>Firefox (所有版本)</li>
+                    <li>Safari (所有版本)</li>
+                    <li>Edge (所有版本)</li>
+                    <li>Opera (所有版本)</li>
+                </ul>
+            </div>
+
+            <h2>与其他标签的关系</h2>
+            <div class="tag-desc">
+                <p><code>&lt;dd&gt;</code> 标签通常与以下标签一起使用：</p>
+                <ul>
+                    <li><code>&lt;dl&gt;</code>：定义列表容器</li>
+                    <li><code>&lt;dt&gt;</code>：定义列表中的术语</li>
+                </ul>
+                <p>这三个标签共同构成了完整的定义列表结构，用于展示术语-定义的对应关系。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

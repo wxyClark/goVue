@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML内联容器 - span</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        .content-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .code {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+        }
+        
+        /* 示例样式 */
+        .highlight {
+            background-color: yellow;
+            padding: 0 4px;
+        }
+        
+        .important {
+            color: red;
+            font-weight: bold;
+        }
+        
+        .warning {
+            color: orange;
+            font-weight: bold;
+        }
+        
+        .info {
+            color: blue;
+            font-style: italic;
+        }
+        
+        .special-text {
+            font-size: 1.2rem;
+            font-family: 'Courier New', monospace;
+            color: purple;
+        }
+        
+        .underline {
+            text-decoration: underline;
+        }
+        
+        .strikethrough {
+            text-decoration: line-through;
+        }
+        
+        .super {
+            vertical-align: super;
+            font-size: 0.75rem;
+        }
+        
+        .sub {
+            vertical-align: sub;
+            font-size: 0.75rem;
+        }
+        
+        .inline-box {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            margin: 0 5px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        
+        .shadow-text {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html" class="active">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>HTML内联容器 (span)</h2>
+            <p>span标签是HTML中最常用的内联容器元素，用于在行内文本中应用特定样式或进行分组，本身不具有语义。</p>
+            
+            <div class="example">
+                <h3>基本span示例：</h3>
+                <p>span标签可以在段落中对部分文本进行样式化：</p>
+                <p>
+                    这是一个普通的段落，其中包含了<span class="highlight">高亮显示的文本</span>。
+                </p>
+                <p>
+                    这是另一个段落，其中有<span class="important">重要内容</span>和<span class="info">提示信息</span>。
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    这是一个普通的段落，其中包含了&lt;span class="highlight"&gt;高亮显示的文本&lt;/span&gt;。
+&lt;/p&gt;
+
+&lt;p&gt;
+    这是另一个段落，其中有&lt;span class="important"&gt;重要内容&lt;/span&gt;和&lt;span class="info"&gt;提示信息&lt;/span&gt;。
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>文本样式化：</h3>
+                <p>使用span标签可以实现各种文本样式效果：</p>
+                <p>
+                    <span class="special-text">特殊格式文本</span> | 
+                    <span class="underline">下划线文本</span> | 
+                    <span class="strikethrough">删除线文本</span> | 
+                    <span class="super">上标文本</span> | 
+                    <span class="sub">下标文本</span>
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    &lt;span class="special-text"&gt;特殊格式文本&lt;/span&gt; | 
+    &lt;span class="underline"&gt;下划线文本&lt;/span&gt; | 
+    &lt;span class="strikethrough"&gt;删除线文本&lt;/span&gt; | 
+    &lt;span class="super"&gt;上标文本&lt;/span&gt; | 
+    &lt;span class="sub"&gt;下标文本&lt;/span&gt;
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>语义化分组：</h3>
+                <p>span标签可以用于对相关的行内元素进行分组，便于JavaScript操作：</p>
+                <p>
+                    <span class="inline-box">A</span>
+                    <span class="inline-box">B</span>
+                    <span class="inline-box">C</span>
+                    <span class="inline-box">D</span>
+                </p>
+                <p>
+                    价格：<span class="price">¥99.99</span>
+                    折扣：<span class="discount">-20%</span>
+                    最终价：<span class="final-price">¥79.99</span>
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    &lt;span class="inline-box"&gt;A&lt;/span&gt;
+    &lt;span class="inline-box"&gt;B&lt;/span&gt;
+    &lt;span class="inline-box"&gt;C&lt;/span&gt;
+    &lt;span class="inline-box"&gt;D&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+    价格：&lt;span class="price"&gt;¥99.99&lt;/span&gt;
+    折扣：&lt;span class="discount"&gt;-20%&lt;/span&gt;
+    最终价：&lt;span class="final-price"&gt;¥79.99&lt;/span&gt;
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>高级视觉效果：</h3>
+                <p>结合CSS可以实现更复杂的视觉效果：</p>
+                <p>
+                    <span class="gradient-text">渐变颜色文本</span> - 使用CSS渐变实现
+                </p>
+                <p>
+                    <span class="shadow-text">带阴影的文本</span> - 使用text-shadow属性
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    &lt;span class="gradient-text"&gt;渐变颜色文本&lt;/span&gt; - 使用CSS渐变实现
+&lt;/p&gt;
+
+&lt;p&gt;
+    &lt;span class="shadow-text"&gt;带阴影的文本&lt;/span&gt; - 使用text-shadow属性
+&lt;/p&gt;
+
+/* CSS样式 */
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.shadow-text {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+}
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>span与表单结合：</h3>
+                <p>span标签可以用于表单中的提示文本或状态显示：</p>
+                <div style="padding: 1rem;">
+                    <label for="username">用户名：</label>
+                    <input type="text" id="username" name="username">
+                    <span style="color: green; margin-left: 10px;">✓ 可用</span>
+                </div>
+                <div style="padding: 1rem;">
+                    <label for="email">邮箱：</label>
+                    <input type="email" id="email" name="email" value="invalid-email">
+                    <span style="color: red; margin-left: 10px;">✗ 请输入有效的邮箱地址</span>
+                </div>
+                
+                <div class="code">
+&lt;div&gt;
+    &lt;label for="username"&gt;用户名：&lt;/label&gt;
+    &lt;input type="text" id="username" name="username"&gt;
+    &lt;span style="color: green; margin-left: 10px;"&gt;✓ 可用&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;label for="email"&gt;邮箱：&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" value="invalid-email"&gt;
+    &lt;span style="color: red; margin-left: 10px;"&gt;✗ 请输入有效的邮箱地址&lt;/span&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>span与JavaScript结合：</h3>
+                <p>span标签可以作为JavaScript的操作目标：</p>
+                <div style="padding: 1rem;">
+                    <button onclick="toggleHighlight()">切换高亮</button>
+                    <button onclick="changeText()">修改文本</button>
+                    <p style="margin-top: 10px;">
+                        这是一段<span id="js-target" style="background-color: yellow;">可以被JavaScript操作的文本</span>。
+                    </p>
+                </div>
+                
+                <div class="code">
+&lt;div&gt;
+    &lt;button onclick="toggleHighlight()"&gt;切换高亮&lt;/button&gt;
+    &lt;button onclick="changeText()"&gt;修改文本&lt;/button&gt;
+    &lt;p style="margin-top: 10px;"&gt;
+        这是一段&lt;span id="js-target" style="background-color: yellow;"&gt;可以被JavaScript操作的文本&lt;/span&gt;。
+    &lt;/p&gt;
+&lt;/div&gt;
+
+<script>
+function toggleHighlight() {
+    const span = document.getElementById('js-target');
+    span.style.backgroundColor = span.style.backgroundColor === 'yellow' ? 'transparent' : 'yellow';
+}
+
+function changeText() {
+    const span = document.getElementById('js-target');
+    span.textContent = '文本已被JavaScript修改！';
+}
+</script>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>span与其他标签嵌套：</h3>
+                <p>span标签可以与其他内联标签嵌套使用：</p>
+                <p>
+                    这是一段包含<span class="highlight">
+                        <strong>加粗高亮</strong>和<em>斜体高亮</em>的文本
+                    </span>。
+                </p>
+                <p>
+                    <a href="#">链接中的<span class="important">重要部分</span></a>
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    这是一段包含&lt;span class="highlight"&gt;
+        &lt;strong&gt;加粗高亮&lt;/strong&gt;和&lt;em&gt;斜体高亮&lt;/em&gt;的文本
+    &lt;/span&gt;。
+&lt;/p&gt;
+
+&lt;p&gt;
+    &lt;a href="#"&gt;链接中的&lt;span class="important"&gt;重要部分&lt;/span&gt;&lt;/a&gt;
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>span与div的区别：</h3>
+                <p>span是内联元素，而div是块级元素：</p>
+                <div style="border: 1px solid #ddd; padding: 10px; margin: 10px 0;">
+                    <h4>div元素（块级）：</h4>
+                    <div style="background-color: #f0f0f0; padding: 10px;">
+                        这是一个div元素，它会占据整行宽度，即使内容很短。
+                    </div>
+                    <div style="background-color: #e0e0e0; padding: 10px;">
+                        这是另一个div元素，它会另起一行。
+                    </div>
+                </div>
+                
+                <div style="border: 1px solid #ddd; padding: 10px; margin: 10px 0;">
+                    <h4>span元素（内联）：</h4>
+                    <p>
+                        这是<span style="background-color: #f0f0f0; padding: 5px;">一个span元素</span>，
+                        <span style="background-color: #e0e0e0; padding: 5px;">它只占据内容宽度</span>，
+                        <span style="background-color: #d0d0d0; padding: 5px;">不会另起一行</span>。
+                    </p>
+                </div>
+                
+                <div class="code">
+&lt;!-- div元素（块级） --&gt;
+&lt;div style="background-color: #f0f0f0; padding: 10px;"&gt;
+    这是一个div元素，它会占据整行宽度。
+&lt;/div&gt;
+
+&lt;!-- span元素（内联） --&gt;
+&lt;p&gt;
+    这是&lt;span style="background-color: #f0f0f0; padding: 5px;"&gt;一个span元素&lt;/span&gt;，
+    &lt;span style="background-color: #e0e0e0; padding: 5px;"&gt;它只占据内容宽度&lt;/span&gt;。
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>span的替代方案：</h3>
+                <p>对于有特定语义的内容，应使用语义化的内联标签：</p>
+                <div style="padding: 1rem;">
+                    <p><strong>strong</strong> - 表示重要性（默认加粗）</p>
+                    <p><em>em</em> - 表示强调（默认斜体）</p>
+                    <p><code>code</code> - 表示代码</p>
+                    <p><kbd>kbd</kbd> - 表示键盘输入</p>
+                    <p><mark>mark</mark> - 表示高亮（语义化的span.highlight）</p>
+                    <p><time>2025-12-17</time> - 表示时间</p>
+                    <p><abbr title="HyperText Markup Language">HTML</abbr> - 表示缩写</p>
+                </div>
+                
+                <div class="code">
+&lt;p&gt;&lt;strong&gt;strong&lt;/strong&gt; - 表示重要性（默认加粗）&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;em&lt;/em&gt; - 表示强调（默认斜体）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;code&lt;/code&gt; - 表示代码&lt;/p&gt;
+&lt;p&gt;&lt;kbd&gt;kbd&lt;/kbd&gt; - 表示键盘输入&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;mark&lt;/mark&gt; - 表示高亮（语义化的span.highlight）&lt;/p&gt;
+&lt;p&gt;&lt;time&gt;2025-12-17&lt;/time&gt; - 表示时间&lt;/p&gt;
+&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; - 表示缩写&lt;/p&gt;
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleHighlight() {
+            const span = document.getElementById('js-target');
+            span.style.backgroundColor = span.style.backgroundColor === 'yellow' ? 'transparent' : 'yellow';
+        }
+        
+        function changeText() {
+            const span = document.getElementById('js-target');
+            span.textContent = '文本已被JavaScript修改！';
+        }
+    </script>
+</body>
+</html>

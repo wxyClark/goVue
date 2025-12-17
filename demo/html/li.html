@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表项标签 (li) - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .example-section {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .example-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example-section h3 {
+            color: #333;
+            margin: 1rem 0 0.5rem 0;
+        }
+        .code-example {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+        .custom-li {
+            background-color: #e8f5e8;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+        }
+        .important-li {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        .completed-li {
+            text-decoration: line-through;
+            color: #757575;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>列表项标签 (li)</h1>
+        
+        <div class="example-section">
+            <h2>基本用法</h2>
+            <p><strong>li标签</strong>用于定义列表中的项目，必须嵌套在ul（无序列表）或ol（有序列表）中。</p>
+            
+            <h3>在无序列表中使用</h3>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+            
+            <h3>在有序列表中使用</h3>
+            <ol>
+                <li>准备HTML结构</li>
+                <li>添加CSS样式</li>
+                <li>编写JavaScript交互</li>
+            </ol>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;!-- 在无序列表中 --&gt;
+&lt;ul&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- 在有序列表中 --&gt;
+&lt;ol&gt;
+    &lt;li&gt;准备HTML结构&lt;/li&gt;
+    &lt;li&gt;添加CSS样式&lt;/li&gt;
+    &lt;li&gt;编写JavaScript交互&lt;/li&gt;
+&lt;/ol&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>自定义列表项样式</h2>
+            <p>可以通过CSS为列表项添加自定义样式：</p>
+            
+            <h3>带背景色的列表项</h3>
+            <ul>
+                <li class="custom-li">自定义背景色</li>
+                <li class="custom-li">美化列表项</li>
+            </ul>
+            
+            <h3>重要列表项</h3>
+            <ol>
+                <li>第一步</li>
+                <li class="important-li">重要的第二步</li>
+                <li>第三步</li>
+            </ol>
+            
+            <h3>已完成的列表项</h3>
+            <ul>
+                <li class="completed-li">学习HTML</li>
+                <li class="completed-li">学习CSS</li>
+                <li>学习JavaScript</li>
+            </ul>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;!-- 带背景色的列表项 --&gt;
+&lt;ul&gt;
+    &lt;li class="custom-li"&gt;自定义背景色&lt;/li&gt;
+    &lt;li class="custom-li"&gt;美化列表项&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- 重要列表项 --&gt;
+&lt;ol&gt;
+    &lt;li&gt;第一步&lt;/li&gt;
+    &lt;li class="important-li"&gt;重要的第二步&lt;/li&gt;
+    &lt;li&gt;第三步&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;style&gt;
+    .custom-li {
+        background-color: #e8f5e8;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+    }
+    .important-li {
+        font-weight: bold;
+        color: #d32f2f;
+    }
+&lt;/style&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>列表项中的复杂内容</h2>
+            <p>列表项可以包含各种HTML内容，如段落、链接、图片等：</p>
+            
+            <ul>
+                <li>
+                    <h4>HTML</h4>
+                    <p>超文本标记语言，用于创建网页结构</p>
+                    <a href="html.html">了解更多</a>
+                </li>
+                <li>
+                    <h4>CSS</h4>
+                    <p>层叠样式表，用于设计网页外观</p>
+                    <a href="css.html">了解更多</a>
+                </li>
+            </ul>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;ul&gt;
+    &lt;li&gt;
+        &lt;h4&gt;HTML&lt;/h4&gt;
+        &lt;p&gt;超文本标记语言，用于创建网页结构&lt;/p&gt;
+        &lt;a href="html.html"&gt;了解更多&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;h4&gt;CSS&lt;/h4&gt;
+        &lt;p&gt;层叠样式表，用于设计网页外观&lt;/p&gt;
+        &lt;a href="css.html"&gt;了解更多&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>嵌套列表中的列表项</h2>
+            <p>列表项可以包含嵌套列表，创建层级结构：</p>
+            
+            <ul>
+                <li>前端开发
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS
+                            <ul>
+                                <li>Flexbox</li>
+                                <li>Grid</li>
+                            </ul>
+                        </li>
+                        <li>JavaScript</li>
+                    </ul>
+                </li>
+                <li>后端开发
+                    <ul>
+                        <li>PHP</li>
+                        <li>Python</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;ul&gt;
+    &lt;li&gt;前端开发
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS
+                &lt;ul&gt;
+                    &lt;li&gt;Flexbox&lt;/li&gt;
+                    &lt;li&gt;Grid&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;后端开发
+        &lt;ul&gt;
+            &lt;li&gt;PHP&lt;/li&gt;
+            &lt;li&gt;Python&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>列表项的value属性</h2>
+            <p>在有序列表中，可以使用<code>value</code>属性为列表项指定自定义编号：</p>
+            
+            <ol>
+                <li>第一步</li>
+                <li value="5">第五步</li>
+                <li>第六步</li>
+                <li value="10">第十步</li>
+            </ol>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;ol&gt;
+    &lt;li&gt;第一步&lt;/li&gt;
+    &lt;li value="5"&gt;第五步&lt;/li&gt;
+    &lt;li&gt;第六步&lt;/li&gt;
+    &lt;li value="10"&gt;第十步&lt;/li&gt;
+&lt;/ol&gt;
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

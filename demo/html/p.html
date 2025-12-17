@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML段落标签 - p</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        .content-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .code {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 0 3px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html" class="active">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>HTML段落标签 (p)</h2>
+            <p>段落标签用于定义HTML文档中的段落，浏览器会自动在段落前后添加空白。</p>
+            
+            <div class="example">
+                <h3>基本段落示例：</h3>
+                <p>这是一个基本的段落。段落标签会自动在段落前后添加空白，使文本结构更加清晰易读。</p>
+                <p>这是第二个段落。每个p标签都会创建一个新的段落，浏览器会自动处理段落之间的间距。</p>
+                
+                <div class="code">
+&lt;p&gt;这是一个基本的段落。段落标签会自动在段落前后添加空白，使文本结构更加清晰易读。&lt;/p&gt;
+&lt;p&gt;这是第二个段落。每个p标签都会创建一个新的段落，浏览器会自动处理段落之间的间距。&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>段落中包含其他元素：</h3>
+                <p>段落中可以包含<a href="a.html">链接</a>、<strong>强调文本</strong>、<em>斜体文本</em>等内联元素。</p>
+                <p>段落中还可以包含<span class="highlight">高亮文本</span>或者<small>小号文本</small>等格式化元素。</p>
+                
+                <div class="code">
+&lt;p&gt;段落中可以包含&lt;a href="a.html"&gt;链接&lt;/a&gt;、&lt;strong&gt;强调文本&lt;/strong&gt;、&lt;em&gt;斜体文本&lt;/em&gt;等内联元素。&lt;/p&gt;
+&lt;p&gt;段落中还可以包含&lt;span class="highlight"&gt;高亮文本&lt;/span&gt;或者&lt;small&gt;小号文本&lt;/small&gt;等格式化元素。&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>段落的使用注意事项：</h3>
+                <ul>
+                    <li>不要在段落内部使用块级元素，如div、h1-h6等</li>
+                    <li>如果需要在段落内部强制换行，可以使用<br>标签</li>
+                    <li>段落标签是块级元素，会自动占据整行宽度</li>
+                    <li>使用CSS可以控制段落的字体、颜色、行高、间距等样式</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <h3>使用CSS样式化段落：</h3>
+                <p style="color: blue; font-size: 1.2rem; line-height: 1.8;">这是一个使用内联CSS样式化的段落，设置了蓝色、1.2rem字号和1.8倍行高。</p>
+                
+                <div class="code">
+&lt;p style="color: blue; font-size: 1.2rem; line-height: 1.8;"&gt;
+这是一个使用内联CSS样式化的段落，设置了蓝色、1.2rem字号和1.8倍行高。
+&lt;/p&gt;
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

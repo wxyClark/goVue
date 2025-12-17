@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML图片标签 - img</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        .content-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .code {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+            align-items: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+        }
+        .image-border {
+            border: 3px solid #4CAF50;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html" class="active">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>HTML图片标签 (img)</h2>
+            <p>图片标签用于在网页中嵌入图像，是最常用的多媒体元素之一。</p>
+            
+            <div class="example">
+                <h3>基本图片示例：</h3>
+                <p>使用src属性指定图片源地址：</p>
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/300x200" alt="示例图片">
+                </div>
+                
+                <div class="code">
+&lt;img src="https://via.placeholder.com/300x200" alt="示例图片"&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>替代文本 (alt属性)：</h3>
+                <p>alt属性提供图片的替代文本，当图片无法加载时显示，同时提升可访问性：</p>
+                <div class="image-container">
+                    <img src="not-found.jpg" alt="这是一个无法加载的示例图片">
+                    <img src="https://via.placeholder.com/200x150" alt="自然风光图片">
+                </div>
+                
+                <div class="code">
+&lt;img src="not-found.jpg" alt="这是一个无法加载的示例图片"&gt;
+&lt;img src="https://via.placeholder.com/200x150" alt="自然风光图片"&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>尺寸设置 (width/height)：</h3>
+                <p>可以使用width和height属性设置图片尺寸：</p>
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/400x300" alt="默认尺寸" width="400" height="300">
+                    <img src="https://via.placeholder.com/400x300" alt="50%尺寸" width="200" height="150">
+                </div>
+                
+                <div class="code">
+&lt;img src="https://via.placeholder.com/400x300" alt="默认尺寸" width="400" height="300"&gt;
+&lt;img src="https://via.placeholder.com/400x300" alt="50%尺寸" width="200" height="150"&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>图片样式化：</h3>
+                <p>可以使用CSS为图片添加边框、阴影、圆角等样式：</p>
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/200x200" alt="无边框" style="margin: 10px;">
+                    <img src="https://via.placeholder.com/200x200" alt="有边框" style="border: 2px solid #3498db; border-radius: 8px; margin: 10px;">
+                    <img src="https://via.placeholder.com/200x200" alt="阴影效果" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); margin: 10px;">
+                </div>
+                
+                <div class="code">
+&lt;img src="https://via.placeholder.com/200x200" alt="无边框" style="margin: 10px;"&gt;
+&lt;img src="https://via.placeholder.com/200x200" alt="有边框" style="border: 2px solid #3498db; border-radius: 8px; margin: 10px;"&gt;
+&lt;img src="https://via.placeholder.com/200x200" alt="阴影效果" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); margin: 10px;"&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>响应式图片：</h3>
+                <p>响应式图片会根据容器大小自动调整尺寸：</p>
+                <div class="image-container" style="width: 100%;">
+                    <img src="https://via.placeholder.com/800x400" alt="响应式图片" class="responsive-image">
+                </div>
+                
+                <div class="code">
+&lt;img src="https://via.placeholder.com/800x400" alt="响应式图片" class="responsive-image"&gt;
+
+/* CSS样式 */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+}
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>图片作为链接：</h3>
+                <p>图片可以作为链接的内容：</p>
+                <div class="image-container">
+                    <a href="index.html">
+                        <img src="https://via.placeholder.com/150x100" alt="点击返回首页">
+                    </a>
+                </div>
+                
+                <div class="code">
+&lt;a href="index.html"&gt;
+    &lt;img src="https://via.placeholder.com/150x100" alt="点击返回首页"&gt;
+&lt;/a&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>图片对齐方式：</h3>
+                <p>可以使用vertical-align属性设置图片的垂直对齐方式：</p>
+                <div class="image-container" style="flex-direction: column; align-items: flex-start;">
+                    <p>
+                        <img src="https://via.placeholder.com/50x50" alt="顶部对齐" style="vertical-align: top; margin-right: 10px;">
+                        这是顶部对齐的图片
+                    </p>
+                    <p>
+                        <img src="https://via.placeholder.com/50x50" alt="中间对齐" style="vertical-align: middle; margin-right: 10px;">
+                        这是中间对齐的图片
+                    </p>
+                    <p>
+                        <img src="https://via.placeholder.com/50x50" alt="底部对齐" style="vertical-align: bottom; margin-right: 10px;">
+                        这是底部对齐的图片
+                    </p>
+                </div>
+                
+                <div class="code">
+&lt;p&gt;
+    &lt;img src="https://via.placeholder.com/50x50" alt="顶部对齐" style="vertical-align: top; margin-right: 10px;"&gt;
+    这是顶部对齐的图片
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;img src="https://via.placeholder.com/50x50" alt="中间对齐" style="vertical-align: middle; margin-right: 10px;"&gt;
+    这是中间对齐的图片
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;img src="https://via.placeholder.com/50x50" alt="底部对齐" style="vertical-align: bottom; margin-right: 10px;"&gt;
+    这是底部对齐的图片
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>懒加载图片：</h3>
+                <p>使用loading属性实现图片懒加载，提高页面加载速度：</p>
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/300x200" alt="懒加载图片" loading="lazy">
+                    <img src="https://via.placeholder.com/300x200" alt="立即加载图片" loading="eager">
+                </div>
+                
+                <div class="code">
+&lt;img src="https://via.placeholder.com/300x200" alt="懒加载图片" loading="lazy"&gt;
+&lt;img src="https://via.placeholder.com/300x200" alt="立即加载图片" loading="eager"&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>图片格式和质量：</h3>
+                <p>不同的图片格式适用于不同场景：</p>
+                <div class="image-container">
+                    <div>
+                        <p>JPEG格式（适合照片）：</p>
+                        <img src="https://via.placeholder.com/200x150/jpeg" alt="JPEG格式" style="border: 1px solid #ddd;">
+                    </div>
+                    <div>
+                        <p>PNG格式（适合图标、透明背景）：</p>
+                        <img src="https://via.placeholder.com/200x150/png" alt="PNG格式" style="border: 1px solid #ddd;">
+                    </div>
+                    <div>
+                        <p>SVG格式（矢量图形）：</p>
+                        <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150'%3E%3Crect width='200' height='150' fill='%234CAF50'/%3E%3Ccircle cx='100' cy='75' r='50' fill='white'/%3E%3Ctext x='100' y='85' font-family='Arial' font-size='20' text-anchor='middle' fill='%234CAF50'%3ESVG%3C/text%3E%3C/svg%3E" alt="SVG格式">
+                    </div>
+                </div>
+                
+                <div class="code">
+&lt;!-- JPEG格式 --&gt;
+&lt;img src="photo.jpg" alt="照片"&gt;
+
+&lt;!-- PNG格式 --&gt;
+&lt;img src="logo.png" alt="公司标志"&gt;
+
+&lt;!-- SVG格式 --&gt;
+&lt;img src="icon.svg" alt="图标"&gt;
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

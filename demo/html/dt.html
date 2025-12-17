@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 定义术语标签 (dt) - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .tag-section {
+            margin-bottom: 2rem;
+        }
+        .tag-section h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        .tag-section h2 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 0.5rem;
+        }
+        .tag-section h3 {
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem;
+            color: #444;
+        }
+        .example {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .example pre {
+            background-color: #f1f1f1;
+            padding: 0.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .example code {
+            background-color: #f1f1f1;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .tag-desc {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .usage-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .usage-note h4 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+        .custom-dt {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        .custom-dd {
+            color: #555;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html" class="active">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="tag-section">
+            <h1>HTML 定义术语标签 (dt)</h1>
+            
+            <div class="tag-desc">
+                <p><code>&lt;dt&gt;</code> 标签用于在定义列表中定义术语（definition term），与 <code>&lt;dl&gt;</code> 和 <code>&lt;dd&gt;</code> 标签配合使用。</p>
+                <p>它用于指定要解释或定义的术语，通常与一个或多个 <code>&lt;dd&gt;</code> 标签（定义描述）关联。</p>
+            </div>
+
+            <h2>基本语法</h2>
+            <div class="example">
+                <pre>&lt;dl&gt;
+    &lt;dt&gt;术语1&lt;/dt&gt;
+    &lt;dd&gt;术语1的定义或描述&lt;/dd&gt;
+    
+    &lt;dt&gt;术语2&lt;/dt&gt;
+    &lt;dd&gt;术语2的定义或描述&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+            </div>
+
+            <h2>使用示例</h2>
+            
+            <h3>示例1：基本使用</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;超文本标记语言，用于创建网页结构。&lt;/dd&gt;
+    
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;层叠样式表，用于设计网页外观。&lt;/dd&gt;
+    
+    &lt;dt&gt;JavaScript&lt;/dt&gt;
+    &lt;dd&gt;脚本语言，用于添加网页交互功能。&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                
+                <h4>效果：</h4>
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>超文本标记语言，用于创建网页结构。</dd>
+                    
+                    <dt>CSS</dt>
+                    <dd>层叠样式表，用于设计网页外观。</dd>
+                    
+                    <dt>JavaScript</dt>
+                    <dd>脚本语言，用于添加网页交互功能。</dd>
+                </dl>
+            </div>
+
+            <h3>示例2：带样式的定义术语</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;style&gt;
+.custom-dt {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+.custom-dd {
+    color: #555;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+&lt;/style&gt;
+
+&lt;dl&gt;
+    &lt;dt class="custom-dt"&gt;前端开发&lt;/dt&gt;
+    &lt;dd class="custom-dd"&gt;负责构建用户可以直接看到和交互的网页部分。&lt;/dd&gt;
+    
+    &lt;dt class="custom-dt"&gt;后端开发&lt;/dt&gt;
+    &lt;dd class="custom-dd"&gt;负责处理服务器端逻辑、数据库交互和API开发。&lt;/dd&gt;
+    
+    &lt;dt class="custom-dt"&gt;全栈开发&lt;/dt&gt;
+    &lt;dd class="custom-dd"&gt;同时具备前端和后端开发能力的开发者。&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                
+                <h4>效果：</h4>
+                <dl>
+                    <dt class="custom-dt">前端开发</dt>
+                    <dd class="custom-dd">负责构建用户可以直接看到和交互的网页部分。</dd>
+                    
+                    <dt class="custom-dt">后端开发</dt>
+                    <dd class="custom-dd">负责处理服务器端逻辑、数据库交互和API开发。</dd>
+                    
+                    <dt class="custom-dt">全栈开发</dt>
+                    <dd class="custom-dd">同时具备前端和后端开发能力的开发者。</dd>
+                </dl>
+            </div>
+
+            <h3>示例3：一个术语多个描述</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;dl&gt;
+    &lt;dt&gt;PHP&lt;/dt&gt;
+    &lt;dd&gt;一种通用开源脚本语言。&lt;/dd&gt;
+    &lt;dd&gt;特别适合Web开发并可嵌入HTML中。&lt;/dd&gt;
+    &lt;dd&gt;最初由Rasmus Lerdorf在1995年创建。&lt;/dd&gt;
+    
+    &lt;dt&gt;Python&lt;/dt&gt;
+    &lt;dd&gt;一种解释型、面向对象、动态数据类型的高级程序设计语言。&lt;/dd&gt;
+    &lt;dd&gt;由Guido van Rossum于1989年底发明。&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                
+                <h4>效果：</h4>
+                <dl>
+                    <dt>PHP</dt>
+                    <dd>一种通用开源脚本语言。</dd>
+                    <dd>特别适合Web开发并可嵌入HTML中。</dd>
+                    <dd>最初由Rasmus Lerdorf在1995年创建。</dd>
+                    
+                    <dt>Python</dt>
+                    <dd>一种解释型、面向对象、动态数据类型的高级程序设计语言。</dd>
+                    <dd>由Guido van Rossum于1989年底发明。</dd>
+                </dl>
+            </div>
+
+            <h3>示例4：嵌套定义列表</h3>
+            <div class="example">
+                <h4>代码：</h4>
+                <pre>&lt;dl&gt;
+    &lt;dt&gt;Web开发&lt;/dt&gt;
+    &lt;dd&gt;
+        开发网站和Web应用的过程。
+        &lt;dl&gt;
+            &lt;dt&gt;前端开发&lt;/dt&gt;
+            &lt;dd&gt;处理用户界面和交互。&lt;/dd&gt;
+            
+            &lt;dt&gt;后端开发&lt;/dt&gt;
+            &lt;dd&gt;处理服务器逻辑和数据存储。&lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/dd&gt;
+    
+    &lt;dt&gt;移动开发&lt;/dt&gt;
+    &lt;dd&gt;
+        开发移动应用程序。
+        &lt;dl&gt;
+            &lt;dt&gt;原生开发&lt;/dt&gt;
+            &lt;dd&gt;使用平台特定语言开发。&lt;/dd&gt;
+            
+            &lt;dt&gt;跨平台开发&lt;/dt&gt;
+            &lt;dd&gt;使用通用语言开发多平台应用。&lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                
+                <h4>效果：</h4>
+                <dl>
+                    <dt>Web开发</dt>
+                    <dd>
+                        开发网站和Web应用的过程。
+                        <dl>
+                            <dt>前端开发</dt>
+                            <dd>处理用户界面和交互。</dd>
+                            
+                            <dt>后端开发</dt>
+                            <dd>处理服务器逻辑和数据存储。</dd>
+                        </dl>
+                    </dd>
+                    
+                    <dt>移动开发</dt>
+                    <dd>
+                        开发移动应用程序。
+                        <dl>
+                            <dt>原生开发</dt>
+                            <dd>使用平台特定语言开发。</dd>
+                            
+                            <dt>跨平台开发</dt>
+                            <dd>使用通用语言开发多平台应用。</dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="usage-note">
+                <h4>使用注意事项</h4>
+                <ul>
+                    <li><strong>语义化意义：</strong><code>&lt;dt&gt;</code> 标签具有明确的语义，用于定义术语，有助于搜索引擎和辅助技术理解内容结构。</li>
+                    <li><strong>嵌套使用：</strong><code>&lt;dt&gt;</code> 只能作为 <code>&lt;dl&gt;</code> 标签的直接子元素。</li>
+                    <li><strong>多个描述：</strong>一个 <code>&lt;dt&gt;</code> 可以对应多个 <code>&lt;dd&gt;</code> 元素，表示一个术语有多个定义或描述。</li>
+                    <li><strong>样式控制：</strong>默认情况下，浏览器会对 <code>&lt;dt&gt;</code> 应用粗体样式，但可以通过CSS自定义外观。</li>
+                    <li><strong>与其他列表的区别：</strong>定义列表（dl）与无序列表（ul）和有序列表（ol）不同，它用于术语-定义的对应关系。</li>
+                </ul>
+            </div>
+
+            <h2>浏览器支持</h2>
+            <div class="tag-desc">
+                <p>所有现代浏览器都支持 <code>&lt;dt&gt;</code> 标签：</p>
+                <ul>
+                    <li>Chrome (所有版本)</li>
+                    <li>Firefox (所有版本)</li>
+                    <li>Safari (所有版本)</li>
+                    <li>Edge (所有版本)</li>
+                    <li>Opera (所有版本)</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

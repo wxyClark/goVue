@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML强调标签 - strong</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        .content-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .code {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+        }
+        
+        /* 示例样式 */
+        .custom-strong {
+            font-weight: bold;
+            color: red;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html" class="active">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>HTML强调标签 (strong)</h2>
+            <p>strong标签用于表示重要、紧急或需要特别注意的内容，具有语义含义，默认显示为粗体。</p>
+            
+            <div class="example">
+                <h3>基本strong示例：</h3>
+                <p>
+                    请<strong>务必</strong>在提交表单前检查所有必填字段。
+                </p>
+                <p>
+                    此操作<strong>不可撤销</strong>，请谨慎操作。
+                </p>
+                <p>
+                    用户<strong>必须</strong>接受服务条款才能继续使用该功能。
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    请&lt;strong&gt;务必&lt;/strong&gt;在提交表单前检查所有必填字段。
+&lt;/p&gt;
+
+&lt;p&gt;
+    此操作&lt;strong&gt;不可撤销&lt;/strong&gt;，请谨慎操作。
+&lt;/p&gt;
+
+&lt;p&gt;
+    用户&lt;strong&gt;必须&lt;/strong&gt;接受服务条款才能继续使用该功能。
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>strong与其他标签结合：</h3>
+                <p>
+                    <strong>警告：</strong>请勿在<span style="color: red;">未保存</span>的情况下关闭浏览器窗口。
+                </p>
+                <p>
+                    <strong>提示：</strong>点击<a href="#">这里</a>查看详细教程。
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    &lt;strong&gt;警告：&lt;/strong&gt;请勿在&lt;span style="color: red;"&gt;未保存&lt;/span&gt;的情况下关闭浏览器窗口。
+&lt;/p&gt;
+
+&lt;p&gt;
+    &lt;strong&gt;提示：&lt;/strong&gt;点击&lt;a href="#"&gt;这里&lt;/a&gt;查看详细教程。
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>自定义strong样式：</h3>
+                <p>
+                    默认的strong标签：<strong>这是重要内容</strong>
+                </p>
+                <p>
+                    自定义样式的strong：<strong class="custom-strong">这是带红色的重要内容</strong>
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    默认的strong标签：&lt;strong&gt;这是重要内容&lt;/strong&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+    自定义样式的strong：&lt;strong class="custom-strong"&gt;这是带红色的重要内容&lt;/strong&gt;
+&lt;/p&gt;
+
+/* CSS样式 */
+.custom-strong {
+    font-weight: bold;
+    color: red;
+}
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>strong的语义含义：</h3>
+                <p>
+                    strong标签不仅仅是为了显示粗体，更重要的是它的语义。屏幕阅读器会用不同的方式读出strong内容，提高可访问性。
+                </p>
+                <p>
+                    例如，在无障碍环境中，屏幕阅读器可能会对strong内容使用不同的语调或语速来强调其重要性。
+                </p>
+                
+                <div class="code">
+&lt;!-- 语义化的用法（推荐） --&gt;
+&lt;p&gt;请&lt;strong&gt;立即</strong&gt;更新您的密码以确保账户安全。&lt;/p&gt;
+
+&lt;!-- 仅用于样式的用法（不推荐） --&gt;
+&lt;p&gt;请&lt;span style="font-weight: bold;"&gt;立即&lt;/span&gt;更新您的密码。&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>strong与b标签的区别：</h3>
+                <p>
+                    <strong>strong标签：</strong>具有语义含义，表示重要内容，默认显示为粗体。
+                </p>
+                <p>
+                    <b>b标签：</b>仅用于视觉上的粗体效果，没有语义含义。
+                </p>
+                <p>
+                    从语义化的角度出发，应该优先使用strong标签来表示重要内容，而不是b标签。
+                </p>
+                
+                <div class="code">
+&lt;!-- 语义化用法（推荐） --&gt;
+&lt;p&gt;此信息&lt;strong&gt;非常重要&lt;/strong&gt;，请仔细阅读。&lt;/p&gt;
+
+&lt;!-- 仅样式用法（不推荐） --&gt;
+&lt;p&gt;此信息&lt;b&gt;非常重要&lt;/b&gt;，请仔细阅读。&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>strong的嵌套使用：</h3>
+                <p>
+                    通常不建议嵌套使用strong标签，但在某些特殊情况下可以使用：
+                </p>
+                <p>
+                    特别<strong>特别<strong>重要</strong>的内容</strong>需要多层强调。
+                </p>
+                <p>
+                    注意：过多的嵌套会降低内容的可读性，应尽量避免。
+                </p>
+                
+                <div class="code">
+&lt;p&gt;
+    特别&lt;strong&gt;特别&lt;strong&gt;重要&lt;/strong&gt;的内容&lt;/strong&gt;需要多层强调。
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>strong在列表中的使用：</h3>
+                <ul>
+                    <li><strong>准备材料：</strong>面粉、鸡蛋、牛奶、糖</li>
+                    <li><strong>注意事项：</strong>烤箱温度需达到180°C</li>
+                    <li><strong>烹饪时间：</strong>大约30分钟</li>
+                </ul>
+                
+                <ol>
+                    <li><strong>第一步：</strong>将面粉和糖混合</li>
+                    <li><strong>第二步：</strong>加入鸡蛋和牛奶搅拌均匀</li>
+                    <li><strong>第三步：</strong>放入烤箱烘烤</li>
+                </ol>
+                
+                <div class="code">
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;准备材料：&lt;/strong&gt;面粉、鸡蛋、牛奶、糖&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;注意事项：&lt;/strong&gt;烤箱温度需达到180°C&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;烹饪时间：&lt;/strong&gt;大约30分钟&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;&lt;strong&gt;第一步：&lt;/strong&gt;将面粉和糖混合&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;第二步：&lt;/strong&gt;加入鸡蛋和牛奶搅拌均匀&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;第三步：&lt;/strong&gt;放入烤箱烘烤&lt;/li&gt;
+&lt;/ol&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>strong在标题中的使用：</h3>
+                <h1>产品发布 <strong>公告</strong></h1>
+                <h2>新功能 <strong>上线</strong> 通知</h2>
+                <h3>关于 <strong>安全更新</strong> 的重要提示</h3>
+                
+                <div class="code">
+&lt;h1&gt;产品发布 &lt;strong&gt;公告&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2&gt;新功能 &lt;strong&gt;上线&lt;/strong&gt; 通知&lt;/h2&gt;
+&lt;h3&gt;关于 &lt;strong&gt;安全更新&lt;/strong&gt; 的重要提示&lt;/h3&gt;
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

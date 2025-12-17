@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>换行标签 (br) - HTML学习中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .example-section {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .example-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example-section h3 {
+            color: #333;
+            margin: 1rem 0 0.5rem 0;
+        }
+        .code-example {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+        .poem {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            font-style: italic;
+        }
+        .address {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>换行标签 (br)</h1>
+        
+        <div class="example-section">
+            <h2>基本用法</h2>
+            <p><br>是一个自闭合标签，用于在文本中插入换行符，而不需要创建新的段落。</p>
+            <p>这是第一行。<br>这是第二行。</p>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;p&gt;这是第一行。&lt;br&gt;这是第二行。&lt;/p&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>与段落标签的区别</h2>
+            <p>br标签用于在同一个段落内换行，而p标签用于创建新的段落（会有默认的上下边距）。</p>
+            
+            <h3>使用br标签：</h3>
+            <p>第一行<br>第二行<br>第三行</p>
+            
+            <h3>使用p标签：</h3>
+            <p>第一行</p>
+            <p>第二行</p>
+            <p>第三行</p>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;!-- 使用br标签 --&gt;
+&lt;p&gt;第一行&lt;br&gt;第二行&lt;br&gt;第三行&lt;/p&gt;
+
+&lt;!-- 使用p标签 --&gt;
+&lt;p&gt;第一行&lt;/p&gt;
+&lt;p&gt;第二行&lt;/p&gt;
+&lt;p&gt;第三行&lt;/p&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>常见使用场景</h2>
+            
+            <h3>1. 诗歌排版</h3>
+            <div class="poem">
+                床前明月光，<br>
+                疑是地上霜。<br>
+                举头望明月，<br>
+                低头思故乡。<br>
+            </div>
+            
+            <h3>2. 地址信息</h3>
+            <div class="address">
+                姓名：张三<br>
+                地址：北京市海淀区中关村大街1号<br>
+                邮编：100080<br>
+                电话：13800138000
+            </div>
+            
+            <h3>3. 短文本分行</h3>
+            <p>错误代码：404<br>错误信息：页面未找到<br>解决方案：检查URL是否正确</p>
+            
+            <h3>代码示例：</h3>
+            <div class="code-example">
+&lt;!-- 诗歌排版 --&gt;
+&lt;div class="poem"&gt;
+    床前明月光，&lt;br&gt;
+    疑是地上霜。&lt;br&gt;
+    举头望明月，&lt;br&gt;
+    低头思故乡。&lt;br&gt;
+&lt;/div&gt;
+
+&lt;!-- 地址信息 --&gt;
+&lt;div class="address"&gt;
+    姓名：张三&lt;br&gt;
+    地址：北京市海淀区中关村大街1号&lt;br&gt;
+    邮编：100080&lt;br&gt;
+    电话：13800138000
+&lt;/div&gt;
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>注意事项</h2>
+            <p>使用br标签时需要注意：</p>
+            <ul>
+                <li>br标签是自闭合标签，不需要结束标签</li>
+                <li>不要过度使用br标签来创建间距，应该使用CSS的margin或padding属性</li>
+                <li>br标签只用于文本内容的换行，不用于布局结构的分隔</li>
+                <li>在需要语义化的多行内容时，应该考虑使用适当的HTML结构（如ul、ol、pre等）</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>

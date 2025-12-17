@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML链接标签 - a</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .content-section {
+            margin-bottom: 2rem;
+        }
+        .content-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .example {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .code {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+        }
+        .section-anchor {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HTML学习中心</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="tags.html" class="active">HTML标签</a>
+                <a href="layout.html">布局</a>
+                <a href="forms.html">表单</a>
+                <a href="multimedia.html">多媒体</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <h2>HTML链接标签 (a)</h2>
+            <p>链接标签用于创建超链接，指向其他网页、文件、同一页面内的位置或其他URL。</p>
+            
+            <div class="example">
+                <h3>基本链接示例：</h3>
+                <p>这是一个指向<a href="index.html">首页</a>的链接。</p>
+                <p>这是一个指向外部网站的链接：<a href="https://www.example.com">访问Example网站</a></p>
+                
+                <div class="code">
+&lt;p&gt;这是一个指向&lt;a href="index.html"&gt;首页&lt;/a&gt;的链接。&lt;/p&gt;
+&lt;p&gt;这是一个指向外部网站的链接：&lt;a href="https://www.example.com"&gt;访问Example网站&lt;/a&gt;&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>链接打开方式 (target属性)：</h3>
+                <p>默认在当前窗口打开：<a href="https://www.example.com">Example网站</a></p>
+                <p>在新窗口打开：<a href="https://www.example.com" target="_blank">Example网站（新窗口）</a></p>
+                <p>在父窗口打开：<a href="https://www.example.com" target="_parent">Example网站（父窗口）</a></p>
+                <p>在顶层窗口打开：<a href="https://www.example.com" target="_top">Example网站（顶层窗口）</a></p>
+                
+                <div class="code">
+&lt;p&gt;默认在当前窗口打开：&lt;a href="https://www.example.com"&gt;Example网站&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在新窗口打开：&lt;a href="https://www.example.com" target="_blank"&gt;Example网站（新窗口）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在父窗口打开：&lt;a href="https://www.example.com" target="_parent"&gt;Example网站（父窗口）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在顶层窗口打开：&lt;a href="https://www.example.com" target="_top"&gt;Example网站（顶层窗口）&lt;/a&gt;&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>锚点链接：</h3>
+                <p><a href="#section1">跳转到本页面的第一部分</a></p>
+                <p><a href="#section2">跳转到本页面的第二部分</a></p>
+                <p><a href="h1.html#usage-notes">跳转到h1页面的使用注意事项</a></p>
+                
+                <div class="code">
+&lt;p&gt;&lt;a href="#section1"&gt;跳转到本页面的第一部分&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="#section2"&gt;跳转到本页面的第二部分&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="h1.html#usage-notes"&gt;跳转到h1页面的使用注意事项&lt;/a&gt;&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>功能性链接：</h3>
+                <p><a href="mailto:example@example.com">发送邮件到example@example.com</a></p>
+                <p><a href="tel:+1234567890">拨打+1234567890</a></p>
+                <p><a href="download/sample.pdf" download>下载示例PDF文件</a></p>
+                <p><a href="#" onclick="alert('Hello!'); return false;">点击弹出Hello</a></p>
+                
+                <div class="code">
+&lt;p&gt;&lt;a href="mailto:example@example.com"&gt;发送邮件到example@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="tel:+1234567890"&gt;拨打+1234567890&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="download/sample.pdf" download&gt;下载示例PDF文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="#" onclick="alert('Hello!'); return false;">&gt;点击弹出Hello&lt;/a&gt;&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>链接的样式化：</h3>
+                <p style="text-decoration: none; color: #3498db;"><a href="index.html" style="text-decoration: none; color: #3498db;">无下划线的蓝色链接</a></p>
+                <p><a href="index.html" style="font-weight: bold; font-size: 1.1rem;">加粗放大的链接</a></p>
+                
+                <div class="code">
+&lt;p style="text-decoration: none; color: #3498db;"&gt;
+&lt;a href="index.html" style="text-decoration: none; color: #3498db;"&gt;
+无下划线的蓝色链接&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;a href="index.html" style="font-weight: bold; font-size: 1.1rem;"&gt;
+加粗放大的链接&lt;/a&gt;
+&lt;/p&gt;
+                </div>
+            </div>
+
+            <!-- 锚点目标区域 -->
+            <div id="section1" class="section-anchor">
+                <h3>第一部分（锚点目标）</h3>
+                <p>这是页面中id为section1的锚点目标区域。当点击指向#section1的链接时，页面会滚动到这里。</p>
+            </div>
+
+            <div id="section2" class="section-anchor">
+                <h3>第二部分（锚点目标）</h3>
+                <p>这是页面中id为section2的锚点目标区域。当点击指向#section2的链接时，页面会滚动到这里。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 HTML学习中心. 保留所有权利.</p>
+            <p>基于第一性原理和学习规律设计的前端学习路径</p>
+        </div>
+    </footer>
+</body>
+</html>
