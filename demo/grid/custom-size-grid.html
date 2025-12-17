@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义尺寸网格布局 - Custom Size Grid</title>
+    <link rel="stylesheet" href="../css/grid-styles.css">
+</head>
+<body>
+    <h1>自定义尺寸网格布局示例</h1>
+    <p>展示混合使用固定尺寸和弹性尺寸的网格结构：第一列200px固定宽度，后两列使用1fr均分剩余空间；第一行100px高，第二行200px高</p>
+    
+    <!-- 自定义尺寸网格容器 -->
+    <div class="grid-container custom-size-grid">
+        <div class="grid-item">1 (200px宽)</div>
+        <div class="grid-item">2 (1fr宽)</div>
+        <div class="grid-item">3 (1fr宽)</div>
+        <div class="grid-item">4 (100px高)</div>
+        <div class="grid-item">5 (200px高)</div>
+        <div class="grid-item">6</div>
+    </div>
+</body>
+</html>

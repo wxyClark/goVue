@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网格区域命名布局 - Grid Areas</title>
+    <link rel="stylesheet" href="../css/grid-styles.css">
+</head>
+<body>
+    <h1>网格区域命名布局示例</h1>
+    <p>使用grid-area和grid-template-areas属性实现语义化布局，通过名称而非行列数字定位元素</p>
+    
+    <!-- 区域命名网格容器 -->
+    <div class="grid-container area-grid">
+        <!-- 头部区域 -->
+        <div class="grid-item header">
+            <h2>网站头部</h2>
+        </div>
+        
+        <!-- 侧边栏区域 -->
+        <div class="grid-item sidebar">
+            <h3>侧边栏导航</h3>
+            <ul>
+                <li>首页</li>
+                <li>关于我们</li>
+                <li>产品中心</li>
+                <li>联系我们</li>
+            </ul>
+        </div>
+        
+        <!-- 主内容区域 -->
+        <div class="grid-item main">
+            <h3>主内容区</h3>
+            <p>这是网站的主要内容区域，可以包含文章、图片、视频等各种内容。</p>
+        </div>
+        
+        <!-- 页脚区域 -->
+        <div class="grid-item footer">
+            <p>网站底部版权信息</p>
+        </div>
+    </div>
+</body>
+</html>

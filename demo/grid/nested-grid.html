@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套网格布局 - Nested Grid</title>
+    <link rel="stylesheet" href="../css/grid-styles.css">
+</head>
+<body>
+    <h1>嵌套网格布局示例</h1>
+    <p>展示如何在一个网格容器内部创建另一个网格容器，实现复杂的嵌套布局结构</p>
+    
+    <!-- 嵌套网格容器 -->
+    <div class="grid-container nested-grid">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <h3>侧边栏</h3>
+            <ul>
+                <li>导航项1</li>
+                <li>导航项2</li>
+                <li>导航项3</li>
+                <li>导航项4</li>
+            </ul>
+        </div>
+        
+        <!-- 主内容区，内部也是一个网格 -->
+        <div class="content">
+            <div class="content-item">内容项1</div>
+            <div class="content-item">内容项2</div>
+            <div class="content-item">内容项3</div>
+            <div class="content-item">内容项4</div>
+        </div>
+    </div>
+</body>
+</html>
